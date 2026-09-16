@@ -282,7 +282,14 @@ python -m http.server 8765
 
 瀏覽器開啟 http://localhost:8765
 
-**玩法概要**：8×8 棋盤、雙方各 3 隻寶可夢；每回合可移動一格或使用招牌招式攻擊。攻擊範圍與 AOE 形狀依 ZA 資料（`range_tiles`、`aoe_type`）計算。
+**玩法概要**：
+
+- 8×8 棋盤，雙方各 3 隻寶可夢（顯示立繪）
+- 每隻 **6 HP**；每出一招 **−1 HP**；四招用光後花 **2 HP 回氣**
+- **四招式**：槽 1 為招牌招；槽 2–4 透過「疊卡學招」（可學屬性與隊友招牌招屬性相同）
+- 傷害 = 卡牌攻擊強度 × 屬性相性；射程/AOE 依 ZA 資料
+
+執行 `python tools/build_za_move_data.py` 會同時連結 `board_battle/assets/pokemon/` 立繪。
 
 ### ZA 欄位說明
 
