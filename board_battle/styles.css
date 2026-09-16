@@ -270,6 +270,39 @@ button:disabled { opacity: 0.38; cursor: not-allowed; }
   color: var(--muted);
 }
 
+.trainers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.trainer-card {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.35rem;
+  border-radius: 8px;
+  border: 2px solid var(--grid);
+  background: #252d45;
+  font-size: 0.75rem;
+}
+
+.trainer-card.active {
+  background: #2f3a58;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.trainer-thumb {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #1a1f30;
+}
+
+.trainer-meta { line-height: 1.35; }
+.trainer-faction, .trainer-party { color: var(--muted); font-size: 0.68rem; display: block; }
+
 .badge {
   display: inline-block;
   background: #3a4260;

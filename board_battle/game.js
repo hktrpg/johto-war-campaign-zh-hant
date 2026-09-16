@@ -1,13 +1,13 @@
 /**
- * Johto War ZA board battle
- * - HP (生命): from card health stat, reduced by enemy attacks
- * - 體力 (stamina): 6 per Pokemon, −1 per move, −2 to recharge when all moves exhausted
+ * Johto War ZA board battle — up to 6 trainers, 1–4 Pokemon each.
+ * HP = card health; 體力 = 6-point move resource.
  */
 
 const BOARD_SIZE = 8;
 const MAX_STAMINA = 6;
 const MOVE_STAMINA_COST = 1;
 const RECHARGE_STAMINA_COST = 2;
+const MAX_TRAINERS = 6;
 
 const TYPE_CHART = {
   normal: { rock: -2, ghost: -4, steel: -2 },
@@ -30,15 +30,15 @@ const TYPE_CHART = {
   fairy: { fire: 2, fighting: -2, poison: 2, dragon: -2, dark: 2, steel: 2 },
 };
 
-const DEFAULT_TEAMS = {
-  p1: ['妙蛙種子', '小火龍', '傑尼龜'],
-  p2: ['皮卡丘', '卡比獸', '耿鬼'],
-};
+const FACTION_COLORS = ['#4ecdc4', '#ff6b6b', '#a78bfa', '#fbbf24', '#60a5fa', '#f472b6'];
 
-let pokemonPool = [];
+let trainersData = { trainers: [], default_match: [] };
+let matchTrainers = [];
 let units = [];
-let currentPlayer = 1;
-let phase = 'select'; // select | move | attack | learn
+let currentTrainerId = null;
+let trainerTurnOrder = [];
+let turnIndex = 0;
+let phase = 'select';
 let selectedId = null;
 let selectedMoveIndex = 0;
 let actedThisTurn = new Set();
@@ -46,6 +46,7 @@ let actedThisTurn = new Set();
 const boardEl = document.getElementById('board');
 const turnLabel = document.getElementById('turn-label');
 const phaseLabel = document.getElementById('phase-label');
+const trainersPanel = document.getElementById('trainers-panel');
 const unitInfo = document.getElementById('unit-info');
 const unitPortrait = document.getElementById('unit-portrait');
 const statBars = document.getElementById('stat-bars');
@@ -87,6 +88,10 @@ function spriteUrl(sprite) {
   return `assets/pokemon/${sprite}`;
 }
 
+function trainerSpriteUrl(sprite) {
+  return `assets/trainers/${sprite}`;
+}
+
 function typeMultiplier(atkType, defTypes) {
   let mult = 1;
   for (const def of defTypes) {
@@ -99,141 +104,165 @@ function typeMultiplier(atkType, defTypes) {
   return mult;
 }
 
-function findPokemon(name) {
-  return pokemonPool.find((p) => p.name === name);
+function getTrainer(id) {
+  return matchTrainers.find((t) => t.id === id);
+}
+
+function currentTrainer() {
+  return getTrainer(currentTrainerId);
+}
+
+function trainerAvgInitiative(trainer) {
+  if (!trainer.party.length) return 0;
+  return trainer.party.reduce((s, p) => s + (p.initiative || 5), 0) / trainer.party.length;
+}
+
+function spawnPositions(trainerSlot, partySize, faction) {
+  const local = trainerSlot % 3;
+  const col = faction === 0 ? local : 5 + local;
+  const startRow = faction === 0 ? 0 : Math.max(0, 8 - partySize);
+  return Array.from({ length: partySize }, (_, i) => ({ x: col, y: startRow + i }));
 }
 
 function buildMovesFromTemplate(template) {
   const moves = [{ ...template.signature_move, slot: 0, source: '招牌' }];
   for (const learned of template.learned_moves || []) {
-    moves.push({ ...learned, slot: moves.length, source: learned.slot_label || `來自${learned.learned_from}` });
+    moves.push({
+      ...learned,
+      slot: moves.length,
+      source: learned.slot_label || `來自${learned.learned_from}`,
+    });
   }
-  while (moves.length < 4) {
-    moves.push(null);
-  }
+  while (moves.length < 4) moves.push(null);
   return moves.slice(0, 4);
 }
 
-function buildUnit(template, player, x, y, id) {
-  const moves = buildMovesFromTemplate(template);
+function buildUnit(template, trainer, pos, unitId) {
   return {
-    id,
-    player,
-    templateId: template.id,
+    id: unitId,
+    trainerId: trainer.id,
+    trainerName: trainer.name_zh || trainer.name,
+    faction: trainer.faction,
+    colorIndex: trainer.slot,
     name: template.name,
     sprite: template.sprite,
-    types: template.types.length ? template.types : [template.type_1],
+    types: template.types?.length ? template.types : [template.type_1],
     learnableTypes: template.learnable_types || [],
-    initiative: template.initiative || 5,
     maxHp: template.health || 5,
     hp: template.health || 5,
     maxStamina: MAX_STAMINA,
     stamina: MAX_STAMINA,
-    moves,
+    moves: buildMovesFromTemplate(template),
     moveUsed: [false, false, false, false],
-    x,
-    y,
+    x: pos.x,
+    y: pos.y,
   };
 }
 
-function availableMoveCount(unit) {
-  return unit.moves.filter((m, i) => m && !unit.moveUsed[i]).length;
+function livingUnits(trainerId) {
+  return units.filter((u) => u.trainerId === trainerId && u.hp > 0);
 }
 
-function allMovesExhausted(unit) {
-  return unit.moves.every((m, i) => !m || unit.moveUsed[i]);
+function livingFaction(faction) {
+  return units.filter((u) => u.faction === faction && u.hp > 0);
 }
 
-function hasAnyMove(unit) {
-  return unit.moves.some(Boolean);
+function isEnemy(a, b) {
+  return a.faction !== b.faction;
 }
 
-function getActiveMove(unit) {
-  const move = unit.moves[selectedMoveIndex];
-  if (!move || unit.moveUsed[selectedMoveIndex]) return null;
-  return move;
+function partyMates(unit) {
+  const trainer = getTrainer(unit.trainerId);
+  if (!trainer) return [];
+  return trainer.party.filter((p) => p.name !== unit.name);
 }
 
 function setupGame() {
   units = [];
-  currentPlayer = 1;
   phase = 'select';
   selectedId = null;
   selectedMoveIndex = 0;
   actedThisTurn = new Set();
 
-  const p1Names = DEFAULT_TEAMS.p1;
-  const p2Names = DEFAULT_TEAMS.p2;
-  const p1Templates = p1Names.map((n) => findPokemon(n)).filter(Boolean);
-  const p2Templates = p2Names.map((n) => findPokemon(n)).filter(Boolean);
+  matchTrainers = trainersData.default_match
+    .slice(0, MAX_TRAINERS)
+    .map((id, slot) => {
+      const t = trainersData.trainers.find((x) => x.id === id);
+      if (!t) return null;
+      return { ...t, slot };
+    })
+    .filter(Boolean);
 
-  if (p1Templates.length < 3 || p2Templates.length < 3) {
-    pokemonPool.slice(0, 6).forEach((p, i) => {
-      const player = i < 3 ? 1 : 2;
-      const positions = player === 1 ? [[1, 0], [1, 1], [1, 2]] : [[6, 5], [6, 6], [6, 7]];
-      const idx = i % 3;
-      units.push(buildUnit(p, player, positions[idx][0], positions[idx][1], i));
-    });
-  } else {
-    let id = 0;
-    [[1, 0], [1, 1], [1, 2]].forEach(([x, y], i) => {
-      units.push(buildUnit(p1Templates[i], 1, x, y, id++));
-    });
-    [[6, 5], [6, 6], [6, 7]].forEach(([x, y], i) => {
-      units.push(buildUnit(p2Templates[i], 2, x, y, id++));
-    });
+  if (matchTrainers.length < 2) {
+    log('訓練家資料不足，無法開始。');
+    return;
   }
 
-  applyTeamLearning();
-  log('對戰開始！HP 為卡牌體力值；體力 6 點，出招 −1 體力，用光四招需 −2 體力回氣。');
+  trainerTurnOrder = [...matchTrainers]
+    .sort((a, b) => trainerAvgInitiative(b) - trainerAvgInitiative(a))
+    .map((t) => t.id);
+
+  let unitId = 0;
+  matchTrainers.forEach((trainer) => {
+    const positions = spawnPositions(trainer.slot, trainer.party.length, trainer.faction);
+    trainer.party.forEach((mon, i) => {
+      units.push(buildUnit(mon, trainer, positions[i], unitId++));
+    });
+  });
+
+  turnIndex = 0;
+  currentTrainerId = nextActiveTrainerId(0);
+  log(`對戰開始！${matchTrainers.length} 位訓練家，每人 ${matchTrainers[0]?.party?.length || '?'} 隻寶可夢。`);
+  log(`先攻：${getTrainer(currentTrainerId)?.name_zh || ''}`);
   render();
 }
 
-/** Re-run learning between teammates (simulates stacking cards under unit). */
-function applyTeamLearning() {
-  for (const player of [1, 2]) {
-    const team = units.filter((u) => u.player === player);
-    for (const unit of team) {
-      for (const mate of team) {
-        if (mate.id === unit.id) continue;
-        const sig = mate.moves[0];
-        if (!sig) continue;
-        if (!unit.learnableTypes.includes(sig.type)) continue;
-        if (unit.moves.some((m) => m && m.name === sig.name)) continue;
-        const emptyIdx = unit.moves.findIndex((m) => !m);
-        if (emptyIdx < 0) continue;
-        unit.moves[emptyIdx] = {
-          ...sig,
-          slot: emptyIdx,
-          source: `來自${mate.name}`,
-          learned_from: mate.name,
-        };
-      }
+function nextActiveTrainerId(fromIndex) {
+  for (let i = 0; i < trainerTurnOrder.length; i++) {
+    const idx = (fromIndex + i) % trainerTurnOrder.length;
+    const tid = trainerTurnOrder[idx];
+    if (livingUnits(tid).length > 0) return tid;
+  }
+  return null;
+}
+
+function advanceTrainerTurn() {
+  const start = (turnIndex + 1) % trainerTurnOrder.length;
+  for (let i = 0; i < trainerTurnOrder.length; i++) {
+    const idx = (start + i) % trainerTurnOrder.length;
+    const tid = trainerTurnOrder[idx];
+    if (livingUnits(tid).length > 0) {
+      turnIndex = idx;
+      currentTrainerId = tid;
+      actedThisTurn = new Set();
+      const t = getTrainer(tid);
+      log(`—— ${t?.name_zh || t?.name} 的回合 ——`);
+      return;
     }
   }
+}
+
+function checkWinner() {
+  const f0 = livingFaction(0).length;
+  const f1 = livingFaction(1).length;
+  if (f0 === 0 && f1 > 0) return 1;
+  if (f1 === 0 && f0 > 0) return 0;
+  return null;
 }
 
 async function loadData() {
   try {
-    const res = await fetch('data/pokemon_battle.json');
+    const res = await fetch('data/trainers.json');
     if (res.ok) {
-      pokemonPool = await res.json();
+      trainersData = await res.json();
       return;
     }
   } catch (_) { /* fallback */ }
-  pokemonPool = [];
+  trainersData = { trainers: [], default_match: [] };
 }
 
 function selectedUnit() {
   return units.find((u) => u.id === selectedId);
-}
-
-function living(player) {
-  return units.filter((u) => u.player === player && u.hp > 0);
-}
-
-function teammates(unit) {
-  return units.filter((u) => u.player === unit.player && u.hp > 0 && u.id !== unit.id);
 }
 
 function adjacentCells(x, y) {
@@ -263,9 +292,7 @@ function aoeCells(attacker, move, target) {
   const aoeType = move.aoe_type || 'MELEE';
   const aoeRadius = move.aoe_radius || 0;
 
-  if (aoeType === 'MELEE') {
-    return manhattan(origin, target) === 1 ? [target] : [];
-  }
+  if (aoeType === 'MELEE') return manhattan(origin, target) === 1 ? [target] : [];
   if (aoeType === 'RANGED') {
     const d = manhattan(origin, target);
     return d > 0 && d <= range ? [target] : [];
@@ -308,14 +335,26 @@ function aoeCells(attacker, move, target) {
   return d > 0 && d <= range ? [target] : [];
 }
 
+function availableMoveCount(unit) {
+  return unit.moves.filter((m, i) => m && !unit.moveUsed[i]).length;
+}
+
+function allMovesExhausted(unit) {
+  return unit.moves.every((m, i) => !m || unit.moveUsed[i]);
+}
+
+function getActiveMove(unit) {
+  const move = unit.moves[selectedMoveIndex];
+  if (!move || unit.moveUsed[selectedMoveIndex]) return null;
+  return move;
+}
+
 function highlightCells() {
   const u = selectedUnit();
-  if (!u || u.player !== currentPlayer || actedThisTurn.has(u.id)) {
+  if (!u || u.trainerId !== currentTrainerId || actedThisTurn.has(u.id)) {
     return { move: [], attack: [] };
   }
-  if (phase === 'move') {
-    return { move: adjacentCells(u.x, u.y), attack: [] };
-  }
+  if (phase === 'move') return { move: adjacentCells(u.x, u.y), attack: [] };
   if (phase === 'attack') {
     const move = getActiveMove(u);
     if (!move) return { move: [], attack: [] };
@@ -324,20 +363,39 @@ function highlightCells() {
   return { move: [], attack: [] };
 }
 
+function renderTrainersPanel() {
+  trainersPanel.innerHTML = '';
+  matchTrainers.forEach((trainer) => {
+    const card = document.createElement('div');
+    card.className = 'trainer-card';
+    if (trainer.id === currentTrainerId) card.classList.add('active');
+    card.style.borderColor = FACTION_COLORS[trainer.slot] || '#666';
+    const alive = livingUnits(trainer.id).length;
+    const total = trainer.party.length;
+    card.innerHTML = `
+      <img src="${trainerSpriteUrl(trainer.sprite)}" alt="" class="trainer-thumb" onerror="this.style.display='none'" />
+      <div class="trainer-meta">
+        <strong>${trainer.name_zh}</strong>
+        <span class="trainer-faction">${trainer.faction === 0 ? 'A 陣' : 'B 陣'}</span>
+        <span class="trainer-party">${alive}/${total} 隻</span>
+      </div>`;
+    trainersPanel.appendChild(card);
+  });
+}
+
 function renderMoveSlots(unit) {
   moveSlotsEl.innerHTML = '';
   if (!unit) {
     moveDetail.textContent = '—';
     return;
   }
-
   unit.moves.forEach((move, i) => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'move-slot';
     if (!move) {
       btn.classList.add('empty');
-      btn.innerHTML = `<span class="slot-tag">槽 ${i + 1}</span>空槽（可疊卡）`;
+      btn.innerHTML = `<span class="slot-tag">槽 ${i + 1}</span>空槽（疊隊友卡）`;
     } else {
       if (unit.moveUsed[i]) btn.classList.add('used');
       if (i === selectedMoveIndex) btn.classList.add('selected');
@@ -374,15 +432,13 @@ function renderLearnPanel(unit) {
     return;
   }
   learnPanel.hidden = false;
-
-  const emptySlots = unit.moves.map((m, i) => (m ? -1 : i)).filter((i) => i >= 0);
-  if (!emptySlots.length) {
+  if (!unit.moves.some((m) => !m)) {
     learnOptions.textContent = '四招已滿';
     return;
   }
 
-  teammates(unit).forEach((mate) => {
-    const sig = mate.moves[0];
+  partyMates(unit).forEach((mate) => {
+    const sig = mate.signature_move;
     if (!sig) return;
     if (!unit.learnableTypes.includes(sig.type)) return;
     if (unit.moves.some((m) => m && m.name === sig.name)) return;
@@ -390,7 +446,7 @@ function renderLearnPanel(unit) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'learn-btn';
-    btn.textContent = `疊 ${mate.name} 的卡 → 學會「${sig.name}」（${sig.type}）`;
+    btn.textContent = `疊 ${mate.name} 的卡 →「${sig.name}」（${sig.type}）`;
     btn.addEventListener('click', () => {
       const idx = unit.moves.findIndex((m) => !m);
       if (idx < 0) return;
@@ -407,8 +463,29 @@ function renderLearnPanel(unit) {
     learnOptions.appendChild(btn);
   });
 
+  livingUnits(unit.trainerId)
+    .filter((m) => m.id !== unit.id)
+    .forEach((mate) => {
+      const sig = mate.moves[0];
+      if (!sig || !unit.learnableTypes.includes(sig.type)) return;
+      if (unit.moves.some((m) => m && m.name === sig.name)) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'learn-btn';
+      btn.textContent = `疊場上 ${mate.name} →「${sig.name}」`;
+      btn.addEventListener('click', () => {
+        const idx = unit.moves.findIndex((m) => !m);
+        if (idx < 0) return;
+        unit.moves[idx] = { ...sig, slot: idx, source: `來自${mate.name}`, learned_from: mate.name };
+        log(`${unit.name} 向場上隊友 ${mate.name} 學會「${sig.name}」！`);
+        phase = 'select';
+        render();
+      });
+      learnOptions.appendChild(btn);
+    });
+
   if (!learnOptions.children.length) {
-    learnOptions.textContent = '沒有可學的隊友招式（需相同可學屬性）';
+    learnOptions.textContent = '沒有可疊的隊友卡（需相同可學屬性）';
   }
 }
 
@@ -420,23 +497,19 @@ function renderUnitPanel(unit) {
     statBars.hidden = true;
     return;
   }
-
   unitPortrait.className = 'portrait-wrap';
   unitPortrait.innerHTML = `<img src="${spriteUrl(unit.sprite)}" alt="${unit.name}" onerror="this.style.display='none'" />`;
-  const types = unit.types.join(' / ');
   const avail = availableMoveCount(unit);
   unitInfo.innerHTML = `
-    <strong>${unit.name}</strong><br>
-    屬性 ${types}<br>
+    <strong>${unit.name}</strong> <span class="badge">${unit.trainerName}</span><br>
+    屬性 ${unit.types.join(' / ')}<br>
     可學：${unit.learnableTypes.join('、')}<br>
     剩餘招式 <strong>${avail}</strong> / ${unit.moves.filter(Boolean).length}`;
   statBars.hidden = false;
-  const hpPct = (unit.hp / unit.maxHp) * 100;
-  hpFill.style.width = `${hpPct}%`;
+  hpFill.style.width = `${(unit.hp / unit.maxHp) * 100}%`;
   hpFill.style.background = unit.hp <= Math.ceil(unit.maxHp / 3) ? 'var(--hp-low)' : 'var(--hp)';
   hpText.textContent = `${unit.hp}/${unit.maxHp}`;
-  const stPct = (unit.stamina / unit.maxStamina) * 100;
-  staminaFill.style.width = `${stPct}%`;
+  staminaFill.style.width = `${(unit.stamina / unit.maxStamina) * 100}%`;
   staminaText.textContent = `${unit.stamina}/${unit.maxStamina}`;
 }
 
@@ -448,55 +521,52 @@ function render() {
     for (let x = 0; x < BOARD_SIZE; x++) {
       const cell = document.createElement('div');
       cell.className = 'cell';
-      cell.dataset.x = x;
-      cell.dataset.y = y;
-
       if (hl.move.some((c) => c.x === x && c.y === y)) cell.classList.add('move-range');
       if (hl.attack.some((c) => c.x === x && c.y === y)) cell.classList.add('attack-range');
 
       const u = unitAt(x, y);
       if (u) {
         const token = document.createElement('div');
-        token.className = `token p${u.player}`;
+        token.className = 'token';
+        token.style.borderColor = FACTION_COLORS[u.colorIndex] || '#fff';
         const img = document.createElement('img');
         img.src = spriteUrl(u.sprite);
         img.alt = u.name;
-        img.onerror = () => { img.remove(); };
+        img.onerror = () => img.remove();
         token.appendChild(img);
-        const hp = document.createElement('div');
-        hp.className = 'token-hp';
-        hp.textContent = `HP${u.hp} 體${u.stamina}`;
-        token.appendChild(hp);
-        const mc = document.createElement('div');
-        mc.className = 'token-moves';
-        mc.textContent = `${availableMoveCount(u)}招`;
-        token.appendChild(mc);
+        const bar = document.createElement('div');
+        bar.className = 'token-hp';
+        bar.textContent = `HP${u.hp} 體${u.stamina}`;
+        token.appendChild(bar);
         cell.appendChild(token);
         if (u.id === selectedId) cell.style.outline = '2px solid #fff';
       }
-
       cell.addEventListener('click', () => onCellClick(x, y));
       boardEl.appendChild(cell);
     }
   }
 
-  const alive1 = living(1).length;
-  const alive2 = living(2).length;
-  turnLabel.textContent = `玩家 ${currentPlayer} · 場上 P1:${alive1} / P2:${alive2}`;
+  const ct = currentTrainer();
+  const f0 = livingFaction(0).length;
+  const f1 = livingFaction(1).length;
+  turnLabel.textContent = ct
+    ? `回合：${ct.name_zh}（${ct.faction === 0 ? 'A' : 'B'} 陣）· A:${f0} B:${f1}`
+    : '對戰結束';
   const phaseNames = {
-    select: '選擇單位與招式',
+    select: '選擇寶可夢與招式',
     move: '選擇移動目標',
     attack: '選擇攻擊目標',
-    learn: '選擇要疊的隊友卡',
+    learn: '疊隊友卡學招',
   };
   phaseLabel.textContent = phaseNames[phase] || '';
 
+  renderTrainersPanel();
   const u = selectedUnit();
   renderUnitPanel(u);
   renderMoveSlots(u);
   renderLearnPanel(u);
 
-  const canAct = u && u.player === currentPlayer && !actedThisTurn.has(u.id) && u.hp > 0;
+  const canAct = u && u.trainerId === currentTrainerId && !actedThisTurn.has(u.id) && u.hp > 0;
   const move = u ? getActiveMove(u) : null;
   const exhausted = u ? allMovesExhausted(u) : false;
 
@@ -505,21 +575,22 @@ function render() {
   btnRecharge.disabled = !canAct || phase !== 'select' || !exhausted || u.stamina < RECHARGE_STAMINA_COST;
   btnLearn.disabled = !canAct || phase !== 'select' || !u.moves.some((m) => !m);
 
-  if (alive1 === 0 || alive2 === 0) {
-    const winner = alive1 > 0 ? 1 : 2;
-    turnLabel.textContent = `玩家 ${winner} 獲勝！`;
-    btnMove.disabled = true;
-    btnAttack.disabled = true;
-    btnRecharge.disabled = true;
-    btnLearn.disabled = true;
+  const winner = checkWinner();
+  if (winner !== null) {
+    turnLabel.textContent = `${winner === 0 ? 'A' : 'B'} 陣獲勝！`;
+    btnMove.disabled = btnAttack.disabled = btnRecharge.disabled = btnLearn.disabled = true;
   }
 }
 
 function onCellClick(x, y) {
   const clicked = unitAt(x, y);
-
   if (phase === 'select') {
-    if (clicked && clicked.player === currentPlayer && !actedThisTurn.has(clicked.id) && clicked.hp > 0) {
+    if (
+      clicked
+      && clicked.trainerId === currentTrainerId
+      && !actedThisTurn.has(clicked.id)
+      && clicked.hp > 0
+    ) {
       selectedId = clicked.id;
       const firstAvail = clicked.moves.findIndex((m, i) => m && !clicked.moveUsed[i]);
       selectedMoveIndex = firstAvail >= 0 ? firstAvail : 0;
@@ -544,7 +615,6 @@ function onCellClick(x, y) {
   if (phase === 'attack') {
     const move = getActiveMove(u);
     if (!move || u.stamina < MOVE_STAMINA_COST) return;
-
     const hits = aoeCells(u, move, { x, y });
     if (!hits.length) return;
 
@@ -552,22 +622,20 @@ function onCellClick(x, y) {
     u.moveUsed[selectedMoveIndex] = true;
 
     const victims = units.filter(
-      (t) => t.hp > 0 && t.player !== u.player && hits.some((h) => h.x === t.x && h.y === t.y),
+      (t) => t.hp > 0 && isEnemy(u, t) && hits.some((h) => h.x === t.x && h.y === t.y),
     );
 
     if (!victims.length) {
-      log(`${u.name} 使用「${move.name}」（−1 體力），未命中敵人。`);
+      log(`${u.name} 使用「${move.name}」（−1 體力），未命中。`);
     } else {
       victims.forEach((t) => {
         const mult = typeMultiplier(move.type, t.types);
         const dmg = mult === 0 ? 0 : Math.max(1, Math.round(move.power * mult));
         t.hp = Math.max(0, t.hp - dmg);
         const eff = mult === 0 ? '無效' : mult > 1 ? '效果絕佳' : mult < 1 ? '效果不好' : '普通';
-        log(`${u.name}「${move.name}」→ ${t.name}，${dmg} HP 傷害（${eff}，攻擊力 ${move.power}）`);
+        log(`${u.name}「${move.name}」→ ${t.name}，${dmg} HP（${eff}）`);
       });
     }
-    log(`${u.name} 體力 ${u.stamina}/${u.maxStamina}`);
-
     endUnitTurn();
   }
 }
@@ -577,58 +645,39 @@ function endUnitTurn() {
   if (u && u.hp > 0) actedThisTurn.add(u.id);
   selectedId = null;
   phase = 'select';
-
   units = units.filter((u) => u.hp > 0);
 
-  const allActed = living(currentPlayer).every((u) => actedThisTurn.has(u.id));
-  if (allActed && living(currentPlayer).length) {
-    actedThisTurn = new Set();
-    currentPlayer = currentPlayer === 1 ? 2 : 1;
-    log(`—— 玩家 ${currentPlayer} 的回合 ——`);
+  if (checkWinner() !== null) {
+    render();
+    return;
   }
+
+  const myUnits = livingUnits(currentTrainerId);
+  const allActed = myUnits.length > 0 && myUnits.every((u) => actedThisTurn.has(u.id));
+  if (allActed) advanceTrainerTurn();
   render();
 }
 
-btnMove.addEventListener('click', () => {
-  if (!selectedUnit()) return;
-  phase = 'move';
-  render();
-});
-
+btnMove.addEventListener('click', () => { if (selectedUnit()) { phase = 'move'; render(); } });
 btnAttack.addEventListener('click', () => {
   const u = selectedUnit();
-  if (!u || !getActiveMove(u) || u.stamina < MOVE_STAMINA_COST) return;
-  phase = 'attack';
-  render();
+  if (u && getActiveMove(u) && u.stamina >= MOVE_STAMINA_COST) { phase = 'attack'; render(); }
 });
-
 btnRecharge.addEventListener('click', () => {
   const u = selectedUnit();
   if (!u || !allMovesExhausted(u) || u.stamina < RECHARGE_STAMINA_COST) return;
   u.stamina -= RECHARGE_STAMINA_COST;
   u.moveUsed = [false, false, false, false];
-  log(`${u.name} 回氣恢復四招（−2 體力，剩 ${u.stamina}）`);
+  log(`${u.name} 回氣（−2 體力，剩 ${u.stamina}）`);
   render();
 });
-
-btnLearn.addEventListener('click', () => {
-  if (!selectedUnit()) return;
-  phase = 'learn';
-  render();
-});
-
+btnLearn.addEventListener('click', () => { if (selectedUnit()) { phase = 'learn'; render(); } });
 btnEnd.addEventListener('click', () => {
-  actedThisTurn = new Set();
   selectedId = null;
   phase = 'select';
-  currentPlayer = currentPlayer === 1 ? 2 : 1;
-  log(`玩家 ${currentPlayer} 結束回合。`);
+  advanceTrainerTurn();
   render();
 });
-
-btnRestart.addEventListener('click', () => {
-  logEl.innerHTML = '';
-  setupGame();
-});
+btnRestart.addEventListener('click', () => { logEl.innerHTML = ''; setupGame(); });
 
 loadData().then(setupGame);

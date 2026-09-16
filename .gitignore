@@ -19,3 +19,4 @@ tools/__pycache__/
 
 # Board battle sprites (symlinked by tools/build_za_move_data.py)
 board_battle/assets/pokemon/
+board_battle/assets/trainers/

@@ -24,6 +24,17 @@ POKEAPI_CACHE = ROOT / 'Card Generator' / 'data' / 'pokeapi_moves.json'
 BOARD_DATA = ROOT / 'board_battle' / 'data'
 SPRITE_SRC = ROOT / 'Card Generator' / 'generator_assets' / 'pokemon'
 SPRITE_DST = ROOT / 'board_battle' / 'assets' / 'pokemon'
+TRAINER_SPRITE_SRC = ROOT / 'Card Generator' / 'generator_assets' / 'trainers'
+TRAINER_SPRITE_DST = ROOT / 'board_battle' / 'assets' / 'trainers'
+
+TRAINER_ZH = {
+    'Falkner': '阿速', 'Bugsy': '阿筆', 'Whitney': '小茜', 'Morty': '松葉',
+    'Chuck': '阿四', 'Jasmine': '阿蜜', 'Pryce': '柳伯', 'Clair': '小椿',
+    'Cyrus': '赤日', 'Lance': '阿渡', 'Colress': '阿庫羅瑪',
+}
+
+DEFAULT_MATCH_TRAINERS = ['Falkner', 'Bugsy', 'Whitney', 'Morty', 'Chuck', 'Jasmine']
+PARTY_SIZE_PER_TRAINER = 3  # 1–4 allowed per trainer in export
 
 
 def load_pokeapi_names() -> dict[int, str]:
@@ -125,6 +136,49 @@ def build_learned_moves(signature: dict, teammates: list[dict], learnable_types:
         if len(learned) >= 3:
             break
     return learned
+
+
+def pokemon_entry_from_row(row, moves_by_name: dict, pid: int) -> dict:
+    learnable = [norm_type(row[c]) for c in ('move_1', 'move_2', 'move_3', 'move_4') if norm_type(row[c])]
+    name = str(row['move_name']).strip()
+    sig = moves_by_name.get(name) or move_record(row, None, None)
+    sprite = format_pokedex_number(row['pokedex_number'])
+    card_health = int(row['health']) if str(row['health']).isdigit() else 5
+    return {
+        'id': pid,
+        'pokedex_number': str(row['pokedex_number']),
+        'sprite': f'{sprite}.png',
+        'name': str(row['pokedex_name']).strip(),
+        'internal_name': str(row['internal_name']).strip(),
+        'type_1': norm_type(row['type_1']),
+        'type_2': norm_type(row['type_2']),
+        'types': [t for t in (norm_type(row['type_1']), norm_type(row['type_2'])) if t],
+        'learnable_types': learnable,
+        'initiative': int(row['initiative']) if str(row['initiative']).isdigit() else 5,
+        'health': card_health,
+        'signature_move': sig,
+        'learned_moves': [],
+    }
+
+
+def apply_party_learning(party: list[dict]) -> None:
+    for mon in party:
+        mon['learned_moves'] = build_learned_moves(mon, party, mon['learnable_types'])
+
+
+def export_trainer_sprites(trainer_names: list[str]) -> None:
+    TRAINER_SPRITE_DST.mkdir(parents=True, exist_ok=True)
+    if not TRAINER_SPRITE_SRC.is_dir():
+        return
+    for name in trainer_names:
+        src = TRAINER_SPRITE_SRC / f'{name}.png'
+        dst = TRAINER_SPRITE_DST / f'{name}.png'
+        if src.is_file() and not dst.exists():
+            try:
+                dst.symlink_to(src.resolve())
+            except OSError:
+                import shutil
+                shutil.copy2(src, dst)
 
 
 def export_sprites_used(pokemon_entries: list[dict]) -> None:
@@ -281,6 +335,66 @@ def main() -> None:
     (BOARD_DATA / 'pokemon_roster.json').write_text(
         json.dumps(legacy, ensure_ascii=False, indent=2), encoding='utf-8',
     )
+
+    # Trainer squads (1–4 Pokemon each) from cube trainer column.
+    poke_all = pd.read_excel(ROOT / 'Card Generator' / 'johto_cube.xlsx', sheet_name='pokemon')
+    poke_all = poke_all.copy()
+    poke_all['_vanilla'] = poke_all['pokedex_number'].astype(str).str.match(r'^\d+$').astype(int) * -1
+    poke_all = poke_all.sort_values(['trainer', 'pokedex_name', '_vanilla', 'state'])
+
+    trainer_records: list[dict] = []
+    tid = 0
+    pid = 10000
+    all_trainer_names: list[str] = []
+
+    for trainer_name, group in poke_all[poke_all['trainer'].notna()].groupby('trainer'):
+        trainer_name = str(trainer_name).strip()
+        if not trainer_name:
+            continue
+        party_rows = group.drop_duplicates('pokedex_name', keep='first').head(4)
+        if len(party_rows) < 1:
+            continue
+        party: list[dict] = []
+        for _, row in party_rows.iterrows():
+            entry = pokemon_entry_from_row(row, moves_by_name, pid)
+            pid += 1
+            party.append(entry)
+        apply_party_learning(party)
+        faction = 0 if trainer_name in DEFAULT_MATCH_TRAINERS[:3] else 1
+        if trainer_name in DEFAULT_MATCH_TRAINERS:
+            faction = 0 if DEFAULT_MATCH_TRAINERS.index(trainer_name) < 3 else 1
+        trainer_records.append({
+            'id': tid,
+            'name': trainer_name,
+            'name_zh': TRAINER_ZH.get(trainer_name, trainer_name),
+            'sprite': f'{trainer_name}.png',
+            'faction': faction,
+            'party': party[:PARTY_SIZE_PER_TRAINER],
+            'party_min': 1,
+            'party_max': min(4, len(party)),
+        })
+        all_trainer_names.append(trainer_name)
+        tid += 1
+
+    default_ids = [
+        next(t['id'] for t in trainer_records if t['name'] == n)
+        for n in DEFAULT_MATCH_TRAINERS
+        if any(t['name'] == n for t in trainer_records)
+    ]
+    for i, tid_val in enumerate(default_ids):
+        trainer_records[tid_val]['faction'] = 0 if i < 3 else 1
+
+    trainers_payload = {
+        'max_trainers': 6,
+        'party_min': 1,
+        'party_max': 4,
+        'default_match': default_ids[:6],
+        'trainers': trainer_records,
+    }
+    trainers_path = BOARD_DATA / 'trainers.json'
+    trainers_path.write_text(json.dumps(trainers_payload, ensure_ascii=False, indent=2), encoding='utf-8')
+    export_trainer_sprites(all_trainer_names)
+    print(f'Trainers: {len(trainer_records)} squads -> {trainers_path}')
 
 
 if __name__ == '__main__':

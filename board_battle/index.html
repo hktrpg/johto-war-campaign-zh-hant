@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Johto War · ZA 棋盤戰鬥</h1>
-    <p class="subtitle">HP（生命）· 體力（出招）· 四招式 · 疊卡學招</p>
+    <p class="subtitle">6 訓練家 · 每人 1–4 隻 · HP / 體力 / 四招式</p>
   </header>
 
   <main>
@@ -18,6 +18,11 @@
         <h2>回合</h2>
         <p id="turn-label">載入中…</p>
         <p id="phase-label"></p>
+      </div>
+
+      <div class="panel" id="trainers-wrap">
+        <h2>訓練家（最多 6 位）</h2>
+        <div id="trainers-panel" class="trainers-grid"></div>
       </div>
 
       <div class="panel" id="unit-panel">
@@ -46,7 +51,7 @@
 
       <div class="panel" id="learn-panel" hidden>
         <h2>疊卡學招</h2>
-        <p class="hint-inline">相同可學屬性即可學會隊友招牌招</p>
+        <p class="hint-inline">疊同訓練家隊內的寶可夢卡（相同可學屬性）</p>
         <div id="learn-options" class="learn-options"></div>
       </div>
 
@@ -64,6 +69,8 @@
         <ul class="rules">
           <li><strong>HP</strong>：卡牌體力值，受敵方攻擊減少，歸零退場</li>
           <li><strong>體力</strong>：每隻 6 點，出招 −1，四招用光後花 2 體力回氣</li>
+          <li>最多 <strong>6 位訓練家</strong>，每人帶 <strong>1–4 隻</strong> 寶可夢</li>
+          <li>疊卡學招僅限<strong>同訓練家</strong>隊內</li>
           <li>攻擊力 = 卡牌攻擊強度 × 屬性相性</li>
         </ul>
       </div>
