@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Johto War · ZA 棋盤戰鬥</h1>
-    <p class="subtitle">招式距離與 AOE 來自 Pokémon Legends Z-A 資料</p>
+    <p class="subtitle">6 HP · 四招式 · 疊卡學招 · ZA 射程/AOE</p>
   </header>
 
   <main>
@@ -21,20 +21,43 @@
       </div>
 
       <div class="panel" id="unit-panel">
-        <h2>選中單位</h2>
+        <h2>選中寶可夢</h2>
+        <div id="unit-portrait" class="portrait-wrap empty">—</div>
         <div id="unit-info">點選己方寶可夢</div>
+        <div id="hp-bar" class="hp-bar" hidden>
+          <div id="hp-fill" class="hp-fill"></div>
+        </div>
       </div>
 
       <div class="panel" id="move-panel">
-        <h2>招式（ZA）</h2>
-        <div id="move-info">—</div>
+        <h2>四招式 <span class="hint-inline">（首招招牌 · 後三招疊卡學會）</span></h2>
+        <div id="move-slots" class="move-slots"></div>
+        <div id="move-detail" class="move-detail">—</div>
+      </div>
+
+      <div class="panel" id="learn-panel" hidden>
+        <h2>疊卡學招</h2>
+        <p class="hint-inline">相同可學屬性即可學會隊友招牌招</p>
+        <div id="learn-options" class="learn-options"></div>
       </div>
 
       <div class="panel actions">
         <button id="btn-move" type="button" disabled>移動</button>
-        <button id="btn-attack" type="button" disabled>攻擊</button>
-        <button id="btn-end" type="button" disabled>結束回合</button>
+        <button id="btn-attack" type="button" disabled>出招 (−1HP)</button>
+        <button id="btn-recharge" type="button" disabled>回氣 (−2HP)</button>
+        <button id="btn-learn" type="button" disabled>疊卡學招</button>
+        <button id="btn-end" type="button">結束回合</button>
         <button id="btn-restart" type="button">重新開始</button>
+      </div>
+
+      <div class="panel rules-panel">
+        <h2>規則</h2>
+        <ul class="rules">
+          <li>每隻 <strong>6 HP</strong></li>
+          <li>每出一招消耗 <strong>1 HP</strong></li>
+          <li>四招用光後，花 <strong>2 HP</strong> 回氣恢復全部招式</li>
+          <li>攻擊力 = 卡牌攻擊強度 × 屬性相性</li>
+        </ul>
       </div>
 
       <div class="panel log-panel">
@@ -45,7 +68,7 @@
 
     <section class="board-wrap">
       <div id="board" class="board" aria-label="8x8 棋盤"></div>
-      <p class="hint">移動：相鄰一格 · 攻擊：依 ZA 射程與 AOE 類型判定命中範圍</p>
+      <p class="hint">先選寶可夢 → 選招式 → 攻擊 · 或移動 / 疊卡學招 / 回氣</p>
     </section>
   </main>
 
