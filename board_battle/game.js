@@ -1,14 +1,13 @@
 /**
  * Johto War ZA board battle
- * - 6 HP per Pokemon
- * - 4 moves: signature + up to 3 learned via card stacking (same learnable type)
- * - 1 HP per attack, 2 HP to recharge when all moves exhausted
+ * - HP (生命): from card health stat, reduced by enemy attacks
+ * - 體力 (stamina): 6 per Pokemon, −1 per move, −2 to recharge when all moves exhausted
  */
 
 const BOARD_SIZE = 8;
-const MAX_HP = 6;
-const MOVE_HP_COST = 1;
-const RECHARGE_HP_COST = 2;
+const MAX_STAMINA = 6;
+const MOVE_STAMINA_COST = 1;
+const RECHARGE_STAMINA_COST = 2;
 
 const TYPE_CHART = {
   normal: { rock: -2, ghost: -4, steel: -2 },
@@ -49,8 +48,11 @@ const turnLabel = document.getElementById('turn-label');
 const phaseLabel = document.getElementById('phase-label');
 const unitInfo = document.getElementById('unit-info');
 const unitPortrait = document.getElementById('unit-portrait');
-const hpBar = document.getElementById('hp-bar');
+const statBars = document.getElementById('stat-bars');
 const hpFill = document.getElementById('hp-fill');
+const hpText = document.getElementById('hp-text');
+const staminaFill = document.getElementById('stamina-fill');
+const staminaText = document.getElementById('stamina-text');
 const moveSlotsEl = document.getElementById('move-slots');
 const moveDetail = document.getElementById('move-detail');
 const learnPanel = document.getElementById('learn-panel');
@@ -123,8 +125,10 @@ function buildUnit(template, player, x, y, id) {
     types: template.types.length ? template.types : [template.type_1],
     learnableTypes: template.learnable_types || [],
     initiative: template.initiative || 5,
-    maxHp: MAX_HP,
-    hp: MAX_HP,
+    maxHp: template.health || 5,
+    hp: template.health || 5,
+    maxStamina: MAX_STAMINA,
+    stamina: MAX_STAMINA,
     moves,
     moveUsed: [false, false, false, false],
     x,
@@ -181,7 +185,7 @@ function setupGame() {
   }
 
   applyTeamLearning();
-  log('對戰開始！每隻 6 HP，四招式，出招 −1 HP，用光招需 −2 HP 回氣。');
+  log('對戰開始！HP 為卡牌體力值；體力 6 點，出招 −1 體力，用光四招需 −2 體力回氣。');
   render();
 }
 
@@ -359,7 +363,7 @@ function renderMoveSlots(unit) {
       <br>屬性 ${move.type} · 攻擊力 <strong>${move.power}</strong>
       ${move.effect ? `<br><em>${move.effect}</em>` : ''}`;
   } else {
-    moveDetail.textContent = allMovesExhausted(unit) ? '四招已用光，需回氣（−2 HP）' : '選擇招式';
+    moveDetail.textContent = allMovesExhausted(unit) ? '四招已用光，需回氣（−2 體力）' : '選擇招式';
   }
 }
 
@@ -413,7 +417,7 @@ function renderUnitPanel(unit) {
     unitPortrait.className = 'portrait-wrap empty';
     unitPortrait.textContent = '—';
     unitInfo.textContent = '點選己方寶可夢';
-    hpBar.hidden = true;
+    statBars.hidden = true;
     return;
   }
 
@@ -426,10 +430,14 @@ function renderUnitPanel(unit) {
     屬性 ${types}<br>
     可學：${unit.learnableTypes.join('、')}<br>
     剩餘招式 <strong>${avail}</strong> / ${unit.moves.filter(Boolean).length}`;
-  hpBar.hidden = false;
-  const pct = (unit.hp / unit.maxHp) * 100;
-  hpFill.style.width = `${pct}%`;
-  hpFill.style.background = unit.hp <= 2 ? 'var(--hp-low)' : 'var(--hp)';
+  statBars.hidden = false;
+  const hpPct = (unit.hp / unit.maxHp) * 100;
+  hpFill.style.width = `${hpPct}%`;
+  hpFill.style.background = unit.hp <= Math.ceil(unit.maxHp / 3) ? 'var(--hp-low)' : 'var(--hp)';
+  hpText.textContent = `${unit.hp}/${unit.maxHp}`;
+  const stPct = (unit.stamina / unit.maxStamina) * 100;
+  staminaFill.style.width = `${stPct}%`;
+  staminaText.textContent = `${unit.stamina}/${unit.maxStamina}`;
 }
 
 function render() {
@@ -457,7 +465,7 @@ function render() {
         token.appendChild(img);
         const hp = document.createElement('div');
         hp.className = 'token-hp';
-        hp.textContent = `${u.hp}/${u.maxHp}`;
+        hp.textContent = `HP${u.hp} 體${u.stamina}`;
         token.appendChild(hp);
         const mc = document.createElement('div');
         mc.className = 'token-moves';
@@ -493,8 +501,8 @@ function render() {
   const exhausted = u ? allMovesExhausted(u) : false;
 
   btnMove.disabled = !canAct || phase !== 'select';
-  btnAttack.disabled = !canAct || phase !== 'select' || !move || u.hp < MOVE_HP_COST;
-  btnRecharge.disabled = !canAct || phase !== 'select' || !exhausted || u.hp < RECHARGE_HP_COST;
+  btnAttack.disabled = !canAct || phase !== 'select' || !move || u.stamina < MOVE_STAMINA_COST;
+  btnRecharge.disabled = !canAct || phase !== 'select' || !exhausted || u.stamina < RECHARGE_STAMINA_COST;
   btnLearn.disabled = !canAct || phase !== 'select' || !u.moves.some((m) => !m);
 
   if (alive1 === 0 || alive2 === 0) {
@@ -535,12 +543,12 @@ function onCellClick(x, y) {
 
   if (phase === 'attack') {
     const move = getActiveMove(u);
-    if (!move || u.hp < MOVE_HP_COST) return;
+    if (!move || u.stamina < MOVE_STAMINA_COST) return;
 
     const hits = aoeCells(u, move, { x, y });
     if (!hits.length) return;
 
-    u.hp -= MOVE_HP_COST;
+    u.stamina -= MOVE_STAMINA_COST;
     u.moveUsed[selectedMoveIndex] = true;
 
     const victims = units.filter(
@@ -548,21 +556,17 @@ function onCellClick(x, y) {
     );
 
     if (!victims.length) {
-      log(`${u.name} 使用「${move.name}」（−1 HP），未命中敵人。`);
+      log(`${u.name} 使用「${move.name}」（−1 體力），未命中敵人。`);
     } else {
       victims.forEach((t) => {
         const mult = typeMultiplier(move.type, t.types);
         const dmg = mult === 0 ? 0 : Math.max(1, Math.round(move.power * mult));
         t.hp = Math.max(0, t.hp - dmg);
         const eff = mult === 0 ? '無效' : mult > 1 ? '效果絕佳' : mult < 1 ? '效果不好' : '普通';
-        log(`${u.name}「${move.name}」→ ${t.name}，${dmg} 傷害（${eff}，攻擊力 ${move.power}）`);
+        log(`${u.name}「${move.name}」→ ${t.name}，${dmg} HP 傷害（${eff}，攻擊力 ${move.power}）`);
       });
-      log(`${u.name} 消耗 1 HP（剩 ${u.hp}）`);
     }
-
-    if (u.hp <= 0) {
-      log(`${u.name} HP 歸零，退場！`);
-    }
+    log(`${u.name} 體力 ${u.stamina}/${u.maxStamina}`);
 
     endUnitTurn();
   }
@@ -593,23 +597,17 @@ btnMove.addEventListener('click', () => {
 
 btnAttack.addEventListener('click', () => {
   const u = selectedUnit();
-  if (!u || !getActiveMove(u) || u.hp < MOVE_HP_COST) return;
+  if (!u || !getActiveMove(u) || u.stamina < MOVE_STAMINA_COST) return;
   phase = 'attack';
   render();
 });
 
 btnRecharge.addEventListener('click', () => {
   const u = selectedUnit();
-  if (!u || !allMovesExhausted(u) || u.hp < RECHARGE_HP_COST) return;
-  u.hp -= RECHARGE_HP_COST;
+  if (!u || !allMovesExhausted(u) || u.stamina < RECHARGE_STAMINA_COST) return;
+  u.stamina -= RECHARGE_STAMINA_COST;
   u.moveUsed = [false, false, false, false];
-  log(`${u.name} 回氣恢復四招（−2 HP，剩 ${u.hp}）`);
-  if (u.hp <= 0) {
-    log(`${u.name} HP 歸零，退場！`);
-    units = units.filter((x) => x.hp > 0);
-    endUnitTurn();
-    return;
-  }
+  log(`${u.name} 回氣恢復四招（−2 體力，剩 ${u.stamina}）`);
   render();
 });
 

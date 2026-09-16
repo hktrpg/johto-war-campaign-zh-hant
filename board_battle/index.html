@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Johto War · ZA 棋盤戰鬥</h1>
-    <p class="subtitle">6 HP · 四招式 · 疊卡學招 · ZA 射程/AOE</p>
+    <p class="subtitle">HP（生命）· 體力（出招）· 四招式 · 疊卡學招</p>
   </header>
 
   <main>
@@ -24,8 +24,17 @@
         <h2>選中寶可夢</h2>
         <div id="unit-portrait" class="portrait-wrap empty">—</div>
         <div id="unit-info">點選己方寶可夢</div>
-        <div id="hp-bar" class="hp-bar" hidden>
-          <div id="hp-fill" class="hp-fill"></div>
+        <div class="stat-bars" id="stat-bars" hidden>
+          <div class="stat-row">
+            <span class="stat-label">HP</span>
+            <div class="hp-bar"><div id="hp-fill" class="hp-fill"></div></div>
+            <span id="hp-text" class="stat-val"></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">體力</span>
+            <div class="stamina-bar"><div id="stamina-fill" class="stamina-fill"></div></div>
+            <span id="stamina-text" class="stat-val"></span>
+          </div>
         </div>
       </div>
 
@@ -43,8 +52,8 @@
 
       <div class="panel actions">
         <button id="btn-move" type="button" disabled>移動</button>
-        <button id="btn-attack" type="button" disabled>出招 (−1HP)</button>
-        <button id="btn-recharge" type="button" disabled>回氣 (−2HP)</button>
+        <button id="btn-attack" type="button" disabled>出招 (−1體力)</button>
+        <button id="btn-recharge" type="button" disabled>回氣 (−2體力)</button>
         <button id="btn-learn" type="button" disabled>疊卡學招</button>
         <button id="btn-end" type="button">結束回合</button>
         <button id="btn-restart" type="button">重新開始</button>
@@ -53,9 +62,8 @@
       <div class="panel rules-panel">
         <h2>規則</h2>
         <ul class="rules">
-          <li>每隻 <strong>6 HP</strong></li>
-          <li>每出一招消耗 <strong>1 HP</strong></li>
-          <li>四招用光後，花 <strong>2 HP</strong> 回氣恢復全部招式</li>
+          <li><strong>HP</strong>：卡牌體力值，受敵方攻擊減少，歸零退場</li>
+          <li><strong>體力</strong>：每隻 6 點，出招 −1，四招用光後花 2 體力回氣</li>
           <li>攻擊力 = 卡牌攻擊強度 × 屬性相性</li>
         </ul>
       </div>

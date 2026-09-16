@@ -227,6 +227,7 @@ def main() -> None:
         sig = move_from_row(row)
         sprite = format_pokedex_number(row['pokedex_number'])
         sprite_file = f'{sprite}.png'
+        card_health = int(row['health']) if str(row['health']).isdigit() else 5
         battle_entries.append({
             'id': pid,
             'pokedex_number': str(row['pokedex_number']),
@@ -238,6 +239,7 @@ def main() -> None:
             'types': [t for t in (norm_type(row['type_1']), norm_type(row['type_2'])) if t],
             'learnable_types': learnable,
             'initiative': int(row['initiative']) if str(row['initiative']).isdigit() else 5,
+            'health': card_health,
             'signature_move': sig,
         })
         pid += 1
@@ -264,7 +266,7 @@ def main() -> None:
             'move': m['name'],
             'move_en': m.get('name_en', ''),
             'type': e['type_1'],
-            'health': 6,
+            'health': e['health'],
             'initiative': e['initiative'],
             'power': m['power'],
             'distance_band': m['distance_band'],

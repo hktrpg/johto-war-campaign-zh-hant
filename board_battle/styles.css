@@ -84,18 +84,35 @@ main {
   image-rendering: pixelated;
 }
 
-.hp-bar {
-  height: 10px;
+.stat-bars { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem; }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.stat-label { font-size: 0.72rem; color: var(--muted); }
+.stat-val { font-size: 0.72rem; text-align: right; color: var(--text); }
+
+.hp-bar, .stamina-bar {
+  height: 8px;
   background: #0f1320;
-  border-radius: 5px;
+  border-radius: 4px;
   overflow: hidden;
-  margin-top: 0.5rem;
 }
 
 .hp-fill {
   height: 100%;
   background: var(--hp);
   transition: width 0.2s, background 0.2s;
+}
+
+.stamina-fill {
+  height: 100%;
+  background: #f4c542;
+  transition: width 0.2s;
 }
 
 .move-slots {
