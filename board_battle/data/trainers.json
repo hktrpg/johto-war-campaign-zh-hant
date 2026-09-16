@@ -10,6 +10,72 @@
     7,
     16
   ],
+  "match_modes": [
+    "team",
+    "ffa",
+    "dm"
+  ],
+  "default_mode": "team",
+  "terrain_types": [
+    {
+      "id": "plain",
+      "name": "平地",
+      "weight": 45
+    },
+    {
+      "id": "forest",
+      "name": "森林",
+      "weight": 15,
+      "cover": 1
+    },
+    {
+      "id": "water",
+      "name": "水域",
+      "weight": 10,
+      "types_only": [
+        "water",
+        "flying"
+      ]
+    },
+    {
+      "id": "rock",
+      "name": "岩石",
+      "weight": 8,
+      "blocked": true
+    },
+    {
+      "id": "sand",
+      "name": "沙地",
+      "weight": 10,
+      "move_cost": 2
+    },
+    {
+      "id": "ice",
+      "name": "冰面",
+      "weight": 5,
+      "power_bonus_types": {
+        "ice": 1
+      }
+    },
+    {
+      "id": "electric",
+      "name": "電磁",
+      "weight": 4,
+      "power_bonus_types": {
+        "electric": 1,
+        "steel": 1
+      }
+    },
+    {
+      "id": "cave",
+      "name": "洞穴",
+      "weight": 3,
+      "power_bonus_types": {
+        "ghost": 1,
+        "dark": 1
+      }
+    }
+  ],
   "trainers": [
     {
       "id": 0,
@@ -44,6 +110,7 @@
             "type": "poison",
             "power": 4,
             "effect": "擊中要害造成+1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -79,6 +146,7 @@
             "type": "fairy",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -93,6 +161,7 @@
               "type": "poison",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -108,6 +177,7 @@
               "type": "fire",
               "power": 5,
               "effect": "如果擲出2個或更多狀態標誌：對目標施加灼傷狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -145,6 +215,7 @@
             "type": "grass",
             "power": 8,
             "effect": "使用者承受其基礎生命值一半的傷害，向上取整。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -156,7 +227,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 1,
@@ -191,6 +263,7 @@
             "type": "flying",
             "power": 4,
             "effect": "擊中要害造成+1傷害。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -226,6 +299,9 @@
             "type": "bug",
             "power": 4,
             "effect": "如果擲骰結果出現異常狀態符號，則使目標陷入「麻痺」狀態。",
+            "archetypes": [
+              "SONG"
+            ],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -240,6 +316,7 @@
               "type": "flying",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -277,6 +354,9 @@
             "type": "dragon",
             "power": 7,
             "effect": "每次使用此招式時：攻擊強度降低2點（最低1點攻擊強度）。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "SELF_ORIGIN",
@@ -291,6 +371,7 @@
               "type": "flying",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -304,7 +385,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 2,
@@ -339,6 +421,9 @@
             "type": "ice",
             "power": 3,
             "effect": "",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -353,6 +438,7 @@
               "type": "dark",
               "power": 1,
               "effect": "複製目標已知招式的攻擊強度（最低 1 點攻擊強度）",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -390,6 +476,7 @@
             "type": "grass",
             "power": 4,
             "effect": "回復一半的傷害，向下取整。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -404,6 +491,9 @@
               "type": "poison",
               "power": 5,
               "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "RANGED",
@@ -440,6 +530,9 @@
             "type": "poison",
             "power": 5,
             "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+            "archetypes": [
+              "BOMB"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "RANGED",
@@ -454,6 +547,7 @@
               "type": "dark",
               "power": 1,
               "effect": "複製目標已知招式的攻擊強度（最低 1 點攻擊強度）",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -467,12 +561,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 3,
       "name": "Bruno",
-      "name_zh": "Bruno",
+      "name_zh": "希巴",
       "sprite": "Bruno.png",
       "faction": 1,
       "party": [
@@ -501,6 +596,7 @@
             "type": "typeless",
             "power": 4,
             "effect": "選擇使用者可學會的任意屬性作為此攻擊的屬性。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -515,6 +611,7 @@
               "type": "fighting",
               "power": 4,
               "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -551,6 +648,7 @@
             "type": "fighting",
             "power": 4,
             "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -586,6 +684,7 @@
             "type": "ghost",
             "power": 3,
             "effect": "使用者在本場戰鬥中每受到一次攻擊：攻擊強度提高1點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -600,6 +699,7 @@
               "type": "fighting",
               "power": 4,
               "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -613,7 +713,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 4,
@@ -648,6 +749,9 @@
             "type": "psychic",
             "power": 4,
             "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+            "archetypes": [
+              "PERSISTING"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -683,6 +787,7 @@
             "type": "rock",
             "power": 4,
             "effect": "對手場地上的隱形岩險地危險地形token狀態提高1。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "SELF_ORIGIN",
@@ -718,6 +823,10 @@
             "type": "ground",
             "power": 3,
             "effect": "",
+            "archetypes": [
+              "DELAY 1",
+              "PROTECT"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 4,
             "aoe_type": "SELF_ORIGIN",
@@ -732,6 +841,9 @@
               "type": "steel",
               "power": 3,
               "effect": "",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -745,7 +857,16 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "蟲之秘技",
+        "description": "蟲屬性招式首次攻擊時多投 1 顆 d6。",
+        "passive": "first_attack_extra_die",
+        "types": [
+          "bug"
+        ],
+        "value": 1
+      }
     },
     {
       "id": 5,
@@ -779,6 +900,9 @@
             "type": "fighting",
             "power": 5,
             "effect": "每次使用此招式時：使用者的先攻降低2點。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -793,6 +917,9 @@
               "type": "psychic",
               "power": 4,
               "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+              "archetypes": [
+                "PERSISTING"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -808,6 +935,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "移除使用者的所有異常狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -844,6 +972,9 @@
             "type": "psychic",
             "power": 4,
             "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+            "archetypes": [
+              "PERSISTING"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -858,6 +989,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "移除使用者的所有異常狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -895,6 +1027,7 @@
             "type": "steel",
             "power": 5,
             "effect": "狀態標誌造成+1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -909,6 +1042,9 @@
               "type": "fighting",
               "power": 5,
               "effect": "每次使用此招式時：使用者的先攻降低2點。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -924,6 +1060,9 @@
               "type": "psychic",
               "power": 4,
               "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+              "archetypes": [
+                "PERSISTING"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -939,6 +1078,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "移除使用者的所有異常狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -952,7 +1092,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 6,
@@ -987,6 +1128,7 @@
             "type": "poison",
             "power": 4,
             "effect": "擊中要害造成+1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1001,6 +1143,9 @@
               "type": "poison",
               "power": 5,
               "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "RANGED",
@@ -1038,6 +1183,9 @@
             "type": "ice",
             "power": 1,
             "effect": "對目標施加冰凍狀態。替換上場的寶可夢本回合可以使用招式，但攻擊強度減少4點。",
+            "archetypes": [
+              "SWITCH"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1052,6 +1200,10 @@
               "type": "ghost",
               "power": 5,
               "effect": "",
+              "archetypes": [
+                "DELAY 1",
+                "PROTECT"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1089,6 +1241,9 @@
             "type": "poison",
             "power": 5,
             "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+            "archetypes": [
+              "BOMB"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "RANGED",
@@ -1103,6 +1258,7 @@
               "type": "poison",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1118,6 +1274,10 @@
               "type": "ghost",
               "power": 5,
               "effect": "",
+              "archetypes": [
+                "DELAY 1",
+                "PROTECT"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1131,7 +1291,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 7,
@@ -1165,6 +1326,9 @@
             "type": "water",
             "power": 4,
             "effect": "擊中要害造成+2傷害。",
+            "archetypes": [
+              "BOMB"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1179,6 +1343,7 @@
               "type": "water",
               "power": 5,
               "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 5,
               "aoe_type": "RANGED",
@@ -1194,6 +1359,7 @@
               "type": "fighting",
               "power": 3,
               "effect": "對目標施加麻痺狀態。使用者的戰鬥疲勞額外提高1點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1209,6 +1375,7 @@
               "type": "fighting",
               "power": 2,
               "effect": "普通命中造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1246,6 +1413,7 @@
             "type": "water",
             "power": 5,
             "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 5,
             "aoe_type": "RANGED",
@@ -1260,6 +1428,9 @@
               "type": "water",
               "power": 4,
               "effect": "擊中要害造成+2傷害。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1275,6 +1446,7 @@
               "type": "fighting",
               "power": 3,
               "effect": "對目標施加麻痺狀態。使用者的戰鬥疲勞額外提高1點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1290,6 +1462,7 @@
               "type": "fighting",
               "power": 2,
               "effect": "普通命中造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1326,6 +1499,7 @@
             "type": "fighting",
             "power": 3,
             "effect": "對目標施加麻痺狀態。使用者的戰鬥疲勞額外提高1點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1340,6 +1514,7 @@
               "type": "fighting",
               "power": 2,
               "effect": "普通命中造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1353,7 +1528,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "氣勢",
+        "description": "近戰招式（MELEE）每顆成功骰 +1 傷害。",
+        "passive": "melee_success_bonus",
+        "value": 1
+      }
     },
     {
       "id": 8,
@@ -1388,6 +1569,7 @@
             "type": "fairy",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加睡意狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -1423,6 +1605,7 @@
             "type": "dark",
             "power": 5,
             "effect": "若使用者的攻擊擲骰受到目標的變化類招式效果影響：造成雙倍傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1437,6 +1620,9 @@
               "type": "dark",
               "power": 3,
               "effect": "若使用者未持有道具，則偷取目標的持有物，直到戰鬥結束。",
+              "archetypes": [
+                "PERSISTING"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1474,6 +1660,7 @@
             "type": "water",
             "power": 5,
             "effect": "擊中要害造成+2傷害。每擲出1個擊中要害：使用者承受2點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1485,7 +1672,16 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "龍之威嚴",
+        "description": "龍屬性招式先攻視為 +3。",
+        "passive": "priority_type_bonus",
+        "types": [
+          "dragon"
+        ],
+        "value": 3
+      }
     },
     {
       "id": 9,
@@ -1519,6 +1715,7 @@
             "type": "psychic",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -1533,6 +1730,7 @@
               "type": "steel",
               "power": 5,
               "effect": "狀態標誌造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1548,6 +1746,9 @@
               "type": "electric",
               "power": 6,
               "effect": "對目標施加麻痺狀態。狀態標誌造成-1傷害。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -1585,6 +1786,7 @@
             "type": "steel",
             "power": 5,
             "effect": "狀態標誌造成+1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1599,6 +1801,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -1636,6 +1839,7 @@
             "type": "water",
             "power": 5,
             "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 5,
             "aoe_type": "RANGED",
@@ -1650,6 +1854,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -1665,6 +1870,9 @@
               "type": "electric",
               "power": 6,
               "effect": "對目標施加麻痺狀態。狀態標誌造成-1傷害。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -1678,7 +1886,16 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "磁力操控",
+        "description": "電／鋼屬性在電磁地形攻擊時，成功骰 4 視為 5。",
+        "passive": "electric_terrain_low_success_boost",
+        "types": [
+          "electric",
+          "steel"
+        ]
+      }
     },
     {
       "id": 10,
@@ -1713,6 +1930,7 @@
             "type": "dragon",
             "power": 5,
             "effect": "暴擊造成的額外傷害增加 2 點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1748,6 +1966,9 @@
             "type": "dark",
             "power": 3,
             "effect": "使用者可以選擇隊伍中的任意惡系寶可夢。在本回合內，使用者應承受的所有傷害將由所選寶可夢代替承受。",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1762,6 +1983,7 @@
               "type": "steel",
               "power": 1,
               "effect": "攻擊強度等於上次對使用者造成攻擊的招式攻擊強度再加2。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1799,6 +2021,7 @@
             "type": "steel",
             "power": 1,
             "effect": "攻擊強度等於上次對使用者造成攻擊的招式攻擊強度再加2。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1813,6 +2036,7 @@
               "type": "dragon",
               "power": 5,
               "effect": "暴擊造成的額外傷害增加 2 點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1826,7 +2050,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "神話之力",
+        "description": "每回合首次攻擊多投 1 顆 d6。",
+        "passive": "first_attack_each_round_extra_die",
+        "value": 1
+      }
     },
     {
       "id": 11,
@@ -1861,6 +2091,7 @@
             "type": "fighting",
             "power": 7,
             "effect": "對目標施加混亂狀態。如果擲出3個或更多狀態標誌：使用者承受其基礎生命值一半的傷害，向上取整。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1896,6 +2127,7 @@
             "type": "grass",
             "power": 4,
             "effect": "回復一半的傷害，向下取整。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -1910,6 +2142,9 @@
               "type": "normal",
               "power": 3,
               "effect": "",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -1947,6 +2182,9 @@
             "type": "normal",
             "power": 3,
             "effect": "",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 4,
             "aoe_type": "SELF_ORIGIN",
@@ -1961,6 +2199,7 @@
               "type": "fighting",
               "power": 7,
               "effect": "對目標施加混亂狀態。如果擲出3個或更多狀態標誌：使用者承受其基礎生命值一半的傷害，向上取整。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -1974,7 +2213,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 12,
@@ -2009,6 +2249,9 @@
             "type": "flying",
             "power": 3,
             "effect": "使你所有目前場上寶可夢的先攻提高5點，並將天氣狀況變為「大晴天」。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2044,6 +2287,9 @@
             "type": "water",
             "power": 3,
             "effect": "此招式可從隊伍中使用：讓使用者上場並使用此攻擊。",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2058,6 +2304,9 @@
               "type": "flying",
               "power": 3,
               "effect": "使你所有目前場上寶可夢的先攻提高5點，並將天氣狀況變為「大晴天」。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2095,6 +2344,7 @@
             "type": "psychic",
             "power": 3,
             "effect": "如果使用者在上一回合使用過超能力屬性招式：攻擊強度提高1點並獲得「連擊」。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2109,6 +2359,7 @@
               "type": "psychic",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -2122,7 +2373,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 13,
@@ -2157,6 +2409,9 @@
             "type": "rock",
             "power": 3,
             "effect": "",
+            "archetypes": [
+              "MULTI"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -2171,6 +2426,7 @@
               "type": "flying",
               "power": 4,
               "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2208,6 +2464,7 @@
             "type": "flying",
             "power": 4,
             "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2222,6 +2479,10 @@
               "type": "water",
               "power": 4,
               "effect": "",
+              "archetypes": [
+                "DELAY 1",
+                "PROTECT"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2259,6 +2520,9 @@
             "type": "psychic",
             "power": 4,
             "effect": "擊中要害造成+1傷害。使用者的先攻提高2點。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2273,6 +2537,7 @@
               "type": "flying",
               "power": 4,
               "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2286,7 +2551,16 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "順風",
+        "description": "隊內飛行屬性寶可夢先攻 +2。",
+        "passive": "initiative_bonus_types",
+        "types": [
+          "flying"
+        ],
+        "value": 2
+      }
     },
     {
       "id": 14,
@@ -2321,6 +2595,9 @@
             "type": "fire",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。因本招式灼傷的寶可夢造成的傷害減少3點。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2335,6 +2612,7 @@
               "type": "fire",
               "power": 3,
               "effect": "此招式在攻擊時視為同時為火屬性與水屬性招式。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2350,6 +2628,7 @@
               "type": "fire",
               "power": 5,
               "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2386,6 +2665,7 @@
             "type": "fire",
             "power": 3,
             "effect": "此招式在攻擊時視為同時為火屬性與水屬性招式。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2400,6 +2680,9 @@
               "type": "fire",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。因本招式灼傷的寶可夢造成的傷害減少3點。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2415,6 +2698,7 @@
               "type": "fire",
               "power": 5,
               "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2430,6 +2714,9 @@
               "type": "poison",
               "power": 5,
               "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "RANGED",
@@ -2467,6 +2754,7 @@
             "type": "fire",
             "power": 5,
             "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2481,6 +2769,9 @@
               "type": "fire",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。因本招式灼傷的寶可夢造成的傷害減少3點。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2496,6 +2787,7 @@
               "type": "fire",
               "power": 3,
               "effect": "此招式在攻擊時視為同時為火屬性與水屬性招式。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2509,12 +2801,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 15,
       "name": "Giovanni",
-      "name_zh": "Giovanni",
+      "name_zh": "坂木",
       "sprite": "Giovanni.png",
       "faction": 1,
       "party": [
@@ -2543,6 +2836,7 @@
             "type": "psychic",
             "power": 6,
             "effect": "無視目標的招式效果、特性、攜帶物品與所有傷害減免效果。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2554,7 +2848,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 1
+      "party_max": 1,
+      "ability": null
     },
     {
       "id": 16,
@@ -2589,6 +2884,7 @@
             "type": "dark",
             "power": 5,
             "effect": "異常狀態符號造成的傷害額外增加 1 點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2603,6 +2899,7 @@
               "type": "fighting",
               "power": 3,
               "effect": "對目標施加麻痺狀態。使用者的戰鬥疲勞額外提高1點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2618,6 +2915,9 @@
               "type": "steel",
               "power": 4,
               "effect": "如果擲出2個或更多狀態標誌：目標跳過本回合行動，且使用者的戰鬥疲勞額外提高1點。若使用者已有5點疲勞，則無法使用此招式。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -2654,6 +2954,7 @@
             "type": "fighting",
             "power": 3,
             "effect": "對目標施加麻痺狀態。使用者的戰鬥疲勞額外提高1點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2668,6 +2969,9 @@
               "type": "steel",
               "power": 4,
               "effect": "如果擲出2個或更多狀態標誌：目標跳過本回合行動，且使用者的戰鬥疲勞額外提高1點。若使用者已有5點疲勞，則無法使用此招式。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -2704,6 +3008,9 @@
             "type": "steel",
             "power": 4,
             "effect": "如果擲出2個或更多狀態標誌：目標跳過本回合行動，且使用者的戰鬥疲勞額外提高1點。若使用者已有5點疲勞，則無法使用此招式。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -2718,6 +3025,7 @@
               "type": "dark",
               "power": 5,
               "effect": "異常狀態符號造成的傷害額外增加 1 點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2731,7 +3039,16 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "鋼之意志",
+        "description": "隊內鋼屬性受到攻擊時，傷害 −1（最少 1）。",
+        "passive": "damage_reduction_types",
+        "types": [
+          "steel"
+        ],
+        "value": 1
+      }
     },
     {
       "id": 17,
@@ -2766,6 +3083,7 @@
             "type": "water",
             "power": 4,
             "effect": "若目標因此攻擊而瀕死：你可以將其身上的變化效果轉移給使用者。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -2780,6 +3098,7 @@
               "type": "ice",
               "power": 6,
               "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -2795,6 +3114,9 @@
               "type": "water",
               "power": 3,
               "effect": "將目標身上的所有物品歸還至其背包中。",
+              "archetypes": [
+                "MULTI"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2832,6 +3154,7 @@
             "type": "ice",
             "power": 6,
             "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "SELF_ORIGIN",
@@ -2846,6 +3169,7 @@
               "type": "water",
               "power": 4,
               "effect": "若目標因此攻擊而瀕死：你可以將其身上的變化效果轉移給使用者。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2861,6 +3185,9 @@
               "type": "water",
               "power": 3,
               "effect": "將目標身上的所有物品歸還至其背包中。",
+              "archetypes": [
+                "MULTI"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2898,6 +3225,9 @@
             "type": "steel",
             "power": 4,
             "effect": "當目標下次攻擊時：狀態標誌造成-1傷害。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -2912,6 +3242,7 @@
               "type": "water",
               "power": 4,
               "effect": "若目標因此攻擊而瀕死：你可以將其身上的變化效果轉移給使用者。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2927,6 +3258,7 @@
               "type": "ice",
               "power": 6,
               "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -2942,6 +3274,9 @@
               "type": "water",
               "power": 3,
               "effect": "將目標身上的所有物品歸還至其背包中。",
+              "archetypes": [
+                "MULTI"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -2955,7 +3290,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 18,
@@ -2990,6 +3326,7 @@
             "type": "poison",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加中毒狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 4,
             "aoe_type": "RANGED",
@@ -3025,6 +3362,9 @@
             "type": "ground",
             "power": 4,
             "effect": "如果擲出2個或更多狀態標誌：對目標隊伍中非目標的寶可夢造成2點傷害。",
+            "archetypes": [
+              "MULTI ALL"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "SELF_ORIGIN",
@@ -3039,6 +3379,7 @@
               "type": "poison",
               "power": 5,
               "effect": "如果擲出2個或更多狀態標誌：對目標施加中毒狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 4,
               "aoe_type": "RANGED",
@@ -3076,6 +3417,7 @@
             "type": "psychic",
             "power": 4,
             "effect": "擲骰前：將使用者身上的所有變化效果轉移給目標。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3090,6 +3432,9 @@
               "type": "psychic",
               "power": 4,
               "effect": "若所有擲出的骰子點數相同：目標跳過本回合行動。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3103,12 +3448,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 19,
       "name": "Karen",
-      "name_zh": "Karen",
+      "name_zh": "梨花",
       "sprite": "Karen.png",
       "faction": 1,
       "party": [
@@ -3138,6 +3484,11 @@
             "type": "dark",
             "power": 1,
             "effect": "使用者必須換出。當目標下一次攻擊時，移除所有普通命中結果。",
+            "archetypes": [
+              "SWITCH",
+              "MODIFY",
+              "SONG"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -3152,6 +3503,7 @@
               "type": "dark",
               "power": 1,
               "effect": "使用者在上次受傷時所承受的每點傷害，皆使其攻擊強度提升 1 點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3167,6 +3519,9 @@
               "type": "dark",
               "power": 3,
               "effect": "使用者可以選擇隊伍中的任意惡系寶可夢。在本回合內，使用者應承受的所有傷害將由所選寶可夢代替承受。",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3203,6 +3558,9 @@
             "type": "fairy",
             "power": 2,
             "effect": "使用者在回合結束時回復2點傷害。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -3217,6 +3575,11 @@
               "type": "dark",
               "power": 1,
               "effect": "使用者必須換出。當目標下一次攻擊時，移除所有普通命中結果。",
+              "archetypes": [
+                "SWITCH",
+                "MODIFY",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -3232,6 +3595,7 @@
               "type": "dark",
               "power": 1,
               "effect": "使用者在上次受傷時所承受的每點傷害，皆使其攻擊強度提升 1 點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3247,6 +3611,9 @@
               "type": "dark",
               "power": 3,
               "effect": "使用者可以選擇隊伍中的任意惡系寶可夢。在本回合內，使用者應承受的所有傷害將由所選寶可夢代替承受。",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3284,6 +3651,7 @@
             "type": "dark",
             "power": 1,
             "effect": "使用者在上次受傷時所承受的每點傷害，皆使其攻擊強度提升 1 點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3298,6 +3666,11 @@
               "type": "dark",
               "power": 1,
               "effect": "使用者必須換出。當目標下一次攻擊時，移除所有普通命中結果。",
+              "archetypes": [
+                "SWITCH",
+                "MODIFY",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -3313,6 +3686,9 @@
               "type": "dark",
               "power": 3,
               "effect": "使用者可以選擇隊伍中的任意惡系寶可夢。在本回合內，使用者應承受的所有傷害將由所選寶可夢代替承受。",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3326,12 +3702,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 20,
       "name": "Koga",
-      "name_zh": "Koga",
+      "name_zh": "阿桔",
       "sprite": "Koga.png",
       "faction": 1,
       "party": [
@@ -3361,6 +3738,7 @@
             "type": "poison",
             "power": 4,
             "effect": "擊中要害造成+1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3375,6 +3753,9 @@
               "type": "poison",
               "power": 1,
               "effect": "對目標施加中毒狀態。因本招式中毒的寶可夢每回合受到的中毒傷害增加1點。移除所有持續招式效果。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "AOE_CENTER",
@@ -3390,6 +3771,7 @@
               "type": "poison",
               "power": 1,
               "effect": "對目標施加中毒狀態。使用者本回合可以再使用一個招式。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3427,6 +3809,9 @@
             "type": "psychic",
             "power": 4,
             "effect": "目標的戰鬥疲勞提高2點。",
+            "archetypes": [
+              "SONG"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3441,6 +3826,7 @@
               "type": "poison",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3456,6 +3842,9 @@
               "type": "poison",
               "power": 1,
               "effect": "對目標施加中毒狀態。因本招式中毒的寶可夢每回合受到的中毒傷害增加1點。移除所有持續招式效果。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "AOE_CENTER",
@@ -3471,6 +3860,7 @@
               "type": "poison",
               "power": 1,
               "effect": "對目標施加中毒狀態。使用者本回合可以再使用一個招式。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3508,6 +3898,9 @@
             "type": "poison",
             "power": 1,
             "effect": "對目標施加中毒狀態。因本招式中毒的寶可夢每回合受到的中毒傷害增加1點。移除所有持續招式效果。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "AOE_CENTER",
@@ -3522,6 +3915,7 @@
               "type": "poison",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3537,6 +3931,7 @@
               "type": "poison",
               "power": 1,
               "effect": "對目標施加中毒狀態。使用者本回合可以再使用一個招式。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3550,7 +3945,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 21,
@@ -3585,6 +3981,7 @@
             "type": "dragon",
             "power": 3,
             "effect": "使用者可以對使用者隊伍中任意數量的寶可夢造成2點傷害。每有一隻寶可夢因此受到傷害：對目標隊伍中任意寶可夢造成4點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3599,6 +3996,7 @@
               "type": "dragon",
               "power": 5,
               "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -3614,6 +4012,10 @@
               "type": "flying",
               "power": 4,
               "effect": "",
+              "archetypes": [
+                "DELAY 1",
+                "PROTECT"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -3651,6 +4053,7 @@
             "type": "dragon",
             "power": 5,
             "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -3665,6 +4068,7 @@
               "type": "dragon",
               "power": 3,
               "effect": "使用者可以對使用者隊伍中任意數量的寶可夢造成2點傷害。每有一隻寶可夢因此受到傷害：對目標隊伍中任意寶可夢造成4點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3680,6 +4084,10 @@
               "type": "flying",
               "power": 4,
               "effect": "",
+              "archetypes": [
+                "DELAY 1",
+                "PROTECT"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -3717,6 +4125,10 @@
             "type": "flying",
             "power": 4,
             "effect": "",
+            "archetypes": [
+              "DELAY 1",
+              "PROTECT"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 4,
             "aoe_type": "SELF_ORIGIN",
@@ -3731,6 +4143,7 @@
               "type": "dragon",
               "power": 3,
               "effect": "使用者可以對使用者隊伍中任意數量的寶可夢造成2點傷害。每有一隻寶可夢因此受到傷害：對目標隊伍中任意寶可夢造成4點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -3746,6 +4159,7 @@
               "type": "dragon",
               "power": 5,
               "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -3759,7 +4173,13 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "冠軍之風",
+        "description": "全隊先攻 +1。",
+        "passive": "initiative_bonus_all",
+        "value": 1
+      }
     },
     {
       "id": 22,
@@ -3793,6 +4213,7 @@
             "type": "normal",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：對目標施加麻痺狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "SELF_ORIGIN",
@@ -3807,6 +4228,7 @@
               "type": "electric",
               "power": 6,
               "effect": "擊中要害造成+2傷害。每擲出一個擊中要害：使用者承受2點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -3844,6 +4266,9 @@
             "type": "fighting",
             "power": 4,
             "effect": "狀態標誌造成+1傷害。",
+            "archetypes": [
+              "BOMB"
+            ],
             "distance_band": "LONG",
             "range_tiles": 4,
             "aoe_type": "RANGED",
@@ -3858,6 +4283,7 @@
               "type": "normal",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：對目標施加麻痺狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -3895,6 +4321,7 @@
             "type": "fire",
             "power": 2,
             "effect": "同時對目標施加灼傷與中毒狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3906,7 +4333,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 23,
@@ -3941,6 +4369,9 @@
             "type": "grass",
             "power": 3,
             "effect": "回復一半的傷害，向下取整。如果擲出2個或更多狀態標誌：對目標施加灼傷狀態。",
+            "archetypes": [
+              "MULTI"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -3955,6 +4386,7 @@
               "type": "dark",
               "power": 3,
               "effect": "若目標持有道具，則攻擊強度提升 1 點，並在回合結束時，目標將該持有物放入背包。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -3970,6 +4402,9 @@
               "type": "ghost",
               "power": 2,
               "effect": "",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -3985,6 +4420,9 @@
               "type": "ghost",
               "power": 4,
               "effect": "當目標下次受到攻擊時：擲骰增加1個擊中要害。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -4022,6 +4460,7 @@
             "type": "dark",
             "power": 3,
             "effect": "若目標持有道具，則攻擊強度提升 1 點，並在回合結束時，目標將該持有物放入背包。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -4036,6 +4475,9 @@
               "type": "ghost",
               "power": 2,
               "effect": "",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -4051,6 +4493,9 @@
               "type": "ghost",
               "power": 4,
               "effect": "當目標下次受到攻擊時：擲骰增加1個擊中要害。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -4088,6 +4533,9 @@
             "type": "ghost",
             "power": 2,
             "effect": "",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 4,
             "aoe_type": "SELF_ORIGIN",
@@ -4102,6 +4550,9 @@
               "type": "grass",
               "power": 3,
               "effect": "回復一半的傷害，向下取整。如果擲出2個或更多狀態標誌：對目標施加灼傷狀態。",
+              "archetypes": [
+                "MULTI"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4117,6 +4568,9 @@
               "type": "ghost",
               "power": 4,
               "effect": "當目標下次受到攻擊時：擲骰增加1個擊中要害。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -4130,7 +4584,16 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "靈界漫步",
+        "description": "幽靈／惡屬性無視森林與洞穴地形的移動限制。",
+        "passive": "terrain_ignore",
+        "types": [
+          "ghost",
+          "dark"
+        ]
+      }
     },
     {
       "id": 24,
@@ -4165,6 +4628,7 @@
             "type": "flying",
             "power": 5,
             "effect": "擊中要害造成+2傷害。每擲出一個擊中要害：使用者承受2點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 3,
             "aoe_type": "SELF_ORIGIN",
@@ -4179,6 +4643,10 @@
               "type": "normal",
               "power": 7,
               "effect": "",
+              "archetypes": [
+                "MULTI ALL",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -4194,6 +4662,7 @@
               "type": "normal",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4209,6 +4678,7 @@
               "type": "normal",
               "power": 6,
               "effect": "擊中要害造成+2傷害。若擲出的狀態標誌多於擊中要害：此招式不造成傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4245,6 +4715,10 @@
             "type": "normal",
             "power": 7,
             "effect": "",
+            "archetypes": [
+              "MULTI ALL",
+              "SONG"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "SELF_ORIGIN",
@@ -4259,6 +4733,7 @@
               "type": "normal",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4274,6 +4749,7 @@
               "type": "normal",
               "power": 6,
               "effect": "擊中要害造成+2傷害。若擲出的狀態標誌多於擊中要害：此招式不造成傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4310,6 +4786,7 @@
             "type": "normal",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4324,6 +4801,10 @@
               "type": "normal",
               "power": 7,
               "effect": "",
+              "archetypes": [
+                "MULTI ALL",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -4339,6 +4820,7 @@
               "type": "normal",
               "power": 6,
               "effect": "擊中要害造成+2傷害。若擲出的狀態標誌多於擊中要害：此招式不造成傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4352,7 +4834,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 25,
@@ -4387,6 +4870,10 @@
             "type": "dragon",
             "power": 3,
             "effect": "當目標下次攻擊時：攻擊強度降低1點。",
+            "archetypes": [
+              "MULTI",
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -4401,6 +4888,7 @@
               "type": "rock",
               "power": 6,
               "effect": "擊中要害造成+2傷害。每擲出一個擊中要害：使用者承受3點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -4437,6 +4925,7 @@
             "type": "rock",
             "power": 6,
             "effect": "擊中要害造成+2傷害。每擲出一個擊中要害：使用者承受3點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 3,
             "aoe_type": "SELF_ORIGIN",
@@ -4451,6 +4940,10 @@
               "type": "dragon",
               "power": 3,
               "effect": "當目標下次攻擊時：攻擊強度降低1點。",
+              "archetypes": [
+                "MULTI",
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -4487,6 +4980,9 @@
             "type": "water",
             "power": 4,
             "effect": "當使用者下次受到攻擊時：無視所有來自變化形態寶可夢的招式傷害。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4501,6 +4997,10 @@
               "type": "dragon",
               "power": 3,
               "effect": "當目標下次攻擊時：攻擊強度降低1點。",
+              "archetypes": [
+                "MULTI",
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -4514,7 +5014,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 26,
@@ -4549,6 +5050,7 @@
             "type": "normal",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：擲一顆狀態骰，並對目標施加該結果的狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "AOE_CENTER",
@@ -4584,6 +5086,7 @@
             "type": "dark",
             "power": 5,
             "effect": "若使用者的攻擊擲骰受到目標的變化類招式效果影響：造成雙倍傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4618,6 +5121,9 @@
             "type": "fighting",
             "power": 5,
             "effect": "每次使用此招式時：使用者的先攻降低2點。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4632,6 +5138,7 @@
               "type": "normal",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：擲一顆狀態骰，並對目標施加該結果的狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "AOE_CENTER",
@@ -4645,7 +5152,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 27,
@@ -4680,6 +5188,7 @@
             "type": "normal",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：擲一顆狀態骰，並對目標施加該結果的狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "AOE_CENTER",
@@ -4715,6 +5224,7 @@
             "type": "dark",
             "power": 5,
             "effect": "若使用者的攻擊擲骰受到目標的變化類招式效果影響：造成雙倍傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4749,6 +5259,9 @@
             "type": "fighting",
             "power": 5,
             "effect": "每次使用此招式時：使用者的先攻降低2點。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4763,6 +5276,7 @@
               "type": "normal",
               "power": 4,
               "effect": "如果擲出任何狀態標誌：擲一顆狀態骰，並對目標施加該結果的狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "AOE_CENTER",
@@ -4776,7 +5290,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 28,
@@ -4811,6 +5326,7 @@
             "type": "normal",
             "power": 3,
             "effect": "狀態標誌使使用者回復1點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -4845,6 +5361,9 @@
             "type": "poison",
             "power": 1,
             "effect": "對目標施加中毒狀態。因本招式中毒的寶可夢每回合受到的中毒傷害增加1點。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "SELF_ORIGIN",
@@ -4859,6 +5378,7 @@
               "type": "normal",
               "power": 3,
               "effect": "狀態標誌使使用者回復1點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4874,6 +5394,9 @@
               "type": "poison",
               "power": 1,
               "effect": "如果擲出任何狀態標誌：對目標施加中毒狀態。當使用者下次受到攻擊時：擲骰移除2個普通命中。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -4911,6 +5434,9 @@
             "type": "poison",
             "power": 1,
             "effect": "如果擲出任何狀態標誌：對目標施加中毒狀態。當使用者下次受到攻擊時：擲骰移除2個普通命中。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -4925,6 +5451,7 @@
               "type": "normal",
               "power": 3,
               "effect": "狀態標誌使使用者回復1點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -4940,6 +5467,9 @@
               "type": "poison",
               "power": 1,
               "effect": "對目標施加中毒狀態。因本招式中毒的寶可夢每回合受到的中毒傷害增加1點。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -4953,7 +5483,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 3
+      "party_max": 3,
+      "ability": null
     },
     {
       "id": 29,
@@ -4988,6 +5519,7 @@
             "type": "fairy",
             "power": 4,
             "effect": "當目標下次攻擊時：狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "AOE_CENTER",
@@ -5002,6 +5534,7 @@
               "type": "ice",
               "power": 2,
               "effect": "對目標施加冰凍狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -5039,6 +5572,7 @@
             "type": "flying",
             "power": 4,
             "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5053,6 +5587,7 @@
               "type": "ice",
               "power": 2,
               "effect": "對目標施加冰凍狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -5089,6 +5624,7 @@
             "type": "ice",
             "power": 2,
             "effect": "對目標施加冰凍狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5103,6 +5639,7 @@
               "type": "fairy",
               "power": 4,
               "effect": "當目標下次攻擊時：狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "AOE_CENTER",
@@ -5116,7 +5653,17 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "冰封戰場",
+        "description": "冰屬性招式在冰面地形額外 +1 顆 d6。",
+        "passive": "terrain_power_bonus",
+        "types": [
+          "ice"
+        ],
+        "terrain": "ice",
+        "value": 1
+      }
     },
     {
       "id": 30,
@@ -5151,6 +5698,9 @@
             "type": "ice",
             "power": 4,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加冰凍狀態。",
+            "archetypes": [
+              "MULTI"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "SELF_ORIGIN",
@@ -5165,6 +5715,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "移除使用者的所有異常狀態。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -5180,6 +5731,9 @@
               "type": "fairy",
               "power": 6,
               "effect": "狀態標誌造成+1傷害。",
+              "archetypes": [
+                "RECHARGE 3"
+              ],
               "distance_band": "LONG",
               "range_tiles": 5,
               "aoe_type": "RANGED",
@@ -5217,6 +5771,7 @@
             "type": "psychic",
             "power": 5,
             "effect": "移除使用者的所有異常狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5231,6 +5786,9 @@
               "type": "fairy",
               "power": 6,
               "effect": "狀態標誌造成+1傷害。",
+              "archetypes": [
+                "RECHARGE 3"
+              ],
               "distance_band": "LONG",
               "range_tiles": 5,
               "aoe_type": "RANGED",
@@ -5268,6 +5826,9 @@
             "type": "fairy",
             "power": 6,
             "effect": "狀態標誌造成+1傷害。",
+            "archetypes": [
+              "RECHARGE 3"
+            ],
             "distance_band": "LONG",
             "range_tiles": 5,
             "aoe_type": "RANGED",
@@ -5279,7 +5840,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 31,
@@ -5313,6 +5875,7 @@
             "type": "ground",
             "power": 6,
             "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "SELF_ORIGIN",
@@ -5348,6 +5911,9 @@
             "type": "steel",
             "power": 2,
             "effect": "目標的先攻每比使用者高2點：攻擊強度提高1點（最大攻擊強度7）。",
+            "archetypes": [
+              "BOMB"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5362,6 +5928,7 @@
               "type": "ground",
               "power": 6,
               "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -5398,6 +5965,7 @@
             "type": "psychic",
             "power": 3,
             "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 5,
             "aoe_type": "RANGED",
@@ -5412,6 +5980,7 @@
               "type": "poison",
               "power": 2,
               "effect": "對目標施加中毒狀態。如果目標已經中毒：造成雙倍傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "MELEE",
@@ -5425,7 +5994,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 32,
@@ -5459,6 +6029,7 @@
             "type": "ground",
             "power": 6,
             "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "SELF_ORIGIN",
@@ -5494,6 +6065,9 @@
             "type": "steel",
             "power": 2,
             "effect": "目標的先攻每比使用者高2點：攻擊強度提高1點（最大攻擊強度7）。",
+            "archetypes": [
+              "BOMB"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5508,6 +6082,7 @@
               "type": "ground",
               "power": 6,
               "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -5544,6 +6119,7 @@
             "type": "psychic",
             "power": 3,
             "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 5,
             "aoe_type": "RANGED",
@@ -5558,6 +6134,7 @@
               "type": "poison",
               "power": 2,
               "effect": "對目標施加中毒狀態。如果目標已經中毒：造成雙倍傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "MELEE",
@@ -5571,7 +6148,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 33,
@@ -5606,6 +6184,7 @@
             "type": "poison",
             "power": 4,
             "effect": "如果擲出任何狀態標誌：對目標施加中毒狀態。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -5620,6 +6199,7 @@
               "type": "dark",
               "power": 4,
               "effect": "暴擊造成的傷害額外增加 1 點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -5656,6 +6236,7 @@
             "type": "psychic",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -5670,6 +6251,7 @@
               "type": "dark",
               "power": 4,
               "effect": "暴擊造成的傷害額外增加 1 點。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "MELEE",
@@ -5685,6 +6267,10 @@
               "type": "electric",
               "power": 4,
               "effect": "無視保護招式的效果。",
+              "archetypes": [
+                "MULTI",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -5721,6 +6307,7 @@
             "type": "dark",
             "power": 4,
             "effect": "暴擊造成的傷害額外增加 1 點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -5735,6 +6322,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -5748,7 +6336,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 34,
@@ -5782,6 +6371,9 @@
             "type": "fairy",
             "power": 4,
             "effect": "當目標下次攻擊時：擲骰移除1個普通命中。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "SELF_ORIGIN",
@@ -5796,6 +6388,11 @@
               "type": "dark",
               "power": 2,
               "effect": "當目標下一次攻擊時，其攻擊強度降低 1 點。",
+              "archetypes": [
+                "MULTI",
+                "MODIFY",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "AOE_OVERHEAD",
@@ -5832,6 +6429,7 @@
             "type": "dragon",
             "power": 5,
             "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 1,
             "aoe_type": "MELEE",
@@ -5846,6 +6444,11 @@
               "type": "dark",
               "power": 2,
               "effect": "當目標下一次攻擊時，其攻擊強度降低 1 點。",
+              "archetypes": [
+                "MULTI",
+                "MODIFY",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "AOE_OVERHEAD",
@@ -5882,6 +6485,7 @@
             "type": "typeless",
             "power": 1,
             "effect": "從任一對手場上寶可夢選擇一個招式，並以該招式攻擊目標。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5896,6 +6500,11 @@
               "type": "dark",
               "power": 2,
               "effect": "當目標下一次攻擊時，其攻擊強度降低 1 點。",
+              "archetypes": [
+                "MULTI",
+                "MODIFY",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "AOE_OVERHEAD",
@@ -5909,7 +6518,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 35,
@@ -5943,6 +6553,7 @@
             "type": "water",
             "power": 4,
             "effect": "擊中要害造成+2傷害。狀態標誌造成-1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5977,6 +6588,9 @@
             "type": "dark",
             "power": 3,
             "effect": "",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -5991,6 +6605,7 @@
               "type": "dark",
               "power": 3,
               "effect": "使用者可以選擇對手隊伍中的任何寶可夢作為目標，並忽略屬性弱點與抗性。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6006,6 +6621,7 @@
               "type": "dark",
               "power": 3,
               "effect": "使目標同時陷入「麻痺」與「Paralyzed」狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -6042,6 +6658,7 @@
             "type": "dark",
             "power": 3,
             "effect": "使用者可以選擇對手隊伍中的任何寶可夢作為目標，並忽略屬性弱點與抗性。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6056,6 +6673,9 @@
               "type": "dark",
               "power": 3,
               "effect": "",
+              "archetypes": [
+                "PRIORITY 2"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6071,6 +6691,7 @@
               "type": "dark",
               "power": 3,
               "effect": "使目標同時陷入「麻痺」與「Paralyzed」狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -6084,7 +6705,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 36,
@@ -6119,6 +6741,9 @@
             "type": "psychic",
             "power": 4,
             "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+            "archetypes": [
+              "PERSISTING"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -6153,6 +6778,7 @@
             "type": "normal",
             "power": 5,
             "effect": "若擲骰總和為奇數：造成3點額外傷害。若為偶數：傷害減少5點。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6167,6 +6793,9 @@
               "type": "psychic",
               "power": 4,
               "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+              "archetypes": [
+                "PERSISTING"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -6182,6 +6811,9 @@
               "type": "electric",
               "power": 6,
               "effect": "對目標施加麻痺狀態。狀態標誌造成-1傷害。",
+              "archetypes": [
+                "BOMB"
+              ],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -6219,6 +6851,7 @@
             "type": "dark",
             "power": 5,
             "effect": "所有玩家必須棄掉一張戰鬥卡。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6230,7 +6863,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 37,
@@ -6265,6 +6899,7 @@
             "type": "electric",
             "power": 4,
             "effect": "使用者可以將擲出的骰子分配給任何場上寶可夢。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6279,6 +6914,7 @@
               "type": "psychic",
               "power": 5,
               "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -6294,6 +6930,7 @@
               "type": "electric",
               "power": 4,
               "effect": "如果使用者知道另一個電屬性招式：造成2點額外傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -6331,6 +6968,7 @@
             "type": "psychic",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -6345,6 +6983,7 @@
               "type": "electric",
               "power": 4,
               "effect": "使用者可以將擲出的骰子分配給任何場上寶可夢。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6360,6 +6999,7 @@
               "type": "electric",
               "power": 4,
               "effect": "如果使用者知道另一個電屬性招式：造成2點額外傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 3,
               "aoe_type": "SELF_ORIGIN",
@@ -6396,6 +7036,7 @@
             "type": "electric",
             "power": 4,
             "effect": "如果使用者知道另一個電屬性招式：造成2點額外傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 3,
             "aoe_type": "SELF_ORIGIN",
@@ -6410,6 +7051,7 @@
               "type": "electric",
               "power": 4,
               "effect": "使用者可以將擲出的骰子分配給任何場上寶可夢。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6423,7 +7065,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 38,
@@ -6457,6 +7100,7 @@
             "type": "normal",
             "power": 1,
             "effect": "使用者持續擲骰，直到總共擲出2個非普通命中為止。將所有擲出的傷害對目標造成。此招式僅增加1點戰鬥疲勞。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6471,6 +7115,7 @@
               "type": "normal",
               "power": 1,
               "effect": "為任意場上寶可夢回復4點傷害。若此招式在上一回合已使用過：攻擊強度提高3點，但僅回復1點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6486,6 +7131,10 @@
               "type": "normal",
               "power": 1,
               "effect": "僅當使用者自上場以來尚未使用任何招式或行動時才能使用此招式。目標本回合失去行動機會。",
+              "archetypes": [
+                "PRIORITY 3",
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -6523,6 +7172,9 @@
             "type": "electric",
             "power": 3,
             "effect": "回復一半的傷害，向下取整。",
+            "archetypes": [
+              "MULTI ALL"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6537,6 +7189,7 @@
               "type": "normal",
               "power": 1,
               "effect": "使用者持續擲骰，直到總共擲出2個非普通命中為止。將所有擲出的傷害對目標造成。此招式僅增加1點戰鬥疲勞。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6552,6 +7205,7 @@
               "type": "normal",
               "power": 1,
               "effect": "為任意場上寶可夢回復4點傷害。若此招式在上一回合已使用過：攻擊強度提高3點，但僅回復1點傷害。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6567,6 +7221,10 @@
               "type": "normal",
               "power": 1,
               "effect": "僅當使用者自上場以來尚未使用任何招式或行動時才能使用此招式。目標本回合失去行動機會。",
+              "archetypes": [
+                "PRIORITY 3",
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -6603,6 +7261,7 @@
             "type": "normal",
             "power": 1,
             "effect": "為任意場上寶可夢回復4點傷害。若此招式在上一回合已使用過：攻擊強度提高3點，但僅回復1點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6617,6 +7276,7 @@
               "type": "normal",
               "power": 1,
               "effect": "使用者持續擲骰，直到總共擲出2個非普通命中為止。將所有擲出的傷害對目標造成。此招式僅增加1點戰鬥疲勞。",
+              "archetypes": [],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6632,6 +7292,9 @@
               "type": "electric",
               "power": 3,
               "effect": "回復一半的傷害，向下取整。",
+              "archetypes": [
+                "MULTI ALL"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6647,6 +7310,10 @@
               "type": "normal",
               "power": 1,
               "effect": "僅當使用者自上場以來尚未使用任何招式或行動時才能使用此招式。目標本回合失去行動機會。",
+              "archetypes": [
+                "PRIORITY 3",
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 4,
               "aoe_type": "SELF_ORIGIN",
@@ -6660,12 +7327,18 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": {
+        "name": "靈魂之吼",
+        "description": "每場一次：重投本回合所有失敗的攻擊骰。",
+        "passive": "once_reroll_failed",
+        "uses": 1
+      }
     },
     {
       "id": 39,
       "name": "Will",
-      "name_zh": "Will",
+      "name_zh": "一樹",
       "sprite": "Will.png",
       "faction": 1,
       "party": [
@@ -6695,6 +7368,7 @@
             "type": "poison",
             "power": 4,
             "effect": "對目標施加中毒狀態。擊中要害造成+1傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6709,6 +7383,7 @@
               "type": "psychic",
               "power": 7,
               "effect": "預測擊中要害與狀態標誌的擲出數量誰多誰少或相等。若預測錯誤：傷害減少3點。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "SELF_ORIGIN",
@@ -6745,6 +7420,9 @@
             "type": "normal",
             "power": 2,
             "effect": "在你每回合開始時回復2點傷害。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "AOE_CENTER",
@@ -6759,6 +7437,9 @@
               "type": "normal",
               "power": 4,
               "effect": "你目前場上的寶可夢無法被施加任何異常狀態。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 2,
               "aoe_type": "MELEE",
@@ -6774,6 +7455,7 @@
               "type": "psychic",
               "power": 7,
               "effect": "預測擊中要害與狀態標誌的擲出數量誰多誰少或相等。若預測錯誤：傷害減少3點。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "SELF_ORIGIN",
@@ -6811,6 +7493,9 @@
             "type": "normal",
             "power": 4,
             "effect": "你目前場上的寶可夢無法被施加任何異常狀態。",
+            "archetypes": [
+              "MODIFY"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -6825,6 +7510,9 @@
               "type": "normal",
               "power": 2,
               "effect": "在你每回合開始時回復2點傷害。",
+              "archetypes": [
+                "MODIFY"
+              ],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "AOE_CENTER",
@@ -6840,6 +7528,7 @@
               "type": "psychic",
               "power": 7,
               "effect": "預測擊中要害與狀態標誌的擲出數量誰多誰少或相等。若預測錯誤：傷害減少3點。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "SELF_ORIGIN",
@@ -6853,7 +7542,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 40,
@@ -6888,6 +7578,7 @@
             "type": "fairy",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加睡意狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -6902,6 +7593,7 @@
               "type": "flying",
               "power": 5,
               "effect": "擊中要害造成+1傷害。如果天氣狀況不是下雨或亂流：狀態標誌造成-2傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "SELF_ORIGIN",
@@ -6917,6 +7609,7 @@
               "type": "flying",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -6954,6 +7647,7 @@
             "type": "flying",
             "power": 5,
             "effect": "擊中要害造成+1傷害。如果天氣狀況不是下雨或亂流：狀態標誌造成-2傷害。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 6,
             "aoe_type": "SELF_ORIGIN",
@@ -6968,6 +7662,7 @@
               "type": "flying",
               "power": 4,
               "effect": "擊中要害造成+1傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 3,
               "aoe_type": "RANGED",
@@ -7005,6 +7700,7 @@
             "type": "flying",
             "power": 4,
             "effect": "擊中要害造成+1傷害。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -7019,6 +7715,7 @@
               "type": "flying",
               "power": 5,
               "effect": "擊中要害造成+1傷害。如果天氣狀況不是下雨或亂流：狀態標誌造成-2傷害。",
+              "archetypes": [],
               "distance_band": "LONG",
               "range_tiles": 6,
               "aoe_type": "SELF_ORIGIN",
@@ -7032,7 +7729,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     },
     {
       "id": 41,
@@ -7067,6 +7765,7 @@
             "type": "fairy",
             "power": 5,
             "effect": "如果擲出2個或更多狀態標誌：對目標施加睡意狀態。",
+            "archetypes": [],
             "distance_band": "LONG",
             "range_tiles": 3,
             "aoe_type": "RANGED",
@@ -7081,6 +7780,10 @@
               "type": "normal",
               "power": 7,
               "effect": "",
+              "archetypes": [
+                "MULTI ALL",
+                "SONG"
+              ],
               "distance_band": "SHORT",
               "range_tiles": 1,
               "aoe_type": "SELF_ORIGIN",
@@ -7118,6 +7821,7 @@
             "type": "rock",
             "power": 6,
             "effect": "擊中要害造成+2傷害。每擲出一個擊中要害：使用者承受3點傷害。",
+            "archetypes": [],
             "distance_band": "SHORT",
             "range_tiles": 3,
             "aoe_type": "SELF_ORIGIN",
@@ -7153,6 +7857,9 @@
             "type": "fire",
             "power": 4,
             "effect": "",
+            "archetypes": [
+              "PRIORITY 2"
+            ],
             "distance_band": "SHORT",
             "range_tiles": 2,
             "aoe_type": "MELEE",
@@ -7164,7 +7871,8 @@
         }
       ],
       "party_min": 1,
-      "party_max": 4
+      "party_max": 4,
+      "ability": null
     }
   ]
 }

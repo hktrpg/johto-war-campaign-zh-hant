@@ -31,10 +31,88 @@ TRAINER_ZH = {
     'Falkner': '阿速', 'Bugsy': '阿筆', 'Whitney': '小茜', 'Morty': '松葉',
     'Chuck': '阿四', 'Jasmine': '阿蜜', 'Pryce': '柳伯', 'Clair': '小椿',
     'Cyrus': '赤日', 'Lance': '阿渡', 'Colress': '阿庫羅瑪',
+    'Bruno': '希巴', 'Karen': '梨花', 'Will': '一樹', 'Koga': '阿桔',
+    'Giovanni': '坂木', 'Blue': '青綠', 'Red': '赤', 'Ethan': '阿響',
 }
 
 DEFAULT_MATCH_TRAINERS = ['Falkner', 'Bugsy', 'Whitney', 'Morty', 'Chuck', 'Jasmine']
 PARTY_SIZE_PER_TRAINER = 3  # 1–4 allowed per trainer in export
+
+# Simplified board-battle trainer passives (independent from full trainer_cards RPG rules).
+BOARD_TRAINER_ABILITIES: dict[str, dict] = {
+    'Falkner': {
+        'name': '順風',
+        'description': '隊內飛行屬性寶可夢先攻 +2。',
+        'passive': 'initiative_bonus_types',
+        'types': ['flying'],
+        'value': 2,
+    },
+    'Bugsy': {
+        'name': '蟲之秘技',
+        'description': '蟲屬性招式首次攻擊時多投 1 顆 d6。',
+        'passive': 'first_attack_extra_die',
+        'types': ['bug'],
+        'value': 1,
+    },
+    'Whitney': {
+        'name': '靈魂之吼',
+        'description': '每場一次：重投本回合所有失敗的攻擊骰。',
+        'passive': 'once_reroll_failed',
+        'uses': 1,
+    },
+    'Morty': {
+        'name': '靈界漫步',
+        'description': '幽靈／惡屬性無視森林與洞穴地形的移動限制。',
+        'passive': 'terrain_ignore',
+        'types': ['ghost', 'dark'],
+    },
+    'Chuck': {
+        'name': '氣勢',
+        'description': '近戰招式（MELEE）每顆成功骰 +1 傷害。',
+        'passive': 'melee_success_bonus',
+        'value': 1,
+    },
+    'Jasmine': {
+        'name': '鋼之意志',
+        'description': '隊內鋼屬性受到攻擊時，傷害 −1（最少 1）。',
+        'passive': 'damage_reduction_types',
+        'types': ['steel'],
+        'value': 1,
+    },
+    'Pryce': {
+        'name': '冰封戰場',
+        'description': '冰屬性招式在冰面地形額外 +1 顆 d6。',
+        'passive': 'terrain_power_bonus',
+        'types': ['ice'],
+        'terrain': 'ice',
+        'value': 1,
+    },
+    'Clair': {
+        'name': '龍之威嚴',
+        'description': '龍屬性招式先攻視為 +3。',
+        'passive': 'priority_type_bonus',
+        'types': ['dragon'],
+        'value': 3,
+    },
+    'Lance': {
+        'name': '冠軍之風',
+        'description': '全隊先攻 +1。',
+        'passive': 'initiative_bonus_all',
+        'value': 1,
+    },
+    'Cyrus': {
+        'name': '神話之力',
+        'description': '每回合首次攻擊多投 1 顆 d6。',
+        'passive': 'first_attack_each_round_extra_die',
+        'value': 1,
+    },
+    'Colress': {
+        'name': '磁力操控',
+        'description': '電／鋼屬性在電磁地形攻擊時，成功骰 4 視為 5。',
+        'passive': 'electric_terrain_low_success_boost',
+        'types': ['electric', 'steel'],
+    },
+}
 
 
 def load_pokeapi_names() -> dict[int, str]:
@@ -94,15 +172,29 @@ def default_za(move_type: str) -> dict:
     }
 
 
+def parse_archetypes(row) -> list[str]:
+    arches: list[str] = []
+    for col in ('archetype_1', 'archetype_2', 'archetype_3'):
+        val = row.get(col) if hasattr(row, 'get') else row[col]
+        if val is None or (isinstance(val, float) and pd.isna(val)):
+            continue
+        text = str(val).strip()
+        if text and text.lower() not in {'nan', 'none'}:
+            arches.append(text)
+    return arches
+
+
 def move_record(zh_row, en_name: str | None, za: dict | None) -> dict:
     move_type = norm_type(zh_row['move_type'])
     z = za or default_za(move_type)
+    arches = parse_archetypes(zh_row)
     return {
         'name': str(zh_row['move_name']).strip(),
         'name_en': en_name or '',
         'type': move_type,
         'power': parse_power(zh_row['move_attack_strength']),
         'effect': str(zh_row['move_effect']).strip() if pd.notna(zh_row.get('move_effect')) else '',
+        'archetypes': arches,
         'distance_band': z.get('za_distance_band', z.get('distance_band', 'SHORT')),
         'range_tiles': z.get('za_board_range', z.get('range_tiles', 2)),
         'aoe_type': z.get('za_aoe_type', z.get('aoe_type', 'MELEE')),
@@ -363,6 +455,7 @@ def main() -> None:
         faction = 0 if trainer_name in DEFAULT_MATCH_TRAINERS[:3] else 1
         if trainer_name in DEFAULT_MATCH_TRAINERS:
             faction = 0 if DEFAULT_MATCH_TRAINERS.index(trainer_name) < 3 else 1
+        ability = BOARD_TRAINER_ABILITIES.get(trainer_name)
         trainer_records.append({
             'id': tid,
             'name': trainer_name,
@@ -372,6 +465,7 @@ def main() -> None:
             'party': party[:PARTY_SIZE_PER_TRAINER],
             'party_min': 1,
             'party_max': min(4, len(party)),
+            'ability': ability,
         })
         all_trainer_names.append(trainer_name)
         tid += 1
@@ -389,6 +483,18 @@ def main() -> None:
         'party_min': 1,
         'party_max': 4,
         'default_match': default_ids[:6],
+        'match_modes': ['team', 'ffa', 'dm'],
+        'default_mode': 'team',
+        'terrain_types': [
+            {'id': 'plain', 'name': '平地', 'weight': 45},
+            {'id': 'forest', 'name': '森林', 'weight': 15, 'cover': 1},
+            {'id': 'water', 'name': '水域', 'weight': 10, 'types_only': ['water', 'flying']},
+            {'id': 'rock', 'name': '岩石', 'weight': 8, 'blocked': True},
+            {'id': 'sand', 'name': '沙地', 'weight': 10, 'move_cost': 2},
+            {'id': 'ice', 'name': '冰面', 'weight': 5, 'power_bonus_types': {'ice': 1}},
+            {'id': 'electric', 'name': '電磁', 'weight': 4, 'power_bonus_types': {'electric': 1, 'steel': 1}},
+            {'id': 'cave', 'name': '洞穴', 'weight': 3, 'power_bonus_types': {'ghost': 1, 'dark': 1}},
+        ],
         'trainers': trainer_records,
     }
     trainers_path = BOARD_DATA / 'trainers.json'

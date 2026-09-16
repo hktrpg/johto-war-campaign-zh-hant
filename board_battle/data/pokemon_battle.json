@@ -24,6 +24,9 @@
       "type": "normal",
       "power": 2,
       "effect": "狀態標誌造成+1傷害。",
+      "archetypes": [
+        "MULTI"
+      ],
       "distance_band": "LONG",
       "range_tiles": 4,
       "aoe_type": "RANGED",
@@ -38,6 +41,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -74,6 +80,9 @@
       "type": "water",
       "power": 1,
       "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -88,6 +97,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -124,6 +134,9 @@
       "type": "normal",
       "power": 7,
       "effect": "",
+      "archetypes": [
+        "RECHARGE 4"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "SELF_ORIGIN",
@@ -133,26 +146,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "污泥炸彈",
         "name_en": "Sludge Bomb",
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -161,6 +162,24 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -190,6 +209,7 @@
       "type": "fire",
       "power": 4,
       "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -199,26 +219,12 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
-        "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 3,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
         "name": "逆鱗",
         "name_en": "Outrage",
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -227,6 +233,22 @@
         "aoe_zh": "單體近戰",
         "learned_from": "快龍",
         "slot_label": "來自快龍"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -256,6 +278,7 @@
       "type": "grass",
       "power": 2,
       "effect": "狀態標誌造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -270,6 +293,9 @@
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -285,6 +311,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -322,6 +351,9 @@
       "type": "grass",
       "power": 6,
       "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+      "archetypes": [
+        "DELAY 1"
+      ],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -331,26 +363,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "污泥炸彈",
         "name_en": "Sludge Bomb",
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -359,6 +379,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -387,6 +423,7 @@
       "type": "fire",
       "power": 2,
       "effect": "對目標施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -401,6 +438,7 @@
         "type": "fire",
         "power": 4,
         "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
@@ -416,6 +454,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -453,6 +492,7 @@
       "type": "dragon",
       "power": 5,
       "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -462,19 +502,22 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
       },
       {
         "name": "高速星星",
@@ -482,6 +525,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -492,19 +538,20 @@
         "slot_label": "來自伊布"
       },
       {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
+        "name": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "power": 5,
+        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "水箭龜",
+        "slot_label": "來自水箭龜"
       }
     ]
   },
@@ -533,6 +580,7 @@
       "type": "water",
       "power": 5,
       "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -547,6 +595,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -583,6 +634,9 @@
       "type": "electric",
       "power": 1,
       "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+      "archetypes": [
+        "BOMB"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -618,6 +672,9 @@
       "type": "poison",
       "power": 5,
       "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+      "archetypes": [
+        "BOMB"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "RANGED",
@@ -632,6 +689,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -668,6 +726,7 @@
       "type": "psychic",
       "power": 5,
       "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -702,6 +761,7 @@
       "type": "normal",
       "power": 1,
       "effect": "使用者持續擲骰，直到總共擲出2個非普通命中為止。將所有擲出的傷害對目標造成。此招式僅增加1點戰鬥疲勞。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -711,34 +771,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -746,6 +794,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -754,6 +805,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -782,6 +849,7 @@
       "type": "normal",
       "power": 2,
       "effect": "普通命中造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -791,34 +859,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -826,6 +882,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -834,6 +893,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -863,6 +938,10 @@
       "type": "normal",
       "power": 3,
       "effect": "",
+      "archetypes": [
+        "MULTI",
+        "SONG"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -872,26 +951,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -907,6 +974,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -915,6 +983,24 @@
         "aoe_zh": "單體近戰",
         "learned_from": "快龍",
         "slot_label": "來自快龍"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -944,6 +1030,7 @@
       "type": "normal",
       "power": 4,
       "effect": "如果擲出任何狀態標誌：擲一顆狀態骰，並對目標施加該結果的狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "AOE_CENTER",
@@ -953,41 +1040,14 @@
     },
     "learned_moves": [
       {
-        "name": "電球",
-        "name_en": "Electro Ball",
-        "type": "electric",
-        "power": 1,
-        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "皮卡丘",
-        "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -996,6 +1056,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
+        "name": "電球",
+        "name_en": "Electro Ball",
+        "type": "electric",
+        "power": 1,
+        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "皮卡丘",
+        "slot_label": "來自皮卡丘"
       }
     ]
   },
@@ -1024,6 +1118,7 @@
       "type": "ground",
       "power": 6,
       "effect": "如果目標在此攻擊後剩餘生命值為2或更少：目標瀕死。狀態標誌造成-1傷害。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -1058,6 +1153,7 @@
       "type": "water",
       "power": 3,
       "effect": "普通命中造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1072,6 +1168,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -1087,6 +1184,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -1124,6 +1224,7 @@
       "type": "bug",
       "power": 1,
       "effect": "每當擲出異常狀態符號時，獲得 1 點旅程點數。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1138,6 +1239,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -1175,6 +1279,7 @@
       "type": "dark",
       "power": 5,
       "effect": "若使用者的攻擊擲骰受到目標的變化類招式效果影響：造成雙倍傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1184,26 +1289,12 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
-        "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 3,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
         "name": "噴射火焰",
         "name_en": "Flamethrower",
         "type": "fire",
         "power": 4,
         "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
@@ -1219,6 +1310,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -1227,6 +1319,22 @@
         "aoe_zh": "單體近戰",
         "learned_from": "快龍",
         "slot_label": "來自快龍"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -1256,6 +1364,11 @@
       "type": "dark",
       "power": 1,
       "effect": "使用者必須換出。當目標下一次攻擊時，移除所有普通命中結果。",
+      "archetypes": [
+        "SWITCH",
+        "MODIFY",
+        "SONG"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -1291,6 +1404,7 @@
       "type": "fighting",
       "power": 2,
       "effect": "使用者隊伍中每有一隻瀕死的寶可夢：攻擊強度提高1點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1305,6 +1419,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -1341,6 +1458,7 @@
       "type": "fire",
       "power": 5,
       "effect": "如果擲出2個或更多狀態標誌：對目標施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -1350,26 +1468,12 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
-        "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 3,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
         "name": "噴射火焰",
         "name_en": "Flamethrower",
         "type": "fire",
         "power": 4,
         "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
@@ -1385,6 +1489,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -1393,6 +1498,22 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -1421,6 +1542,7 @@
       "type": "fire",
       "power": 4,
       "effect": "如果擲出任何狀態標誌：對目標和目標隊伍中的另一隻寶可夢施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1430,26 +1552,12 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
-        "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 3,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
         "name": "噴射火焰",
         "name_en": "Flamethrower",
         "type": "fire",
         "power": 4,
         "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
@@ -1465,6 +1573,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -1473,6 +1582,22 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -1501,6 +1626,9 @@
       "type": "fighting",
       "power": 5,
       "effect": "每次使用此招式時：使用者的先攻降低2點。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1510,34 +1638,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -1545,6 +1661,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -1553,6 +1672,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
       }
     ]
   },
@@ -1582,6 +1717,7 @@
       "type": "dark",
       "power": 5,
       "effect": "異常狀態符號造成的傷害額外增加 1 點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1616,6 +1752,7 @@
       "type": "fairy",
       "power": 5,
       "effect": "如果擲出2個或更多狀態標誌：對目標施加睡意狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -1625,26 +1762,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -1653,6 +1778,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -1682,6 +1825,7 @@
       "type": "fighting",
       "power": 4,
       "effect": "無視目標的變化招式效果。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -1716,6 +1860,9 @@
       "type": "psychic",
       "power": 7,
       "effect": "每次使用此招式時：攻擊強度降低2點。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1725,26 +1872,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -1760,6 +1895,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -1768,6 +1904,24 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -1797,6 +1951,9 @@
       "type": "psychic",
       "power": 4,
       "effect": "傷害結算前：使用者可以交換目標的生命值與先攻。",
+      "archetypes": [
+        "PERSISTING"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -1806,19 +1963,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "精神強念",
@@ -1826,6 +1986,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -1836,19 +1997,20 @@
         "slot_label": "來自超夢"
       },
       {
-        "name": "日光束",
-        "name_en": "Solar Beam",
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
         "type": "grass",
-        "power": 6,
-        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
         "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "妙蛙花",
-        "slot_label": "來自妙蛙花"
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -1878,6 +2040,7 @@
       "type": "flying",
       "power": 4,
       "effect": "回復造成傷害的75%，向下取整。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "AOE_LINE",
@@ -1887,26 +2050,12 @@
     },
     "learned_moves": [
       {
-        "name": "逆鱗",
-        "name_en": "Outrage",
-        "type": "dragon",
-        "power": 5,
-        "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "快龍",
-        "slot_label": "來自快龍"
-      },
-      {
         "name": "精神強念",
         "name_en": "Psychic",
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -1915,6 +2064,22 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "逆鱗",
+        "name_en": "Outrage",
+        "type": "dragon",
+        "power": 5,
+        "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "快龍",
+        "slot_label": "來自快龍"
       }
     ]
   },
@@ -1944,6 +2109,9 @@
       "type": "steel",
       "power": 2,
       "effect": "目標的先攻每比使用者高2點：攻擊強度提高1點（最大攻擊強度7）。",
+      "archetypes": [
+        "BOMB"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1979,6 +2147,9 @@
       "type": "grass",
       "power": 3,
       "effect": "回復一半的傷害，向下取整。如果擲出2個或更多狀態標誌：對目標施加灼傷狀態。",
+      "archetypes": [
+        "MULTI"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -1988,11 +2159,30 @@
     },
     "learned_moves": [
       {
+        "name": "日光束",
+        "name_en": "Solar Beam",
+        "type": "grass",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
+      },
+      {
         "name": "藤鞭",
         "name_en": "Vine Whip",
         "type": "grass",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -2008,6 +2198,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -2016,21 +2207,6 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "水箭龜",
         "slot_label": "來自水箭龜"
-      },
-      {
-        "name": "縮入殼中",
-        "name_en": "Withdraw",
-        "type": "water",
-        "power": 1,
-        "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "傑尼龜",
-        "slot_label": "來自傑尼龜"
       }
     ]
   },
@@ -2059,6 +2235,7 @@
       "type": "ghost",
       "power": 1,
       "effect": "對目標施加麻痺狀態。如果目標已經麻痺：攻擊強度提高2點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -2068,34 +2245,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -2103,6 +2268,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -2111,6 +2279,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -2139,6 +2323,7 @@
       "type": "electric",
       "power": 1,
       "effect": "對目標施加麻痺狀態。如果目標已經麻痺：攻擊強度提高2點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -2148,11 +2333,32 @@
     },
     "learned_moves": [
       {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -2168,6 +2374,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -2176,21 +2385,6 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "伊布",
         "slot_label": "來自伊布"
-      },
-      {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
       }
     ]
   },
@@ -2219,6 +2413,9 @@
       "type": "water",
       "power": 2,
       "effect": "在你每回合結束時回復1點傷害。若天氣為下雨：改為回復2點傷害。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -2228,41 +2425,14 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -2271,6 +2441,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -2300,6 +2504,7 @@
       "type": "bug",
       "power": 4,
       "effect": "暴擊造成的傷害額外增加 1 點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -2309,34 +2514,40 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
+      },
+      {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
       },
       {
         "name": "終極衝擊",
@@ -2344,6 +2555,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -2381,6 +2595,7 @@
       "type": "normal",
       "power": 4,
       "effect": "狀態標誌使目標回復2點傷害。擊中要害造成+2傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -2390,19 +2605,22 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
       },
       {
         "name": "高速星星",
@@ -2410,6 +2628,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -2420,19 +2641,20 @@
         "slot_label": "來自伊布"
       },
       {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
+        "name": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "power": 5,
+        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "水箭龜",
+        "slot_label": "來自水箭龜"
       }
     ]
   },
@@ -2461,6 +2683,7 @@
       "type": "fighting",
       "power": 6,
       "effect": "在本次攻擊期間以及當使用者下次受到攻擊時：狀態標誌與擊中要害造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -2495,6 +2718,7 @@
       "type": "electric",
       "power": 4,
       "effect": "如果使用者知道另一個電屬性招式：造成2點額外傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -2504,11 +2728,48 @@
     },
     "learned_moves": [
       {
+        "name": "噴射火焰",
+        "name_en": "Flamethrower",
+        "type": "fire",
+        "power": 4,
+        "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "噴火龍",
+        "slot_label": "來自噴火龍"
+      },
+      {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -2517,36 +2778,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "皮卡丘",
         "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "火花",
-        "name_en": "Ember",
-        "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 3,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
       }
     ]
   },
@@ -2575,6 +2806,7 @@
       "type": "dark",
       "power": 2,
       "effect": "使用者上次受到攻擊時，每承受 2 點傷害，則攻擊強度提升 1 點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -2584,26 +2816,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -2619,6 +2839,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -2627,6 +2848,24 @@
         "aoe_zh": "單體近戰",
         "learned_from": "快龍",
         "slot_label": "來自快龍"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -2655,6 +2894,11 @@
       "type": "dark",
       "power": 2,
       "effect": "當目標下一次攻擊時，其攻擊強度降低 1 點。",
+      "archetypes": [
+        "MULTI",
+        "MODIFY",
+        "SONG"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "AOE_OVERHEAD",
@@ -2664,26 +2908,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -2692,6 +2924,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -2720,6 +2970,7 @@
       "type": "grass",
       "power": 3,
       "effect": "擊中要害造成+1傷害。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -2729,26 +2980,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -2764,6 +3003,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -2772,6 +3014,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -2801,6 +3059,9 @@
       "type": "normal",
       "power": 2,
       "effect": "",
+      "archetypes": [
+        "PRIORITY 2"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -2810,11 +3071,32 @@
     },
     "learned_moves": [
       {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -2825,26 +3107,14 @@
         "slot_label": "來自皮卡丘"
       },
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
         "name": "高速星星",
         "name_en": "Swift",
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -2881,6 +3151,7 @@
       "type": "psychic",
       "power": 3,
       "effect": "如果擲出任何狀態標誌：對目標施加混亂狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -2890,26 +3161,14 @@
     },
     "learned_moves": [
       {
-        "name": "精神強念",
-        "name_en": "Psychic",
-        "type": "psychic",
-        "power": 5,
-        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "AOE_CENTER",
-        "aoe_radius": 1,
-        "distance_zh": "遠距",
-        "aoe_zh": "範圍攻擊",
-        "learned_from": "超夢",
-        "slot_label": "來自超夢"
-      },
-      {
         "name": "污泥炸彈",
         "name_en": "Sludge Bomb",
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -2918,6 +3177,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
       }
     ]
   },
@@ -2947,6 +3222,9 @@
       "type": "flying",
       "power": 2,
       "effect": "當目標下次受到攻擊時：擲骰增加1個擊中要害。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -2956,26 +3234,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -2984,6 +3250,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -3012,6 +3296,9 @@
       "type": "normal",
       "power": 1,
       "effect": "回復1點傷害，並移除使用者與使用者隊伍中所有寶可夢的異常狀態。",
+      "archetypes": [
+        "SONG"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -3021,11 +3308,50 @@
     },
     "learned_moves": [
       {
+        "name": "日光束",
+        "name_en": "Solar Beam",
+        "type": "grass",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
+      },
+      {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -3034,36 +3360,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "皮卡丘",
         "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
       }
     ]
   },
@@ -3092,6 +3388,7 @@
       "type": "electric",
       "power": 3,
       "effect": "如果擲出任何狀態標誌：對目標施加麻痺狀態。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -3106,6 +3403,9 @@
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -3121,6 +3421,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -3136,6 +3437,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -3173,6 +3477,9 @@
       "type": "electric",
       "power": 2,
       "effect": "如果所有擲出的骰子都相同：將目標的下一個招式改為電屬性。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -3182,11 +3489,32 @@
     },
     "learned_moves": [
       {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -3197,26 +3525,14 @@
         "slot_label": "來自皮卡丘"
       },
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
         "name": "高速星星",
         "name_en": "Swift",
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -3253,6 +3569,10 @@
       "type": "psychic",
       "power": 5,
       "effect": "回復一半的傷害，向下取整。當使用者下次受到攻擊時：擲骰移除2個普通命中。",
+      "archetypes": [
+        "MODIFY",
+        "DANCE"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -3262,19 +3582,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "精神強念",
@@ -3282,6 +3605,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -3292,19 +3616,20 @@
         "slot_label": "來自超夢"
       },
       {
-        "name": "日光束",
-        "name_en": "Solar Beam",
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
         "type": "grass",
-        "power": 6,
-        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
         "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "妙蛙花",
-        "slot_label": "來自妙蛙花"
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -3333,6 +3658,9 @@
       "type": "water",
       "power": 4,
       "effect": "擊中要害造成+2傷害。",
+      "archetypes": [
+        "BOMB"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -3347,6 +3675,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -3362,6 +3691,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -3398,6 +3730,7 @@
       "type": "fire",
       "power": 2,
       "effect": "對目標施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -3412,6 +3745,7 @@
         "type": "fire",
         "power": 4,
         "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
@@ -3427,6 +3761,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -3464,6 +3799,9 @@
       "type": "bug",
       "power": 4,
       "effect": "",
+      "archetypes": [
+        "PRIORITY 2"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 4,
       "aoe_type": "SELF_ORIGIN",
@@ -3473,19 +3811,22 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
       },
       {
         "name": "高速星星",
@@ -3493,6 +3834,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -3503,19 +3847,20 @@
         "slot_label": "來自伊布"
       },
       {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
+        "name": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "power": 5,
+        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "水箭龜",
+        "slot_label": "來自水箭龜"
       }
     ]
   },
@@ -3544,6 +3889,9 @@
       "type": "ice",
       "power": 4,
       "effect": "如果擲出2個或更多狀態標誌：對目標施加冰凍狀態。",
+      "archetypes": [
+        "MULTI"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "SELF_ORIGIN",
@@ -3553,26 +3901,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -3581,6 +3917,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -3609,6 +3963,10 @@
       "type": "ice",
       "power": 2,
       "effect": "目標的先攻降低2點。",
+      "archetypes": [
+        "MULTI",
+        "MODIFY"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "SELF_ORIGIN",
@@ -3643,6 +4001,7 @@
       "type": "ice",
       "power": 4,
       "effect": "如果擲出2個或更多狀態標誌：目標跳過本回合行動，且使用者的戰鬥疲勞額外提高1點。若使用者已有5點疲勞，則無法使用此招式。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -3677,6 +4036,10 @@
       "type": "ice",
       "power": 1,
       "effect": "當使用者下次受到攻擊時：無視所有傷害。",
+      "archetypes": [
+        "FORM",
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -3686,41 +4049,14 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -3729,6 +4065,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -3758,6 +4128,9 @@
       "type": "ice",
       "power": 4,
       "effect": "如果擲出2個或更多狀態標誌：對目標施加冰凍狀態。",
+      "archetypes": [
+        "MULTI"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "SELF_ORIGIN",
@@ -3793,6 +4166,7 @@
       "type": "rock",
       "power": 1,
       "effect": "對手場地上的隱形岩險地危險地形token狀態提高1。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "SELF_ORIGIN",
@@ -3827,6 +4201,9 @@
       "type": "dark",
       "power": 4,
       "effect": "當目標下一次受到攻擊時，擲骰額外增加 1 次普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -3861,6 +4238,9 @@
       "type": "normal",
       "power": 2,
       "effect": "當目標下次受到攻擊時：擲骰增加1個普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -3870,19 +4250,22 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
       },
       {
         "name": "高速星星",
@@ -3890,6 +4273,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -3900,19 +4286,20 @@
         "slot_label": "來自伊布"
       },
       {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
+        "name": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "power": 5,
+        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "水箭龜",
+        "slot_label": "來自水箭龜"
       }
     ]
   },
@@ -3941,6 +4328,7 @@
       "type": "water",
       "power": 4,
       "effect": "若擲出任何狀態標誌：對目標施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -3950,19 +4338,22 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
       },
       {
         "name": "高速星星",
@@ -3970,6 +4361,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -3980,19 +4374,20 @@
         "slot_label": "來自伊布"
       },
       {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
+        "name": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "power": 5,
+        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "水箭龜",
+        "slot_label": "來自水箭龜"
       }
     ]
   },
@@ -4021,6 +4416,7 @@
       "type": "ice",
       "power": 4,
       "effect": "如果擲出2個或更多狀態標誌：目標跳過本回合行動，且使用者的戰鬥疲勞額外提高1點。若使用者已有5點疲勞，則無法使用此招式。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -4030,19 +4426,22 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
       },
       {
         "name": "高速星星",
@@ -4050,6 +4449,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -4060,19 +4462,20 @@
         "slot_label": "來自伊布"
       },
       {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
+        "name": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "power": 5,
+        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "水箭龜",
+        "slot_label": "來自水箭龜"
       }
     ]
   },
@@ -4102,6 +4505,9 @@
       "type": "dark",
       "power": 3,
       "effect": "當目標下一次受到攻擊時，攻擊擲骰額外增加 1 次普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -4116,6 +4522,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -4152,6 +4559,7 @@
       "type": "bug",
       "power": 4,
       "effect": "暴擊造成的傷害額外增加 1 點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -4161,26 +4569,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4189,6 +4585,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -4217,6 +4631,10 @@
       "type": "psychic",
       "power": 1,
       "effect": "當目標下次攻擊時：擲骰移除2個普通命中。",
+      "archetypes": [
+        "MODIFY",
+        "SWITCH"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "SELF_ORIGIN",
@@ -4226,34 +4644,22 @@
     },
     "learned_moves": [
       {
-        "name": "電球",
-        "name_en": "Electro Ball",
-        "type": "electric",
-        "power": 1,
-        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "皮卡丘",
-        "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "精神強念",
@@ -4261,6 +4667,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -4269,6 +4676,24 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "電球",
+        "name_en": "Electro Ball",
+        "type": "electric",
+        "power": 1,
+        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "皮卡丘",
+        "slot_label": "來自皮卡丘"
       }
     ]
   },
@@ -4298,6 +4723,7 @@
       "type": "water",
       "power": 5,
       "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -4307,26 +4733,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4337,11 +4751,32 @@
         "slot_label": "來自卡比獸"
       },
       {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
+      },
+      {
         "name": "縮入殼中",
         "name_en": "Withdraw",
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -4378,6 +4813,9 @@
       "type": "fighting",
       "power": 1,
       "effect": "使用者的攻擊強度提高1點、先攻提高2點，並從所有受到的攻擊中移除1個普通命中。使用者無法再替換或逃離戰鬥。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -4387,26 +4825,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4415,6 +4841,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -4443,6 +4887,7 @@
       "type": "fighting",
       "power": 3,
       "effect": "對目標施加麻痺狀態。使用者的戰鬥疲勞額外提高1點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -4452,26 +4897,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4480,6 +4913,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -4509,6 +4960,9 @@
       "type": "water",
       "power": 2,
       "effect": "",
+      "archetypes": [
+        "PRIORITY 2"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -4518,11 +4972,30 @@
     },
     "learned_moves": [
       {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -4538,6 +5011,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -4546,21 +5022,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "污泥炸彈",
-        "name_en": "Sludge Bomb",
-        "type": "poison",
-        "power": 5,
-        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "耿鬼",
-        "slot_label": "來自耿鬼"
       }
     ]
   },
@@ -4589,6 +5050,9 @@
       "type": "poison",
       "power": 1,
       "effect": "如果擲出任何狀態標誌：對目標施加中毒狀態。當使用者下次受到攻擊時：擲骰移除2個普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -4598,34 +5062,40 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
+      },
+      {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
       },
       {
         "name": "終極衝擊",
@@ -4633,6 +5103,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4669,6 +5142,9 @@
       "type": "water",
       "power": 2,
       "effect": "",
+      "archetypes": [
+        "PRIORITY 2"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -4678,41 +5154,14 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4721,6 +5170,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -4749,6 +5232,9 @@
       "type": "grass",
       "power": 2,
       "effect": "使用者在回合結束時回復2點傷害。使用者無法再替換或逃離戰鬥。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -4758,26 +5244,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -4793,6 +5267,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -4801,6 +5278,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -4830,6 +5323,7 @@
       "type": "ice",
       "power": 5,
       "effect": "擊中要害造成+1傷害，但狀態標誌造成-1傷害。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -4839,11 +5333,30 @@
     },
     "learned_moves": [
       {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -4859,6 +5372,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -4867,21 +5383,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "污泥炸彈",
-        "name_en": "Sludge Bomb",
-        "type": "poison",
-        "power": 5,
-        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "耿鬼",
-        "slot_label": "來自耿鬼"
       }
     ]
   },
@@ -4911,6 +5412,7 @@
       "type": "water",
       "power": 5,
       "effect": "擊中要害造成+2傷害。每擲出1個擊中要害：使用者承受2點傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -4920,41 +5422,14 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -4963,6 +5438,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "逆鱗",
+        "name_en": "Outrage",
+        "type": "dragon",
+        "power": 5,
+        "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "快龍",
+        "slot_label": "來自快龍"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -4992,6 +5501,7 @@
       "type": "rock",
       "power": 4,
       "effect": "對手場地上的隱形岩險地危險地形token狀態提高1。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "SELF_ORIGIN",
@@ -5027,6 +5537,7 @@
       "type": "dark",
       "power": 4,
       "effect": "暴擊造成的傷害額外增加 1 點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5062,6 +5573,7 @@
       "type": "fighting",
       "power": 2,
       "effect": "普通命中造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -5071,34 +5583,20 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
+        "name": "噴射火焰",
+        "name_en": "Flamethrower",
         "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
+        "power": 4,
+        "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "噴火龍",
+        "slot_label": "來自噴火龍"
       },
       {
         "name": "終極衝擊",
@@ -5106,6 +5604,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -5114,6 +5615,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -5142,6 +5659,7 @@
       "type": "fighting",
       "power": 3,
       "effect": "回復一半的傷害，向下取整。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5176,6 +5694,7 @@
       "type": "psychic",
       "power": 3,
       "effect": "複製使用者或目標知道的一個招式效果。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -5185,34 +5704,22 @@
     },
     "learned_moves": [
       {
-        "name": "電球",
-        "name_en": "Electro Ball",
-        "type": "electric",
-        "power": 1,
-        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "皮卡丘",
-        "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "精神強念",
@@ -5220,6 +5727,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -5228,6 +5736,24 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "電球",
+        "name_en": "Electro Ball",
+        "type": "electric",
+        "power": 1,
+        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "皮卡丘",
+        "slot_label": "來自皮卡丘"
       }
     ]
   },
@@ -5257,6 +5783,9 @@
       "type": "normal",
       "power": 4,
       "effect": "當目標下次受到攻擊時：擲骰增加1個擊中要害。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -5266,26 +5795,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -5294,6 +5811,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -5322,6 +5857,9 @@
       "type": "dark",
       "power": 4,
       "effect": "當目標下一次受到攻擊時，擲骰額外增加 1 次普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5331,11 +5869,48 @@
     },
     "learned_moves": [
       {
+        "name": "噴射火焰",
+        "name_en": "Flamethrower",
+        "type": "fire",
+        "power": 4,
+        "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "噴火龍",
+        "slot_label": "來自噴火龍"
+      },
+      {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -5344,36 +5919,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "皮卡丘",
         "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "火花",
-        "name_en": "Ember",
-        "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 3,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
       }
     ]
   },
@@ -5403,6 +5948,7 @@
       "type": "fighting",
       "power": 4,
       "effect": "無視目標的變化招式效果。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5412,26 +5958,12 @@
     },
     "learned_moves": [
       {
-        "name": "電球",
-        "name_en": "Electro Ball",
-        "type": "electric",
-        "power": 1,
-        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "皮卡丘",
-        "slot_label": "來自皮卡丘"
-      },
-      {
         "name": "精神強念",
         "name_en": "Psychic",
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -5440,6 +5972,24 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "電球",
+        "name_en": "Electro Ball",
+        "type": "electric",
+        "power": 1,
+        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "皮卡丘",
+        "slot_label": "來自皮卡丘"
       }
     ]
   },
@@ -5469,6 +6019,7 @@
       "type": "dark",
       "power": 3,
       "effect": "若目標持有道具，則攻擊強度提升 1 點，並在回合結束時，目標將該持有物放入背包。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5483,6 +6034,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -5520,6 +6072,9 @@
       "type": "water",
       "power": 2,
       "effect": "",
+      "archetypes": [
+        "PRIORITY 2"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 3,
       "aoe_type": "SELF_ORIGIN",
@@ -5534,6 +6089,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -5549,6 +6105,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -5586,6 +6145,9 @@
       "type": "steel",
       "power": 4,
       "effect": "如果擲出2個或更多狀態標誌：目標跳過本回合行動，且使用者的戰鬥疲勞額外提高1點。若使用者已有5點疲勞，則無法使用此招式。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5595,26 +6157,14 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -5623,6 +6173,24 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -5652,6 +6220,7 @@
       "type": "poison",
       "power": 1,
       "effect": "對手場地上的毒菱險地危險地形token狀態提高1。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "RANGED",
@@ -5661,11 +6230,30 @@
     },
     "learned_moves": [
       {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -5681,6 +6269,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -5689,21 +6280,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "污泥炸彈",
-        "name_en": "Sludge Bomb",
-        "type": "poison",
-        "power": 5,
-        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "耿鬼",
-        "slot_label": "來自耿鬼"
       }
     ]
   },
@@ -5732,6 +6308,7 @@
       "type": "water",
       "power": 4,
       "effect": "無視目標的特性與屬性抗性。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -5746,6 +6323,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -5761,6 +6339,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -5798,6 +6379,9 @@
       "type": "ghost",
       "power": 3,
       "effect": "目標失去其原有屬性並變為幽靈屬性。",
+      "archetypes": [
+        "PERSISTING"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -5807,34 +6391,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -5842,6 +6414,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -5850,6 +6425,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -5879,6 +6470,9 @@
       "type": "ghost",
       "power": 2,
       "effect": "",
+      "archetypes": [
+        "PRIORITY 2"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 4,
       "aoe_type": "SELF_ORIGIN",
@@ -5888,34 +6482,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -5923,6 +6505,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -5931,6 +6516,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -5959,6 +6560,9 @@
       "type": "dark",
       "power": 3,
       "effect": "當目標下一次受到攻擊時，攻擊擲骰額外增加 1 次普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -5973,6 +6577,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -5988,6 +6593,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -6024,6 +6632,7 @@
       "type": "ground",
       "power": 2,
       "effect": "普通命中造成+1傷害。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -6059,6 +6668,7 @@
       "type": "fairy",
       "power": 1,
       "effect": "此招式造成的傷害等於目標當前生命值的一半，向上取整。如果上回合使用過此招式，則本回合無法使用。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6068,26 +6678,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -6096,6 +6694,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "妙蛙花",
         "slot_label": "來自妙蛙花"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -6125,6 +6739,7 @@
       "type": "fairy",
       "power": 1,
       "effect": "此招式造成的傷害等於目標當前生命值的一半，向上取整。如果上回合使用過此招式，則本回合無法使用。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6134,34 +6749,22 @@
     },
     "learned_moves": [
       {
-        "name": "電球",
-        "name_en": "Electro Ball",
-        "type": "electric",
-        "power": 1,
-        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "皮卡丘",
-        "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "精神強念",
@@ -6169,6 +6772,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -6177,6 +6781,24 @@
         "aoe_zh": "範圍攻擊",
         "learned_from": "超夢",
         "slot_label": "來自超夢"
+      },
+      {
+        "name": "電球",
+        "name_en": "Electro Ball",
+        "type": "electric",
+        "power": 1,
+        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "皮卡丘",
+        "slot_label": "來自皮卡丘"
       }
     ]
   },
@@ -6206,6 +6828,7 @@
       "type": "fairy",
       "power": 1,
       "effect": "此招式造成的傷害等於目標當前生命值的一半，向上取整。如果上回合使用過此招式，則本回合無法使用。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6215,11 +6838,28 @@
     },
     "learned_moves": [
       {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -6235,6 +6875,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -6243,21 +6886,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "精神強念",
-        "name_en": "Psychic",
-        "type": "psychic",
-        "power": 5,
-        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "AOE_CENTER",
-        "aoe_radius": 1,
-        "distance_zh": "遠距",
-        "aoe_zh": "範圍攻擊",
-        "learned_from": "超夢",
-        "slot_label": "來自超夢"
       }
     ]
   },
@@ -6287,6 +6915,7 @@
       "type": "fairy",
       "power": 1,
       "effect": "此招式造成的傷害等於目標當前生命值的一半，向上取整。如果上回合使用過此招式，則本回合無法使用。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6301,6 +6930,9 @@
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -6337,6 +6969,7 @@
       "type": "fire",
       "power": 3,
       "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -6346,34 +6979,20 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
+        "name": "噴射火焰",
+        "name_en": "Flamethrower",
         "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
+        "power": 4,
+        "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "噴火龍",
+        "slot_label": "來自噴火龍"
       },
       {
         "name": "終極衝擊",
@@ -6381,6 +7000,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -6389,6 +7011,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -6417,6 +7055,7 @@
       "type": "grass",
       "power": 5,
       "effect": "此招式的屬性可以變為此寶可夢的第二屬性。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6426,34 +7065,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -6461,6 +7088,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -6469,6 +7099,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -6498,6 +7144,9 @@
       "type": "rock",
       "power": 3,
       "effect": "如果擲出任何擊中要害：使用者的攻擊擲骰增加1個擊中要害與1個狀態標誌。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "SELF_ORIGIN",
@@ -6512,6 +7161,7 @@
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -6527,6 +7177,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -6564,6 +7217,9 @@
       "type": "ground",
       "power": 1,
       "effect": "當目標下次攻擊時：攻擊強度降低1點。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6573,26 +7229,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -6608,6 +7252,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -6616,6 +7263,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -6645,6 +7308,7 @@
       "type": "poison",
       "power": 4,
       "effect": "擊中要害造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6654,19 +7318,22 @@
     },
     "learned_moves": [
       {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 6,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
       },
       {
         "name": "終極衝擊",
@@ -6674,6 +7341,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -6684,19 +7354,22 @@
         "slot_label": "來自卡比獸"
       },
       {
-        "name": "污泥炸彈",
-        "name_en": "Sludge Bomb",
-        "type": "poison",
-        "power": 5,
-        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 6,
+        "range_tiles": 4,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "耿鬼",
-        "slot_label": "來自耿鬼"
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -6726,6 +7399,7 @@
       "type": "poison",
       "power": 3,
       "effect": "如果目標有任何異常狀態：造成雙倍傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6735,26 +7409,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -6770,6 +7432,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -6778,6 +7443,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -6807,6 +7488,9 @@
       "type": "ice",
       "power": 4,
       "effect": "此招式的擲骰增加1個擊中要害。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6842,6 +7526,10 @@
       "type": "water",
       "power": 4,
       "effect": "",
+      "archetypes": [
+        "DELAY 1",
+        "PROTECT"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6851,11 +7539,30 @@
     },
     "learned_moves": [
       {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -6871,6 +7578,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -6879,21 +7589,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "污泥炸彈",
-        "name_en": "Sludge Bomb",
-        "type": "poison",
-        "power": 5,
-        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "耿鬼",
-        "slot_label": "來自耿鬼"
       }
     ]
   },
@@ -6923,6 +7618,9 @@
       "type": "fire",
       "power": 4,
       "effect": "此招式的擲骰增加2個普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -6932,34 +7630,20 @@
     },
     "learned_moves": [
       {
-        "name": "火花",
-        "name_en": "Ember",
+        "name": "噴射火焰",
+        "name_en": "Flamethrower",
         "type": "fire",
-        "power": 2,
-        "effect": "對目標施加灼傷狀態。",
+        "power": 4,
+        "effect": "如果擲出任何狀態標誌：對目標施加灼傷狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 3,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "小火龍",
-        "slot_label": "來自小火龍"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "噴火龍",
+        "slot_label": "來自噴火龍"
       },
       {
         "name": "終極衝擊",
@@ -6967,6 +7651,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -6975,6 +7662,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "power": 2,
+        "effect": "對目標施加灼傷狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 3,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "小火龍",
+        "slot_label": "來自小火龍"
       }
     ]
   },
@@ -7004,6 +7707,9 @@
       "type": "rock",
       "power": 3,
       "effect": "如果擲出任何擊中要害：使用者的攻擊擲骰增加1個擊中要害與1個狀態標誌。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "SELF_ORIGIN",
@@ -7013,11 +7719,28 @@
     },
     "learned_moves": [
       {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -7033,6 +7756,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -7041,21 +7767,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "精神強念",
-        "name_en": "Psychic",
-        "type": "psychic",
-        "power": 5,
-        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "AOE_CENTER",
-        "aoe_radius": 1,
-        "distance_zh": "遠距",
-        "aoe_zh": "範圍攻擊",
-        "learned_from": "超夢",
-        "slot_label": "來自超夢"
       }
     ]
   },
@@ -7085,6 +7796,9 @@
       "type": "grass",
       "power": 4,
       "effect": "當使用者下次受到攻擊時：從擲骰中移除最多2個非狀態標誌的骰子。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -7094,26 +7808,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -7129,6 +7831,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -7137,6 +7842,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -7166,6 +7887,9 @@
       "type": "ground",
       "power": 4,
       "effect": "當使用者下次受到攻擊時：從擲骰中移除最多2個非擊中要害的骰子。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -7201,6 +7925,7 @@
       "type": "steel",
       "power": 3,
       "effect": "狀態標誌造成+1傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "MELEE",
@@ -7215,6 +7940,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -7252,6 +7978,7 @@
       "type": "steel",
       "power": 1,
       "effect": "攻擊強度等於使用者基礎生命值的一半，向下取整（最大攻擊強度6）。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "SELF_ORIGIN",
@@ -7266,6 +7993,7 @@
         "type": "dragon",
         "power": 5,
         "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -7302,6 +8030,7 @@
       "type": "psychic",
       "power": 2,
       "effect": "對目標施加混亂狀態。",
+      "archetypes": [],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "AOE_CENTER",
@@ -7311,11 +8040,28 @@
     },
     "learned_moves": [
       {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
         "name": "水炮",
         "name_en": "Hydro Pump",
         "type": "water",
         "power": 5,
         "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -7331,6 +8077,9 @@
         "type": "water",
         "power": 1,
         "effect": "每次使用此招式時：從對使用者的攻擊擲骰中移除1個普通命中。",
+        "archetypes": [
+          "MODIFY"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -7339,21 +8088,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "傑尼龜",
         "slot_label": "來自傑尼龜"
-      },
-      {
-        "name": "精神強念",
-        "name_en": "Psychic",
-        "type": "psychic",
-        "power": 5,
-        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 6,
-        "aoe_type": "AOE_CENTER",
-        "aoe_radius": 1,
-        "distance_zh": "遠距",
-        "aoe_zh": "範圍攻擊",
-        "learned_from": "超夢",
-        "slot_label": "來自超夢"
       }
     ]
   },
@@ -7382,6 +8116,9 @@
       "type": "dragon",
       "power": 4,
       "effect": "選擇1項：當使用者下次攻擊時：擲骰增加1個普通命中或當使用者下次受到攻擊時：擲骰移除1個普通命中。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "LONG",
       "range_tiles": 6,
       "aoe_type": "SELF_ORIGIN",
@@ -7391,41 +8128,14 @@
     },
     "learned_moves": [
       {
-        "name": "水炮",
-        "name_en": "Hydro Pump",
-        "type": "water",
-        "power": 5,
-        "effect": "若擲出2個或更多狀態標誌：對目標施加混亂狀態。",
-        "distance_band": "LONG",
-        "range_tiles": 5,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "水箭龜",
-        "slot_label": "來自水箭龜"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -7434,6 +8144,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "逆鱗",
+        "name_en": "Outrage",
+        "type": "dragon",
+        "power": 5,
+        "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "快龍",
+        "slot_label": "來自快龍"
+      },
+      {
+        "name": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 4,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "伊布",
+        "slot_label": "來自伊布"
       }
     ]
   },
@@ -7462,6 +8206,7 @@
       "type": "normal",
       "power": 1,
       "effect": "為任意場上寶可夢回復4點傷害。若此招式在上一回合已使用過：攻擊強度提高3點，但僅回復1點傷害。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -7471,41 +8216,14 @@
     },
     "learned_moves": [
       {
-        "name": "電球",
-        "name_en": "Electro Ball",
-        "type": "electric",
-        "power": 1,
-        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "皮卡丘",
-        "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
-      },
-      {
         "name": "終極衝擊",
         "name_en": "Giga Impact",
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -7514,6 +8232,40 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "power": 5,
+        "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "AOE_CENTER",
+        "aoe_radius": 1,
+        "distance_zh": "遠距",
+        "aoe_zh": "範圍攻擊",
+        "learned_from": "超夢",
+        "slot_label": "來自超夢"
+      },
+      {
+        "name": "電球",
+        "name_en": "Electro Ball",
+        "type": "electric",
+        "power": 1,
+        "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "皮卡丘",
+        "slot_label": "來自皮卡丘"
       }
     ]
   },
@@ -7543,6 +8295,9 @@
       "type": "fairy",
       "power": 4,
       "effect": "對目標施加混亂狀態。",
+      "archetypes": [
+        "SONG"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -7557,6 +8312,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -7593,6 +8351,9 @@
       "type": "fairy",
       "power": 1,
       "effect": "當使用者下次受到攻擊時：擲骰移除1個擊中要害。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "AOE_CENTER",
@@ -7602,11 +8363,50 @@
     },
     "learned_moves": [
       {
+        "name": "日光束",
+        "name_en": "Solar Beam",
+        "type": "grass",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
+      },
+      {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "電球",
         "name_en": "Electro Ball",
         "type": "electric",
         "power": 1,
         "effect": "攻擊強度等於使用者當前先攻的一半，向下取整（最大攻擊強度6）。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "MELEE",
@@ -7615,36 +8415,6 @@
         "aoe_zh": "單體近戰",
         "learned_from": "皮卡丘",
         "slot_label": "來自皮卡丘"
-      },
-      {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "LONG",
-        "range_tiles": 4,
-        "aoe_type": "RANGED",
-        "aoe_radius": 0,
-        "distance_zh": "遠距",
-        "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
       }
     ]
   },
@@ -7673,6 +8443,9 @@
       "type": "grass",
       "power": 1,
       "effect": "對目標施加瞌睡狀態。如果目標已經瞌睡：攻擊強度提高2點。",
+      "archetypes": [
+        "SONG"
+      ],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -7682,34 +8455,22 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
         "name": "終極衝擊",
@@ -7717,6 +8478,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -7725,6 +8489,22 @@
         "aoe_zh": "自身範圍",
         "learned_from": "卡比獸",
         "slot_label": "來自卡比獸"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   },
@@ -7753,6 +8533,9 @@
       "type": "grass",
       "power": 6,
       "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+      "archetypes": [
+        "DELAY 1"
+      ],
       "distance_band": "LONG",
       "range_tiles": 5,
       "aoe_type": "RANGED",
@@ -7762,11 +8545,30 @@
     },
     "learned_moves": [
       {
+        "name": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "power": 7,
+        "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
+        "distance_band": "SHORT",
+        "range_tiles": 2,
+        "aoe_type": "SELF_ORIGIN",
+        "aoe_radius": 1,
+        "distance_zh": "近距",
+        "aoe_zh": "自身範圍",
+        "learned_from": "卡比獸",
+        "slot_label": "來自卡比獸"
+      },
+      {
         "name": "藤鞭",
         "name_en": "Vine Whip",
         "type": "grass",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
         "distance_band": "SHORT",
         "range_tiles": 1,
         "aoe_type": "MELEE",
@@ -7782,6 +8584,9 @@
         "type": "normal",
         "power": 2,
         "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [
+          "MULTI"
+        ],
         "distance_band": "LONG",
         "range_tiles": 4,
         "aoe_type": "RANGED",
@@ -7790,21 +8595,6 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "伊布",
         "slot_label": "來自伊布"
-      },
-      {
-        "name": "終極衝擊",
-        "name_en": "Giga Impact",
-        "type": "normal",
-        "power": 7,
-        "effect": "",
-        "distance_band": "SHORT",
-        "range_tiles": 2,
-        "aoe_type": "SELF_ORIGIN",
-        "aoe_radius": 1,
-        "distance_zh": "近距",
-        "aoe_zh": "自身範圍",
-        "learned_from": "卡比獸",
-        "slot_label": "來自卡比獸"
       }
     ]
   },
@@ -7833,6 +8623,9 @@
       "type": "grass",
       "power": 5,
       "effect": "本次攻擊期間以及當使用者下次受到攻擊時：狀態標誌造成+1傷害。",
+      "archetypes": [
+        "MODIFY"
+      ],
       "distance_band": "LONG",
       "range_tiles": 3,
       "aoe_type": "RANGED",
@@ -7842,34 +8635,40 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 5,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
       },
       {
-        "name": "逆鱗",
-        "name_en": "Outrage",
-        "type": "dragon",
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
         "power": 5,
-        "effect": "對使用者施加混亂狀態。使用者在此攻擊中承受的任何傷害也會對目標造成。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
         "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "快龍",
-        "slot_label": "來自快龍"
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
       },
       {
         "name": "精神強念",
@@ -7877,6 +8676,7 @@
         "type": "psychic",
         "power": 5,
         "effect": "如果擲出2個或更多狀態標誌：對目標施加混亂狀態。",
+        "archetypes": [],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "AOE_CENTER",
@@ -7913,6 +8713,7 @@
       "type": "normal",
       "power": 4,
       "effect": "回復2點傷害。若此招式在上一回合已使用過：攻擊強度降低2點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 2,
       "aoe_type": "MELEE",
@@ -7922,34 +8723,40 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
+        "name": "日光束",
+        "name_en": "Solar Beam",
         "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
-        "name": "高速星星",
-        "name_en": "Swift",
-        "type": "normal",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
+        "power": 6,
+        "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
-        "range_tiles": 4,
+        "range_tiles": 5,
         "aoe_type": "RANGED",
         "aoe_radius": 0,
         "distance_zh": "遠距",
         "aoe_zh": "遠程射擊",
-        "learned_from": "伊布",
-        "slot_label": "來自伊布"
+        "learned_from": "妙蛙花",
+        "slot_label": "來自妙蛙花"
+      },
+      {
+        "name": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "power": 5,
+        "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
+        "distance_band": "LONG",
+        "range_tiles": 6,
+        "aoe_type": "RANGED",
+        "aoe_radius": 0,
+        "distance_zh": "遠距",
+        "aoe_zh": "遠程射擊",
+        "learned_from": "耿鬼",
+        "slot_label": "來自耿鬼"
       },
       {
         "name": "終極衝擊",
@@ -7957,6 +8764,9 @@
         "type": "normal",
         "power": 7,
         "effect": "",
+        "archetypes": [
+          "RECHARGE 4"
+        ],
         "distance_band": "SHORT",
         "range_tiles": 2,
         "aoe_type": "SELF_ORIGIN",
@@ -7994,6 +8804,7 @@
       "type": "grass",
       "power": 1,
       "effect": "對目標施加麻痺狀態。如果目標已經麻痺：攻擊強度提高2點。",
+      "archetypes": [],
       "distance_band": "SHORT",
       "range_tiles": 1,
       "aoe_type": "RANGED",
@@ -8003,26 +8814,14 @@
     },
     "learned_moves": [
       {
-        "name": "藤鞭",
-        "name_en": "Vine Whip",
-        "type": "grass",
-        "power": 2,
-        "effect": "狀態標誌造成+1傷害。",
-        "distance_band": "SHORT",
-        "range_tiles": 1,
-        "aoe_type": "MELEE",
-        "aoe_radius": 0,
-        "distance_zh": "近距",
-        "aoe_zh": "單體近戰",
-        "learned_from": "妙蛙種子",
-        "slot_label": "來自妙蛙種子"
-      },
-      {
         "name": "日光束",
         "name_en": "Solar Beam",
         "type": "grass",
         "power": 6,
         "effect": "如果此招式在大晴天時使用：無視延遲。如果在下雨、冰雹或沙暴時使用：攻擊強度降低3點。",
+        "archetypes": [
+          "DELAY 1"
+        ],
         "distance_band": "LONG",
         "range_tiles": 5,
         "aoe_type": "RANGED",
@@ -8038,6 +8837,9 @@
         "type": "poison",
         "power": 5,
         "effect": "狀態標誌造成+1傷害。如果擲出任何狀態標誌：對目標施加中毒狀態。",
+        "archetypes": [
+          "BOMB"
+        ],
         "distance_band": "LONG",
         "range_tiles": 6,
         "aoe_type": "RANGED",
@@ -8046,6 +8848,22 @@
         "aoe_zh": "遠程射擊",
         "learned_from": "耿鬼",
         "slot_label": "來自耿鬼"
+      },
+      {
+        "name": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "power": 2,
+        "effect": "狀態標誌造成+1傷害。",
+        "archetypes": [],
+        "distance_band": "SHORT",
+        "range_tiles": 1,
+        "aoe_type": "MELEE",
+        "aoe_radius": 0,
+        "distance_zh": "近距",
+        "aoe_zh": "單體近戰",
+        "learned_from": "妙蛙種子",
+        "slot_label": "來自妙蛙種子"
       }
     ]
   }

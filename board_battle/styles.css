@@ -13,6 +13,14 @@
   --hp: #5ce0a8;
   --hp-low: #ff8a65;
   --used: #555d7a;
+  --terrain-plain: #2a314a;
+  --terrain-forest: #1f3d2e;
+  --terrain-water: #1a3555;
+  --terrain-rock: #3a3540;
+  --terrain-sand: #4a4030;
+  --terrain-ice: #3a4a5a;
+  --terrain-electric: #3a3550;
+  --terrain-cave: #252030;
 }
 
 * { box-sizing: border-box; }
@@ -202,15 +210,27 @@ button:disabled { opacity: 0.38; cursor: not-allowed; }
 }
 
 .cell {
-  background: #2a314a;
+  background: var(--terrain-plain);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: relative;
-  transition: background 0.12s;
+  transition: background 0.12s, filter 0.12s;
 }
+
+.cell.terrain-plain { background: var(--terrain-plain); }
+.cell.terrain-forest { background: var(--terrain-forest); }
+.cell.terrain-water { background: var(--terrain-water); }
+.cell.terrain-rock { background: var(--terrain-rock); }
+.cell.terrain-sand { background: var(--terrain-sand); }
+.cell.terrain-ice { background: var(--terrain-ice); }
+.cell.terrain-electric { background: var(--terrain-electric); }
+.cell.terrain-cave { background: var(--terrain-cave); }
+.cell.blocked { cursor: not-allowed; opacity: 0.7; }
+.cell.selected-cell { outline: 2px solid #fff; z-index: 1; }
+.cell.active-turn { box-shadow: inset 0 0 0 2px #ffd166; }
 
 .cell:hover:not(.blocked) { filter: brightness(1.12); }
 .cell.move-range { background: var(--highlight-move); }
@@ -311,3 +331,146 @@ button:disabled { opacity: 0.38; cursor: not-allowed; }
   font-size: 0.72rem;
   margin-right: 0.2rem;
 }
+
+.initiative-track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.init-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 6px;
+  border: 2px solid var(--grid);
+  background: #252d45;
+  font-size: 0.68rem;
+}
+
+.init-chip.active {
+  background: #3a4a70;
+  box-shadow: 0 0 0 1px #ffd166;
+}
+
+.init-chip img {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+}
+
+.init-chip small {
+  color: var(--muted);
+  margin-left: 0.15rem;
+}
+
+.trainer-ability {
+  display: block;
+  font-size: 0.62rem;
+  color: #ffd166;
+  margin-top: 0.15rem;
+}
+
+.move-slot .arch {
+  font-size: 0.6rem;
+  color: #a78bfa;
+}
+
+.token-shield {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 0.7rem;
+}
+
+.dice-panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  max-height: 100px;
+  overflow-y: auto;
+  font-size: 0.78rem;
+  color: #ffd166;
+}
+
+.setup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 20, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.setup-card {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 1.5rem;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.setup-card h2 { margin: 0 0 0.5rem; }
+.setup-desc { color: var(--muted); font-size: 0.85rem; margin: 0 0 1rem; }
+
+.setup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.85rem;
+}
+
+.setup-field select {
+  padding: 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--grid);
+  background: #252d45;
+  color: var(--text);
+}
+
+.setup-check {
+  flex-direction: row;
+  align-items: center;
+}
+
+.setup-trainers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: #252d45;
+  border-radius: 8px;
+}
+
+.setup-trainer-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.btn-start {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #2ecc71;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-start:hover { filter: brightness(1.1); }
+
+#btn-ability { background: #e67e22; flex-basis: 100%; }
