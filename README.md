@@ -252,6 +252,50 @@ A: 可以，只跑對應的 `main_*.py`，只上傳該類 decks，再只匯入�
 
 ---
 
+## ZA 招式距離／AOE 與棋盤戰鬥
+
+本倉庫已整合 [Pokémon Legends Z-A](https://github.com/projectpokemon/za-textport) 的招式參數（`waza_param_array.json`），用於：
+
+1. **招式卡額外標示**：近距／遠距、棋盤格數、AOE 類型（產牌時自動顯示在招式名稱下方）
+2. **棋盤戰鬥原型**：`board_battle/` 目錄下的網頁小遊戲
+
+### 建立／更新 ZA 資料
+
+```powershell
+python tools/build_za_move_data.py
+```
+
+會產生：
+
+| 檔案 | 用途 |
+|------|------|
+| `Card Generator/data/za_move_lookup.json` | 中英文招式名 → ZA 射程／AOE |
+| `board_battle/data/moves.json` | 棋盤戰鬥招式表 |
+| `board_battle/data/pokemon_roster.json` | 可選寶可夢清單 |
+
+### 啟動棋盤戰鬥（本機預覽）
+
+```powershell
+cd board_battle
+python -m http.server 8765
+```
+
+瀏覽器開啟 http://localhost:8765
+
+**玩法概要**：8×8 棋盤、雙方各 3 隻寶可夢；每回合可移動一格或使用招牌招式攻擊。攻擊範圍與 AOE 形狀依 ZA 資料（`range_tiles`、`aoe_type`）計算。
+
+### ZA 欄位說明
+
+| 欄位 | 說明 |
+|------|------|
+| `za_distance_band` | `SHORT`（近距）／`LONG`（遠距） |
+| `za_board_range` | 換算成棋盤格數（1–6） |
+| `za_aoe_type` | `MELEE`、`RANGED`、`AOE_CENTER`、`SELF_ORIGIN` 等 |
+
+資料來源：Project Pokémon za-textport、PokeAPI 招式名對照。
+
+---
+
 ## 快速檢查清單
 
 - [ ] 安裝 Python／venv 與 `requirements.txt`  

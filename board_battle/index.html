@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johto War · ZA 棋盤戰鬥</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Johto War · ZA 棋盤戰鬥</h1>
+    <p class="subtitle">招式距離與 AOE 來自 Pokémon Legends Z-A 資料</p>
+  </header>
+
+  <main>
+    <section class="sidebar">
+      <div class="panel" id="turn-panel">
+        <h2>回合</h2>
+        <p id="turn-label">載入中…</p>
+        <p id="phase-label"></p>
+      </div>
+
+      <div class="panel" id="unit-panel">
+        <h2>選中單位</h2>
+        <div id="unit-info">點選己方寶可夢</div>
+      </div>
+
+      <div class="panel" id="move-panel">
+        <h2>招式（ZA）</h2>
+        <div id="move-info">—</div>
+      </div>
+
+      <div class="panel actions">
+        <button id="btn-move" type="button" disabled>移動</button>
+        <button id="btn-attack" type="button" disabled>攻擊</button>
+        <button id="btn-end" type="button" disabled>結束回合</button>
+        <button id="btn-restart" type="button">重新開始</button>
+      </div>
+
+      <div class="panel log-panel">
+        <h2>戰報</h2>
+        <ul id="log"></ul>
+      </div>
+    </section>
+
+    <section class="board-wrap">
+      <div id="board" class="board" aria-label="8x8 棋盤"></div>
+      <p class="hint">移動：相鄰一格 · 攻擊：依 ZA 射程與 AOE 類型判定命中範圍</p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
