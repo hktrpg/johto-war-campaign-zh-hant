@@ -252,6 +252,92 @@ A: 可以，只跑對應的 `main_*.py`，只上傳該類 decks，再只匯入�
 
 ---
 
+## D&D 戰棋印卡（本倉庫主要目標）
+
+這是 **印卡用 repo**，不是完整線上版桌遊。重點是在既有 Johto War 寶可夢卡上，**美觀地多印一點 D&D 版棋盤戰鬥必備資訊**：
+
+| 印製內容 | 位置 |
+|----------|------|
+| 近距／遠距、棋盤 **射程格數** | 招式條 + 卡面底部戰鬥列 |
+| **AOE 類型**（含範圍半徑） | 同上 |
+| **攻擊強度 = d6 顆數**（卡上標 `Xd6`） | 招式條右上角 + 戰鬥列 |
+
+整合 [Pokémon Legends Z-A](https://github.com/projectpokemon/za-textport) 的 `waza_param_array.json`；若 lookup 無該招，會依招式屬性印 **（估）** 預設射程／AOE，仍可上桌。
+
+### 產生 Pokémon 卡面
+
+```powershell
+python tools/build_za_move_data.py
+cd "Card Generator\card_generator"
+python main_pokemon.py
+```
+
+輸出路徑：`Card Generator/card_generator/output/pokemon/card_fronts/`（例如 `45_metapod.png`）。
+
+**10 張 D&D 示範卡（快速）：**
+
+```powershell
+python tools/build_za_move_data.py
+python tools/generate_demo_cards.py
+```
+
+輸出：`Card Generator/card_generator/output/pokemon/demo/`；並同步到 `demo_cards/dnd_pokemon/`（可提交 git 的示範檔）。
+
+流程：先產 **招式條**（`output/pokemon/moves/`），再合成到 **卡正面**；卡面在立繪下方會多一條 **D&D 戰鬥列**，招式區本身也含射程／AOE／d6。
+
+---
+
+## 網頁對戰（選用 · 測試用）
+
+`board_battle/` 是 **簡易對戰沙盒**：方便驗證 ZA 射程／AOE 與 **屬性相性**，不是神奧之心開放世界桌遊的數位版。
+
+### 建立／更新 ZA 資料
+
+```powershell
+python tools/build_za_move_data.py
+```
+
+會產生：
+
+| 檔案 | 用途 |
+|------|------|
+| `Card Generator/data/za_move_lookup.json` | 中英文招式名 → ZA 射程／AOE |
+| `board_battle/data/moves.json` | 棋盤戰鬥招式表 |
+| `board_battle/data/pokemon_roster.json` | 可選寶可夢清單 |
+
+### 啟動棋盤戰鬥（本機預覽）
+
+```powershell
+cd board_battle
+python -m http.server 8765
+```
+
+瀏覽器開啟 http://localhost:8765
+
+**玩法概要**：
+
+- 最多 **6 位訓練家**，每人帶 **1–4 隻**寶可夢；支援 **團戰**、**自由混戰**、**DM+玩家** 三種模式
+- 每隻寶可夢 **獨立先攻** 排序行動；訓練家各有獨立能力（如阿速順風、小茜靈魂之吼）
+- **攻擊骰**：威力 = 投擲 d6 數量，**4/5/6 為成功**，成功數 × 屬性相性 = 傷害
+- **HP** 歸零立即倒地退場，**無法復活**；**體力** 6 點（出招 −1，回氣 −2）
+- **四招式**：槽 1 招牌招；槽 2–4 疊卡學招；招式原型（PROTECT、MULTI、DELAY 等）影響戰鬥
+- **隨機地形**：森林掩護、水域限制、岩石阻擋、冰面/電磁/洞穴屬性加成
+- 射程/AOE 依 ZA 資料
+
+執行 `python tools/build_za_move_data.py` 會同時連結 `board_battle/assets/pokemon/` 立繪。
+
+### ZA 欄位說明
+
+| 欄位 | 說明 |
+|------|------|
+| `za_distance_band` | `SHORT`（近距）／`LONG`（遠距） |
+| `za_board_range` | 換算成棋盤格數（1–6） |
+| `za_aoe_type` | `MELEE`、`RANGED`、`AOE_CENTER`、`SELF_ORIGIN` 等 |
+
+資料來源：Project Pokémon za-textport、PokeAPI 招式名對照。
+
+---
+
 ## 快速檢查清單
 
 - [ ] 安裝 Python／venv 與 `requirements.txt`  

@@ -4,6 +4,7 @@ from tqdm import tqdm
 
 from config import *
 from utils import xy, read_cube, get_img, wrapped_text, text_font, title_font, bold_font, resolve_move_effect
+from za_card_render import add_za_badge
 
 # pandas used for na checks in archetype rendering
 
@@ -107,6 +108,7 @@ def generate_moves(overwrite):
 
         img = get_base()
         add_header(img, stats)
+        add_za_badge(img, stats)
         add_description(img, stats)
         img.save(output_path)
 

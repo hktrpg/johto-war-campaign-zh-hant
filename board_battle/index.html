@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johto War · ZA 棋盤戰鬥</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="setup-overlay" class="setup-overlay">
+    <div class="setup-card">
+      <h2>戰前設定</h2>
+      <p class="setup-desc">選擇對戰模式、訓練家與隊伍規則。HP 歸零立即退場，無法復活。</p>
+
+      <label class="setup-field">
+        <span>對戰模式</span>
+        <select id="setup-mode">
+          <option value="team">團戰（分陣對抗）</option>
+          <option value="ffa">自由混戰（各自為戰）</option>
+          <option value="dm">DM + 玩家（1 DM + 最多 5 玩家）</option>
+        </select>
+      </label>
+
+      <label class="setup-field">
+        <span>每位訓練家寶可夢數</span>
+        <select id="setup-party-size">
+          <option value="1">1 隻</option>
+          <option value="2">2 隻</option>
+          <option value="3" selected>3 隻</option>
+          <option value="4">4 隻</option>
+        </select>
+      </label>
+
+      <label class="setup-field setup-check">
+        <input type="checkbox" id="setup-terrain" checked />
+        <span>隨機生成地形</span>
+      </label>
+
+      <div class="setup-field">
+        <span>訓練家（最多 6 位，各有獨立能力）</span>
+        <div id="setup-trainers" class="setup-trainers"></div>
+      </div>
+
+      <button id="btn-start-battle" type="button" class="btn-start">開始對戰</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>Johto War · ZA 棋盤戰鬥</h1>
+    <p class="subtitle">測試用沙盒 · 查屬性相性 · 驗證 ZA 射程／AOE（非完整桌遊）</p>
+  </header>
+
+  <main>
+    <section class="sidebar">
+      <div class="panel" id="turn-panel">
+        <h2>回合</h2>
+        <p id="turn-label">載入中…</p>
+        <p id="phase-label"></p>
+        <div id="initiative-track" class="initiative-track" aria-label="先攻順序"></div>
+      </div>
+
+      <div class="panel" id="trainers-wrap">
+        <h2>訓練家（最多 6 位）</h2>
+        <div id="trainers-panel" class="trainers-grid"></div>
+      </div>
+
+      <div class="panel" id="unit-panel">
+        <h2>行動中寶可夢</h2>
+        <div id="unit-portrait" class="portrait-wrap empty">—</div>
+        <div id="unit-info">等待行動</div>
+        <div class="stat-bars" id="stat-bars" hidden>
+          <div class="stat-row">
+            <span class="stat-label">HP</span>
+            <div class="hp-bar"><div id="hp-fill" class="hp-fill"></div></div>
+            <span id="hp-text" class="stat-val"></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">體力</span>
+            <div class="stamina-bar"><div id="stamina-fill" class="stamina-fill"></div></div>
+            <span id="stamina-text" class="stat-val"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="move-panel">
+        <h2>四招式 <span class="hint-inline">（首招招牌 · 後三招疊卡學會）</span></h2>
+        <div id="move-slots" class="move-slots"></div>
+        <div id="move-detail" class="move-detail">—</div>
+      </div>
+
+      <div class="panel" id="learn-panel" hidden>
+        <h2>疊卡學招</h2>
+        <p class="hint-inline">疊同訓練家隊內的寶可夢卡（相同可學屬性）</p>
+        <div id="learn-options" class="learn-options"></div>
+      </div>
+
+      <div class="panel actions">
+        <button id="btn-move" type="button" disabled>移動</button>
+        <button id="btn-attack" type="button" disabled>出招 (−1體力)</button>
+        <button id="btn-recharge" type="button" disabled>回氣 (−2體力)</button>
+        <button id="btn-learn" type="button" disabled>疊卡學招</button>
+        <button id="btn-ability" type="button" disabled>訓練家能力</button>
+        <button id="btn-end" type="button">跳過行動</button>
+        <button id="btn-restart" type="button">重新設定</button>
+      </div>
+
+      <div class="panel dice-panel">
+        <h2>骰子紀錄</h2>
+        <ul id="dice-log"></ul>
+      </div>
+
+      <div class="panel rules-panel">
+        <h2>規則</h2>
+        <ul class="rules">
+          <li><strong>攻擊</strong>：威力 = 投擲 d6 數量，4/5/6 為成功，成功數 × 屬性相性 = 傷害</li>
+          <li><strong>先攻</strong>：每隻寶可夢獨立排序行動（訓練家能力可修正）</li>
+          <li><strong>HP</strong>：歸零立即倒地退場，<strong>無法復活</strong></li>
+          <li><strong>體力</strong>：每隻 6 點，出招 −1，四招用光後花 2 體力回氣</li>
+          <li><strong>地形</strong>：森林掩護、水域限制、岩石阻擋、冰面/電磁/洞穴加成</li>
+          <li>模式：<strong>團戰</strong> / <strong>自由混戰</strong> / <strong>DM+玩家</strong></li>
+        </ul>
+      </div>
+
+      <div class="panel log-panel">
+        <h2>戰報</h2>
+        <ul id="log"></ul>
+      </div>
+    </section>
+
+    <section class="board-wrap">
+      <div id="board" class="board" aria-label="8x8 棋盤"></div>
+      <p class="hint">每隻寶可夢依先攻輪流行動 · 選招式後攻擊或移動</p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

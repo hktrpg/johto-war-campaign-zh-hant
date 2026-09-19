@@ -16,3 +16,7 @@ Card Generator/**/*_backup/
 tools/__pycache__/
 **/__pycache__/
 *.pyc
+
+# Board battle sprites (symlinked by tools/build_za_move_data.py)
+board_battle/assets/pokemon/
+board_battle/assets/trainers/

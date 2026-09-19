@@ -7,6 +7,7 @@ from tqdm import tqdm
 
 from config import *
 from utils import xy, read_cube, get_img, text_font, title_font, wrapped_text
+from za_card_render import add_pokemon_dnd_combat_bar
 
 
 #
@@ -145,8 +146,12 @@ def add_all_icons(img, stats):
     add_evolution_icon(img, stats)
 
 
+def _type_key(type_) -> str:
+    return str(type_).strip().lower()
+
+
 def get_types(stats):
-    return [type_ for type_ in (stats.type_1, stats.type_2) if not pd.isnull(type_)]
+    return [_type_key(type_) for type_ in (stats.type_1, stats.type_2) if not pd.isnull(type_)]
 
 
 def add_type_icons(img, stats):
@@ -158,7 +163,7 @@ def add_type_icons(img, stats):
 
 
 def get_learnable_types(stats):
-    return [move for move in (stats.move_1, stats.move_2, stats.move_3, stats.move_4) if not pd.isnull(move)]
+    return [_type_key(move) for move in (stats.move_1, stats.move_2, stats.move_3, stats.move_4) if not pd.isnull(move)]
 
 
 def add_learnable_type_icons(img, stats):
@@ -289,6 +294,7 @@ def run(overwrite=False):
         add_all_icons(img, stats)
 
         add_text(img, stats)
+        add_pokemon_dnd_combat_bar(img, stats)
         add_move(img, stats)
         add_emblem(img)
 
