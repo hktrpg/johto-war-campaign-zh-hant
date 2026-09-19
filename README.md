@@ -258,9 +258,9 @@ A: 可以，只跑對應的 `main_*.py`，只上傳該類 decks，再只匯入�
 
 | 印製內容 | 位置 |
 |----------|------|
-| 近距／遠距、棋盤 **射程格數** | 招式條 + 卡面底部戰鬥列 |
+| 近距／遠距、棋盤 **射程格數** | 招式條（招牌區下方一列，只印一次） |
 | **AOE 類型**（含範圍半徑） | 同上 |
-| **攻擊強度 = d6 顆數**（卡上標 `Xd6`） | 招式條右上角 + 戰鬥列 |
+| **攻擊強度**（= 攻擊骰顆數，規則固定 d6） | 招式條右上角數字 |
 
 整合 [Pokémon Legends Z-A](https://github.com/projectpokemon/za-textport) 的 `waza_param_array.json`；若 lookup 無該招，會依招式屬性印 **（估）** 預設射程／AOE，仍可上桌。
 
@@ -283,7 +283,7 @@ python tools/generate_demo_cards.py
 
 輸出：`Card Generator/card_generator/output/pokemon/demo/`；並同步到 `demo_cards/dnd_pokemon/`（可提交 git 的示範檔）。
 
-流程：先產 **招式條**（`output/pokemon/moves/`），再合成到 **卡正面**；卡面在立繪下方會多一條 **D&D 戰鬥列**，招式區本身也含射程／AOE／d6。
+流程：先產 **招式條**（`output/pokemon/moves/`），再合成到 **卡正面**；射程／AOE 只印在招式條上，不重複。
 
 ---
 

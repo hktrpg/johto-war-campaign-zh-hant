@@ -65,7 +65,6 @@ def generate_demo(overwrite: bool = True) -> list[Path]:
         generate_pokemon_front.add_all_bases(img, stats)
         generate_pokemon_front.add_all_icons(img, stats)
         generate_pokemon_front.add_text(img, stats)
-        generate_pokemon_front.add_pokemon_dnd_combat_bar(img, stats)
         generate_pokemon_front.add_move(img, stats)
         generate_pokemon_front.add_emblem(img)
         img.save(front_path)

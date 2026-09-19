@@ -7,7 +7,6 @@ from tqdm import tqdm
 
 from config import *
 from utils import xy, read_cube, get_img, text_font, title_font, wrapped_text
-from za_card_render import add_pokemon_dnd_combat_bar
 
 
 #
@@ -294,7 +293,6 @@ def run(overwrite=False):
         add_all_icons(img, stats)
 
         add_text(img, stats)
-        add_pokemon_dnd_combat_bar(img, stats)
         add_move(img, stats)
         add_emblem(img)
 
