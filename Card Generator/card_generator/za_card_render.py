@@ -1,60 +1,28 @@
-"""Render ZA distance / AOE on move strips (once per card; attack dice count is separate)."""
+"""ZA range / AOE markers on move strips (corner icons)."""
 
-from PIL import ImageDraw
+from __future__ import annotations
 
-from config import DARK_COLOUR
-from utils import text_font, xy, wrapped_text
+from config import ZA_BADGE_STYLE
+from za_board_icons import render_aoe_icon, render_range_icon
 from za_move_data import resolve_za_for_card
+from utils import xy
 
 
-def _format_range_aoe_label(za: dict) -> str:
-    aoe = za.get('za_aoe_zh', '—')
-    radius = int(za.get('za_aoe_radius') or 0)
-    if radius > 0:
-        aoe = f'{aoe}·半徑{radius}'
-    dist = za.get('za_distance_zh', '近距')
-    tiles = za.get('za_board_range', 2)
-    return f'{dist} {tiles}格 · {aoe}'
-
-
-def _draw_range_bar(d, label: str, center_xy, width_units: float, height_units: float, fallback: bool = False):
-    cx, cy = center_xy
-    bw, bh = xy(width_units, height_units)
-    left = int(cx - bw / 2)
-    top = int(cy - bh / 2)
-    outline = (160, 168, 188) if fallback else DARK_COLOUR
-    d.rounded_rectangle(
-        (left, top, left + bw, top + bh),
-        radius=8,
-        fill=(230, 235, 245, 220),
-        outline=outline,
-        width=1,
-    )
-    wrapped_text(
-        d,
-        label,
-        text_font(14, label),
-        boundaries=(width_units - 1.0, height_units - 0.12),
-        xy=(cx, cy),
-        fill=DARK_COLOUR,
-        anchor='mm',
-        align='center',
-    )
-
-
-def add_za_badge(img, stats) -> bool:
-    """Draw range + AOE once under move name on the move strip."""
+def add_za_badge(img, stats, style: str | None = None) -> bool:
+    """Bottom-left = range band + tiles; bottom-right = AOE type + radius."""
+    badge_style = style or ZA_BADGE_STYLE
     za = resolve_za_for_card(stats)
-    label = _format_range_aoe_label(za)
-    if za.get('za_fallback'):
-        label = f'（估）{label}'
-    d = ImageDraw.Draw(img)
-    _draw_range_bar(
-        d,
-        label,
-        center_xy=xy(7.25, 2.32),
-        width_units=12.5,
-        height_units=0.48,
-        fallback=bool(za.get('za_fallback')),
-    )
+    band = za.get('za_distance_band', 'SHORT')
+    tiles = int(za.get('za_board_range', 2) or 2)
+    aoe = za.get('za_aoe_type', 'MELEE')
+    radius = int(za.get('za_aoe_radius', 0) or 0)
+
+    size = 1.85 if badge_style == 'minimal' else 2.0
+    range_icon = render_range_icon(band, tiles, badge_style, size_units=size)
+    aoe_icon = render_aoe_icon(aoe, radius, badge_style, size_units=size)
+
+    # Move strip coords (14.5 × 7.5): sit above archetype strip, flush to corners.
+    y = 6.2
+    img.paste(range_icon, xy(0.15, y), range_icon)
+    img.paste(aoe_icon, xy(14.5 - size - 0.15, y), aoe_icon)
     return True

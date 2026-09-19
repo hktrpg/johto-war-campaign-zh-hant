@@ -1,0 +1,17 @@
+{
+  "styles": [
+    "corner",
+    "chip",
+    "minimal",
+    "dual-tone"
+  ],
+  "samples": [
+    "藤鞭",
+    "噴射火焰",
+    "污泥炸彈",
+    "終極衝擊",
+    "地震"
+  ],
+  "taxonomy": "Card Generator/data/za_board_taxonomy.json",
+  "notes": "Left icon = distance band + tiles; right icon = AOE shape + radius"
+}
