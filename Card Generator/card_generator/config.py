@@ -95,12 +95,31 @@ FONT_DIR = CARD_ASSETS_DIR / 'fonts'
 ORIENTAL_PATH = str(FONT_DIR / 'la_oriental.otf')
 BARLOW_PATH = str(FONT_DIR / 'barlow.ttf')
 BARLOW_BOLD_PATH = str(FONT_DIR / 'Barlow-Bold.ttf')
-# CJK body/title fallback (Windows): used when rendering Chinese cube text
-CJK_FONT_PATH = r'C:\Windows\Fonts\msyh.ttc'
-CJK_BOLD_FONT_PATH = r'C:\Windows\Fonts\msyhbd.ttc'
+def _first_font_path(*candidates: str) -> str:
+    for path in candidates:
+        if Path(path).is_file():
+            return path
+    return candidates[0]
+
+
+# CJK body/title fallback: Windows 雅黑 / Linux 文泉驛微米黑
+CJK_FONT_PATH = _first_font_path(
+    r'C:\Windows\Fonts\msyh.ttc',
+    '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
+)
+CJK_BOLD_FONT_PATH = _first_font_path(
+    r'C:\Windows\Fonts\msyhbd.ttc',
+    '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
+)
 # Microsoft JhengHei (正黑體) — QUEST effect body
-CJK_JH_FONT_PATH = r'C:\Windows\Fonts\msjh.ttc'
-CJK_JH_BOLD_FONT_PATH = r'C:\Windows\Fonts\msjhbd.ttc'
+CJK_JH_FONT_PATH = _first_font_path(
+    r'C:\Windows\Fonts\msjh.ttc',
+    '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
+)
+CJK_JH_BOLD_FONT_PATH = _first_font_path(
+    r'C:\Windows\Fonts\msjhbd.ttc',
+    '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
+)
 
 # Colours
 DARK_COLOUR = (37, 37, 50)

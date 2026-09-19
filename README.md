@@ -274,6 +274,15 @@ python main_pokemon.py
 
 輸出路徑：`Card Generator/card_generator/output/pokemon/card_fronts/`（例如 `45_metapod.png`）。
 
+**10 張 D&D 示範卡（快速）：**
+
+```powershell
+python tools/build_za_move_data.py
+python tools/generate_demo_cards.py
+```
+
+輸出：`Card Generator/card_generator/output/pokemon/demo/`；並同步到 `demo_cards/dnd_pokemon/`（可提交 git 的示範檔）。
+
 流程：先產 **招式條**（`output/pokemon/moves/`），再合成到 **卡正面**；卡面在立繪下方會多一條 **D&D 戰鬥列**，招式區本身也含射程／AOE／d6。
 
 ---

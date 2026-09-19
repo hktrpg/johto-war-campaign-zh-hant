@@ -1,0 +1,72 @@
+[
+  {
+    "row": 0,
+    "name": "妙蛙種子",
+    "move": "藤鞭",
+    "attack_dice": "2",
+    "file": "demo_0000_妙蛙種子.png"
+  },
+  {
+    "row": 20,
+    "name": "小火龍",
+    "move": "火花",
+    "attack_dice": "2",
+    "file": "demo_0020_小火龍.png"
+  },
+  {
+    "row": 24,
+    "name": "噴火龍",
+    "move": "噴射火焰",
+    "attack_dice": "4",
+    "file": "demo_0024_噴火龍.png"
+  },
+  {
+    "row": 32,
+    "name": "傑尼龜",
+    "move": "縮入殼中",
+    "attack_dice": "1",
+    "file": "demo_0032_傑尼龜.png"
+  },
+  {
+    "row": 44,
+    "name": "鐵甲蛹",
+    "move": "變硬",
+    "attack_dice": "1",
+    "file": "demo_0044_鐵甲蛹.png"
+  },
+  {
+    "row": 92,
+    "name": "皮卡丘",
+    "move": "電球",
+    "attack_dice": "?",
+    "file": "demo_0092_皮卡丘.png"
+  },
+  {
+    "row": 224,
+    "name": "怪力",
+    "move": "爆裂拳",
+    "attack_dice": "5",
+    "file": "demo_0224_怪力.png"
+  },
+  {
+    "row": 308,
+    "name": "耿鬼",
+    "move": "污泥炸彈",
+    "attack_dice": "5",
+    "file": "demo_0308_耿鬼.png"
+  },
+  {
+    "row": 477,
+    "name": "卡比獸",
+    "move": "終極衝擊",
+    "attack_dice": "7",
+    "file": "demo_0477_卡比獸.png"
+  },
+  {
+    "row": 498,
+    "name": "快龍",
+    "move": "逆鱗",
+    "attack_dice": "5",
+    "file": "demo_0498_快龍.png"
+  }
+]
