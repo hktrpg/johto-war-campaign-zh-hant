@@ -1,9 +1,6 @@
 {
   "styles": [
-    "corner",
-    "chip",
-    "minimal",
-    "dual-tone"
+    "orb"
   ],
   "samples": [
     "藤鞭",

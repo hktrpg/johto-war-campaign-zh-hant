@@ -121,8 +121,8 @@ CJK_JH_BOLD_FONT_PATH = _first_font_path(
     '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
 )
 
-# ZA board badge on move strips: corner | chip | minimal | dual-tone
-ZA_BADGE_STYLE = 'corner'
+# ZA board badge on move strips (unified circular orbs)
+ZA_BADGE_STYLE = 'orb'
 
 # Colours
 DARK_COLOUR = (37, 37, 50)

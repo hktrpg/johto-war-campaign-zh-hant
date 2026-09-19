@@ -43,8 +43,9 @@ def generate_demo(overwrite: bool = True) -> list[Path]:
             continue
         img = generate_pokemon_moves.get_base()
         generate_pokemon_moves.add_header(img, stats)
-        generate_pokemon_moves.add_za_badge(img, stats)
         generate_pokemon_moves.add_description(img, stats)
+        generate_pokemon_moves.add_archetype_strip(img, stats)
+        generate_pokemon_moves.add_za_badge(img, stats)
         img.save(out)
 
     POKEMON_CARD_FRONTS_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

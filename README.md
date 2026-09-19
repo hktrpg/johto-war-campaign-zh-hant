@@ -287,13 +287,7 @@ python tools/generate_demo_cards.py
 
 **ZA 類型分析**（lookup 約 570 招）：**24 種**距離×格數×AOE×半徑組合；**2** 距離帶（近／遠）、**6** 格數、**7** 種 AOE（實際以 MELEE／RANGED／AOE_CENTER／SELF_ORIGIN 為主）。完整表見 `Card Generator/data/za_board_taxonomy.json`。
 
-**四種角標風格 DEMO**（同一招式比較）：
-
-```powershell
-python tools/generate_za_style_demos.py
-```
-
-輸出：`demo_cards/za_badge_styles/{corner|chip|minimal|dual-tone}/`。預設產卡風格為 `corner`（可在 `config.py` 的 `ZA_BADGE_STYLE` 調整）。
+角標為 **統一圓形**（白邊＋色底，類似屬性圖示）：左下射程、右下 AOE，繪製在招式條最上層以免被底框遮住。
 
 ---
 

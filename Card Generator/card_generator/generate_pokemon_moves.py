@@ -44,7 +44,8 @@ def add_header(img, stats):
         dice = parse_attack_dice_count(stats)
         d.text(xy(13.25, 1.25), str(dice), fill=DARK_COLOUR, font=title_font(44), anchor='mm')
 
-    # Archetype Sections Based on stats.archetype_count
+def add_archetype_strip(img, stats):
+    d = ImageDraw.Draw(img)
     if str(stats.archetype_count) == "1" and _valid_arch(stats.archetype_1):
         _paste_archetype_asset(img, f'1_{stats.archetype_1}.png', xy(0, 6.36), xy(14.5, 1.15))
         text_fill = DARK_COLOUR if stats.archetype_1 in {"RECHARGE 1", "RECHARGE 2", "RECHARGE 3", "RECHARGE 4", "RECHARGE 5", "RECHARGE 6", "RECHARGE 7", "RECHARGE 8", "RECHARGE 9", "SONG", "PROTECT"} else WHITE_COLOUR
@@ -95,8 +96,9 @@ def generate_moves(overwrite):
 
         img = get_base()
         add_header(img, stats)
-        add_za_badge(img, stats)
         add_description(img, stats)
+        add_archetype_strip(img, stats)
+        add_za_badge(img, stats)
         img.save(output_path)
 
 

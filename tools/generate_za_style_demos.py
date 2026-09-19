@@ -23,7 +23,7 @@ from za_move_data import (  # noqa: E402
 import generate_pokemon_moves  # noqa: E402
 from za_card_render import add_za_badge  # noqa: E402
 
-STYLES = ['corner', 'chip', 'minimal', 'dual-tone']
+STYLES = ['orb']
 OUT_DIR = ROOT / 'demo_cards' / 'za_badge_styles'
 TAXONOMY_PATH = ROOT / 'Card Generator' / 'data' / 'za_board_taxonomy.json'
 
@@ -78,8 +78,9 @@ def build_taxonomy() -> dict:
 def render_move_strip(stats, style: str, out_path: Path) -> None:
     img = generate_pokemon_moves.get_base()
     generate_pokemon_moves.add_header(img, stats)
-    add_za_badge(img, stats, style=style)
     generate_pokemon_moves.add_description(img, stats)
+    generate_pokemon_moves.add_archetype_strip(img, stats)
+    add_za_badge(img, stats, style=style)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     img.save(out_path)
 
