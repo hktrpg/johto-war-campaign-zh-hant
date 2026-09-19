@@ -252,12 +252,35 @@ A: 可以，只跑對應的 `main_*.py`，只上傳該類 decks，再只匯入�
 
 ---
 
-## ZA 招式距離／AOE 與棋盤戰鬥
+## D&D 戰棋印卡（本倉庫主要目標）
 
-本倉庫已整合 [Pokémon Legends Z-A](https://github.com/projectpokemon/za-textport) 的招式參數（`waza_param_array.json`），用於：
+這是 **印卡用 repo**，不是完整線上版桌遊。重點是在既有 Johto War 寶可夢卡上，**美觀地多印一點 D&D 版棋盤戰鬥必備資訊**：
 
-1. **招式卡額外標示**：近距／遠距、棋盤格數、AOE 類型（產牌時自動顯示在招式名稱下方）
-2. **棋盤戰鬥原型**：`board_battle/` 目錄下的網頁小遊戲
+| 印製內容 | 位置 |
+|----------|------|
+| 近距／遠距、棋盤 **射程格數** | 招式條 + 卡面底部戰鬥列 |
+| **AOE 類型**（含範圍半徑） | 同上 |
+| **攻擊強度 = d6 顆數**（卡上標 `Xd6`） | 招式條右上角 + 戰鬥列 |
+
+整合 [Pokémon Legends Z-A](https://github.com/projectpokemon/za-textport) 的 `waza_param_array.json`；若 lookup 無該招，會依招式屬性印 **（估）** 預設射程／AOE，仍可上桌。
+
+### 產生 Pokémon 卡面
+
+```powershell
+python tools/build_za_move_data.py
+cd "Card Generator\card_generator"
+python main_pokemon.py
+```
+
+輸出路徑：`Card Generator/card_generator/output/pokemon/card_fronts/`（例如 `45_metapod.png`）。
+
+流程：先產 **招式條**（`output/pokemon/moves/`），再合成到 **卡正面**；卡面在立繪下方會多一條 **D&D 戰鬥列**，招式區本身也含射程／AOE／d6。
+
+---
+
+## 網頁對戰（選用 · 測試用）
+
+`board_battle/` 是 **簡易對戰沙盒**：方便驗證 ZA 射程／AOE 與 **屬性相性**，不是神奧之心開放世界桌遊的數位版。
 
 ### 建立／更新 ZA 資料
 

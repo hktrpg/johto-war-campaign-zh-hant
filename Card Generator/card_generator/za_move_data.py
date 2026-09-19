@@ -157,3 +157,49 @@ def za_card_label(stats) -> str | None:
 
 def has_za_data() -> bool:
     return LOOKUP_PATH.is_file()
+
+
+def default_za_for_move_type(move_type: str | None) -> dict[str, Any]:
+    """Fallback ZA board fields when lookup has no match (still printable for D&D play)."""
+    mt = (move_type or 'normal').strip().lower()
+    long_range_types = {'fire', 'water', 'electric', 'psychic', 'dragon', 'fairy'}
+    band = 'LONG' if mt in long_range_types else 'SHORT'
+    tiles = 4 if band == 'LONG' else 2
+    return {
+        'move_name_en': None,
+        'za_distance_band': band,
+        'za_range': float(tiles * 2),
+        'za_board_range': tiles,
+        'za_aoe_type': 'MELEE',
+        'za_aoe_radius': 0,
+        'za_distance_zh': DISTANCE_BAND_ZH[band],
+        'za_aoe_zh': AOE_TYPE_ZH['MELEE'],
+        'za_fallback': True,
+        'za_move_type_hint': mt,
+    }
+
+
+def resolve_za_for_card(stats) -> dict[str, Any]:
+    """ZA + board combat fields for a move row or Pokémon signature move."""
+    move_name = str(getattr(stats, 'move_name', '') or '').strip()
+    move_name_en = getattr(stats, 'move_name_en', None)
+    if move_name_en is not None and not str(move_name_en).strip():
+        move_name_en = None
+    za = get_za_stats(move_name, move_name_en)
+    if za:
+        return {**za, 'za_fallback': False}
+    move_type = getattr(stats, 'move_type', None)
+    return default_za_for_move_type(str(move_type) if move_type is not None else None)
+
+
+def parse_attack_dice_count(stats) -> int:
+    raw = getattr(stats, 'move_attack_strength', None)
+    if raw is None:
+        return 1
+    text = str(raw).strip().lower()
+    if text in {'', 'blank', 'nan', 'none'}:
+        return 1
+    try:
+        return max(1, int(float(text)))
+    except ValueError:
+        return 1

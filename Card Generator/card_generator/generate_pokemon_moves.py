@@ -5,6 +5,7 @@ from tqdm import tqdm
 from config import *
 from utils import xy, read_cube, get_img, wrapped_text, text_font, title_font, resolve_move_effect
 from za_card_render import add_za_badge
+from za_move_data import parse_attack_dice_count
 
 
 def get_base():
@@ -22,9 +23,11 @@ def add_header(img, stats):
     wrapped_text(d, stats.move_name, text_font(36), boundaries=(9.5, 1.75), xy=xy(7.25, 1.25), fill=DARK_COLOUR,
                  anchor='mm', align='center')
 
-    # Move Attack Strength
+    # Move Attack Strength (= d6 count for D&D combat)
     if stats.move_attack_strength != "blank":
-        d.text(xy(13.25, 1.25), str(stats.move_attack_strength), fill=DARK_COLOUR, font=title_font(44), anchor='mm')
+        dice = parse_attack_dice_count(stats)
+        d.text(xy(12.85, 1.25), str(dice), fill=DARK_COLOUR, font=title_font(44), anchor='mm')
+        d.text(xy(13.65, 1.42), 'd6', fill=DARK_COLOUR, font=text_font(18), anchor='mm')
 
     # Archetype Sections Based on stats.archetype_count
     if str(stats.archetype_count) == "1":
