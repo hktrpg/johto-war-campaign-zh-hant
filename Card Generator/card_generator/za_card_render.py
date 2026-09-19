@@ -2,7 +2,7 @@
 
 from PIL import ImageDraw
 
-from config import DARK_COLOUR, WHITE_COLOUR
+from config import DARK_COLOUR
 from utils import text_font, xy, wrapped_text
 from za_move_data import resolve_za_for_card
 
@@ -22,21 +22,21 @@ def _draw_range_bar(d, label: str, center_xy, width_units: float, height_units: 
     bw, bh = xy(width_units, height_units)
     left = int(cx - bw / 2)
     top = int(cy - bh / 2)
-    outline = (120, 128, 160) if fallback else DARK_COLOUR
+    outline = (160, 168, 188) if fallback else DARK_COLOUR
     d.rounded_rectangle(
         (left, top, left + bw, top + bh),
-        radius=10,
-        fill=(28, 36, 58, 235),
+        radius=8,
+        fill=(230, 235, 245, 220),
         outline=outline,
-        width=2,
+        width=1,
     )
     wrapped_text(
         d,
         label,
-        text_font(17, label),
-        boundaries=(width_units - 0.8, height_units - 0.15),
+        text_font(14, label),
+        boundaries=(width_units - 1.0, height_units - 0.12),
         xy=(cx, cy),
-        fill=WHITE_COLOUR,
+        fill=DARK_COLOUR,
         anchor='mm',
         align='center',
     )
@@ -52,9 +52,9 @@ def add_za_badge(img, stats) -> bool:
     _draw_range_bar(
         d,
         label,
-        center_xy=xy(7.25, 2.42),
-        width_units=13.8,
-        height_units=0.62,
+        center_xy=xy(7.25, 2.32),
+        width_units=12.5,
+        height_units=0.48,
         fallback=bool(za.get('za_fallback')),
     )
     return True

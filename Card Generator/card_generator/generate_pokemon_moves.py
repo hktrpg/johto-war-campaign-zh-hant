@@ -28,12 +28,16 @@ def add_header(img, stats):
     d = ImageDraw.Draw(img)
 
     # Move Type
-    type_img = get_img(CARD_ASSETS_DIR / 'types' / f'{stats.move_type}.png', xy(2, 2))
+    move_type = str(stats.move_type).strip().lower()
+    type_img = get_img(CARD_ASSETS_DIR / 'types' / f'{move_type}.png', xy(2, 2))
     img.paste(type_img, xy(0.25, 0.25), type_img)
 
     # Move Name
-    wrapped_text(d, stats.move_name, text_font(36), boundaries=(9.5, 1.75), xy=xy(7.25, 1.25), fill=DARK_COLOUR,
-                 anchor='mm', align='center')
+    move_name = str(stats.move_name)
+    wrapped_text(
+        d, move_name, text_font(32, move_name), boundaries=(9.0, 1.45), xy=xy(7.25, 1.2),
+        fill=DARK_COLOUR, anchor='mm', align='center',
+    )
 
     # Move Attack Strength (= number of attack dice; always d6 in rules)
     if stats.move_attack_strength != "blank":

@@ -229,14 +229,16 @@ def add_text(img, stats):
     d = ImageDraw.Draw(img)
     types = get_types(stats)
 
-    # Pokémon Name
+    # Pokémon Name (must pass name into text_font so CJK font is selected)
     name_pos = xy(1 + len(types) * 2.5, 1.75 - (0.5 if not pd.isnull(stats.description) else 0))
-    name_font_size = text_font(44) if pd.isnull(stats.description) else text_font(36)
-    d.text(name_pos, stats.pokedex_name, fill=DARK_COLOUR, font=name_font_size, anchor='lm')
+    name_pt = 44 if pd.isnull(stats.description) else 36
+    name_text = str(stats.pokedex_name)
+    d.text(name_pos, name_text, fill=DARK_COLOUR, font=text_font(name_pt, name_text), anchor='lm')
 
     # Pokémon Description
     if not pd.isnull(stats.description):
-        d.text(xy(1 + len(types) * 2.5, 2.5), stats.description, fill=DARK_COLOUR, font=text_font(22), anchor='lm')
+        desc = str(stats.description)
+        d.text(xy(1 + len(types) * 2.5, 2.5), desc, fill=DARK_COLOUR, font=text_font(22, desc), anchor='lm')
 
     # Pokémon Stats
     wrapped_text(d, str(int(stats.health)), title_font(44), boundaries=(1.5, 1.5), xy=xy(12.75, 8.75), fill=DARK_COLOUR,
