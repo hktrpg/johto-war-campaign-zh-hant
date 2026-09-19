@@ -22,6 +22,7 @@ import generate_pokemon_front  # noqa: E402
 DEMO_ROW_INDICES = [0, 20, 24, 32, 44, 92, 224, 308, 477, 498]
 
 DEMO_OUTPUT_DIR = GEN / 'output' / 'pokemon' / 'demo'
+REPO_DEMO_DIR = ROOT / 'demo_cards' / 'dnd_pokemon'
 
 
 def generate_demo(overwrite: bool = True) -> list[Path]:
@@ -81,10 +82,14 @@ def generate_demo(overwrite: bool = True) -> list[Path]:
             'file': demo_name,
         })
 
-    (DEMO_OUTPUT_DIR / 'manifest.json').write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2),
-        encoding='utf-8',
-    )
+    manifest_path = DEMO_OUTPUT_DIR / 'manifest.json'
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
+
+    REPO_DEMO_DIR.mkdir(parents=True, exist_ok=True)
+    for p in written:
+        shutil.copy2(p, REPO_DEMO_DIR / p.name)
+    shutil.copy2(manifest_path, REPO_DEMO_DIR / 'manifest.json')
+
     return written
 
 
