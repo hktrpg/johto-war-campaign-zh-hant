@@ -7,8 +7,8 @@ from utils import xy
 from za_board_icons import render_aoe_icon, render_range_icon
 from za_move_data import resolve_za_for_card
 
-ORB_SIZE = 2.45
-ORB_Y = 4.55  # raised above archetype footer so orbs are not clipped by card frame
+ORB_SIZE = 2.35
+ORB_Y = 4.35  # above archetype strip; drawn last on top of footer art
 
 
 def add_za_badge(img, stats, style: str | None = None) -> bool:
